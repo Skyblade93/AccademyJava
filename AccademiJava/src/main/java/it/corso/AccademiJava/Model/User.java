@@ -9,6 +9,7 @@ import lombok.Setter;
 @Setter
 @Entity
 @Table(name = "User", schema = "Accademi")
+
 public class User {
 
     @Id
