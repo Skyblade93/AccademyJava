@@ -21,3 +21,7 @@ public class Drone {
     private Boolean sensoreOstacoli;
 
 }
+
+
+
+
