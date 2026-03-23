@@ -1,8 +1,8 @@
 /AccademiJava/target/classes/it/corso/AccademiJava/AccademiJavaApplication.class
 /AccademiJava/target/classes/application.properties
-/AccademiJava/Slide/Java base - blocco 1 - Introduzione.pptx
-/AccademiJava/Slide/principi_SOLID.pptx
+/AccademiJava/target/classes/it/corso/AccademiJava/Model/Prodotto.class
 /AccademiJava/target/classes/it/corso/AccademiJava/ServletInitializer.class
 /AccademiJava/target/classes/it/corso/AccademiJava/Model/User.class
+/AccademiJava/target/classes/it/corso/AccademiJava/Controller/UserController.class
 /AccademiJava/target/classes/it/corso/AccademiJava/Repository/UserRepository.class
 /AccademiJava/target/classes/it/corso/AccademiJava/Service/UserService.class
