@@ -8,16 +8,15 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
-@Table(name = "User", schema = "Accademi")
-
-public class User {
+@Table(name = "Carrello", schema = "Accademi")
+public class Carrello {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    private String name;
+    private Double prezzoTotale;
 
-    private String description;
+    private String quantita;
 
 }
