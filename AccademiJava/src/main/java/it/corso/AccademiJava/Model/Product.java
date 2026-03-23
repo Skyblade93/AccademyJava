@@ -1,16 +1,16 @@
 package it.corso.AccademiJava.Model;
 
-
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
 @Getter
 @Setter
 @Entity
-@Table(name = "User", schema = "Accademi")
-
-public class User {
+@AllArgsConstructor
+@Table(name = "Product", schema = "Accademi")
+public class Product {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -18,6 +18,10 @@ public class User {
 
     private String name;
 
-    private String description;
+    private Double price;
+
+    private Integer quantity;
+
+    private String category;
 
 }
