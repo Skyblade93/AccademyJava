@@ -1,6 +1,6 @@
 package it.corso.AccademiJava.Mapper;
 
-import it.corso.AccademiJava.DTO.AutoDTO;
+import it.corso.AccademiJava.DTO.AutoDto;
 import it.corso.AccademiJava.Model.Auto;
 import it.corso.AccademiJava.Model.User;
 
@@ -9,13 +9,13 @@ import java.util.List;
 
 public class AutoMapper {
 
-    public List<AutoDTO> toDtoList(List<Auto> autos){
-        List<AutoDTO> autoDtos = new ArrayList<>();
+    public List<AutoDto> toDtoList(List<Auto> autos){
+        List<AutoDto> autoDtos = new ArrayList<>();
         autos.forEach(auto -> autoDtos.add(toDto(auto)));
         return autoDtos;
     }
 
-    public List<Auto> toEntityList(List<AutoDTO> autoDtos, List<User> users){
+    public List<Auto> toEntityList(List<AutoDto> autoDtos, List<User> users){
         List<Auto> autos = new ArrayList<>();
         for (int i = 0; i < autoDtos.size(); i++) {  // serve l'indice per prendere l'utente corrispondente
 
@@ -24,8 +24,8 @@ public class AutoMapper {
         return autos;
     }
 
-    public AutoDTO toDto(Auto auto) {
-        AutoDTO dto = new AutoDTO();
+    public AutoDto toDto(Auto auto) {
+        AutoDto dto = new AutoDto();
 
         dto.setId(auto.getId());
         dto.setModello(auto.getModello());
@@ -38,7 +38,7 @@ public class AutoMapper {
         return dto;
     }
 
-    public Auto toEntity(AutoDTO dto, User user) {
+    public Auto toEntity(AutoDto dto, User user) {
         Auto auto = new Auto();
 
         auto.setId(dto.getId());

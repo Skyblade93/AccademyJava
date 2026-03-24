@@ -6,23 +6,22 @@ import it.corso.AccademiJava.Model.Ordine;
 import java.util.ArrayList;
 import java.util.List;
 
-public class OrdineMapper //extends AbstractConverter<Ordine,OrdineDto>
-{
+public class OrdineMapper extends AbstractConverter<Ordine,OrdineDto> {
 
     public List<OrdineDto> toDtoList(List<Ordine> ordini){
         List<OrdineDto> ordineDtos = new ArrayList<>();
-        ordini.forEach(ordine ->  ordineDtos.add(toDto(ordine)));
+        ordini.forEach(ordine ->  ordineDtos.add(toDTO(ordine)));
         return ordineDtos;
     }
 
     public List<Ordine>  toEnityList(List<OrdineDto> ordineDtos){
         List<Ordine> ordini = new ArrayList<>();
-        ordineDtos.forEach(ordineDto ->  ordini.add(toEnity(ordineDto)));
+        ordineDtos.forEach(ordineDto ->  ordini.add(toEntity(ordineDto)));
         return ordini;
     }
 
-    // @Override
-    public OrdineDto toDto(Ordine ordine) {
+    @Override
+    public OrdineDto toDTO(Ordine ordine) {
         OrdineDto ordineDto = new OrdineDto();
 
         ordineDto.setId(ordine.getId());
@@ -34,8 +33,8 @@ public class OrdineMapper //extends AbstractConverter<Ordine,OrdineDto>
         return  ordineDto;
     }
 
-    // @Override
-    public Ordine toEnity(OrdineDto ordineDto) {
+    @Override
+    public Ordine toEntity(OrdineDto ordineDto) {
         Ordine ordine = new Ordine();
 
         ordine.setId(ordineDto.getId());
