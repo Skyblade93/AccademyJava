@@ -19,6 +19,13 @@ public class DipendenteService extends AbstractService<Dipendente, DipendenteDto
     @Autowired
     DipendenteRepository dipendenteRepository;
 
+    // 🔹 Metodo per trovare dipendente per nome, cognome e numero di telefono
+    public DipendenteDto findByNomeAndCognomeAndNumber(String nome, String cognome, Integer numeroTelefono) {
+        return dipendenteMapper.toDTO(
+                dipendenteRepository.findByNomeAndCognomeAndNumber(nome, cognome, numeroTelefono)
+        );
+    }
+
     // 🔹 Metodo per trovare dipendente per nome e cognome
     public DipendenteDto findByNomeAndCognome(String nome, String cognome) {
         return dipendenteMapper.toDTO(
@@ -42,7 +49,7 @@ public class DipendenteService extends AbstractService<Dipendente, DipendenteDto
                 .collect(Collectors.toList());
     }
 
-    // 🔹 Metodo per trovare dipendente per nome e cognome
+    // 🔹 Metodo per trovare dipendente per email
     public DipendenteDto findByEmail(String email) {
         return dipendenteMapper.toDTO(dipendenteRepository.findByEmail(email));
     }
@@ -54,7 +61,7 @@ public class DipendenteService extends AbstractService<Dipendente, DipendenteDto
         );
     }
 
-    // 🔹 Metodo 2 (JPQL) → nome + età
+    // 🔹 Metodo 2 (JPQL) per trovare dipendente per nome ed età
     public DipendenteDto findByNomeAndEta(String nomeDipendente, Integer eta) {
         return dipendenteMapper.toDTO(
                 dipendenteRepository.findByNomeAndEta(nomeDipendente, eta)
@@ -66,7 +73,7 @@ public class DipendenteService extends AbstractService<Dipendente, DipendenteDto
         return dipendenteMapper.toDTO(dipendenteRepository.findByCognome(cognome));
     }
 
-    // 🔹 Metodo 3 (Native) → email + numero telefono
+    // 🔹 Metodo 3 (Native) per trovare dipendente per email e numero di telefono
     public DipendenteDto findByEmailAndNumeroTelefono(String email, Integer numeroTelefono) {
         return dipendenteMapper.toDTO(
                 dipendenteRepository.findByEmailAndNumber(email, numeroTelefono)
