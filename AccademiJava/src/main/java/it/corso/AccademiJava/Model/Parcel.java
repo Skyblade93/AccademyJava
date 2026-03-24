@@ -19,7 +19,6 @@ public class Parcel
     private Integer length;
     private Boolean fragile;
 
-    @OneToMany
 
 
 
