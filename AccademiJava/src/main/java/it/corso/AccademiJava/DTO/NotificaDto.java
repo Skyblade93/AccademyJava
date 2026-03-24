@@ -1,6 +1,5 @@
 package it.corso.AccademiJava.DTO;
 
-import it.corso.AccademiJava.Model.Drone;
 import it.corso.AccademiJava.Model.PrioritaNotifica;
 import it.corso.AccademiJava.Model.TipoNotifica;
 import lombok.AllArgsConstructor;
@@ -30,6 +29,5 @@ public class NotificaDto {
 
     private Boolean letta;
 
-    private Drone drone;
+    private DroneDto drone;
 }
-

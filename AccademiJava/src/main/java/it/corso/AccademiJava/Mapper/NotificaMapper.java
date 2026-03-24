@@ -2,11 +2,17 @@ package it.corso.AccademiJava.Mapper;
 
 import it.corso.AccademiJava.DTO.NotificaDto;
 import it.corso.AccademiJava.Model.Notifica;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@Component
 public class NotificaMapper {
+
+    @Autowired
+    private DroneMapper droneMapper;
 
     public List<NotificaDto> toDtoList(List<Notifica> notifiche){
         List<NotificaDto> notificaDtos = new ArrayList<>();
@@ -30,7 +36,7 @@ public class NotificaMapper {
         notificaDto.setPriorita(notifica.getPriorita());
         notificaDto.setDataCreazione(notifica.getDataCreazione());
         notificaDto.setLetta(notifica.getLetta());
-        notificaDto.setDrone(notifica.getDrone());
+        notificaDto.setDrone(droneMapper.toDto(notifica.getDrone()));
 
         return notificaDto;
     }
@@ -45,9 +51,8 @@ public class NotificaMapper {
         notifica.setPriorita(notificaDto.getPriorita());
         notifica.setDataCreazione(notificaDto.getDataCreazione());
         notifica.setLetta(notificaDto.getLetta());
-        notifica.setDrone(notificaDto.getDrone());
+        notifica.setDrone(droneMapper.toEntity(notificaDto.getDrone()));
 
         return notifica;
     }
 }
-
