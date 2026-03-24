@@ -1,42 +1,29 @@
 package it.corso.AccademiJava.Service;
 
-import it.corso.AccademiJava.DTO.DroneDto;
-import it.corso.AccademiJava.Mapper.DroneMapper;
-import it.corso.AccademiJava.Model.Drone;
 import it.corso.AccademiJava.Repository.DroneRepository;
+import it.corso.AccademiJava.Repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
 
 @Service
 public class DroneService {
 
     @Autowired
-    private DroneRepository droneRepository;
+    private DroneRepository droneRepository; // Variabile minuscola
 
     @Autowired
-    private DroneMapper droneMapper;
+    private UserRepository userRepository;   // Variabile minuscola
 
-    // METODO PER SALVARE UN DRONE
-    public DroneDto salvaDrone(DroneDto dto) {
-        // Trasformo il DTO in Entity
-        Drone entity = droneMapper.toEntity(dto);
+    public void eseguiOperazioniDedicate() {
+        // 1. Usiamo userRepository (minuscolo!) per le query User
+        userRepository.findByRole("ADMIN");
+        userRepository.countRecentUsersNative();
 
-        // Salvo nel DB
-        Drone savedEntity = droneRepository.save(entity);
+        // 2. Usiamo droneRepository (minuscolo!) per le query Drone
+        droneRepository.findByLivelloBatteriaGreaterThan(50);
+        droneRepository.findTop5FlownDronesNative();
 
-        // Ritorno il DTO convertito
-        return droneMapper.toDto(savedEntity);
-    }
-    // METODO PER RECUPERARE TUTTI I DRONI
-    public List<DroneDto> getAllDroni() {
-        // Recupero la lista dal DB
-        List<Drone> entities = droneRepository.findAll();
-
-        // Converto la lista in DTO e la ritorno (Senza il cast (DroneDto)!)
-        return entities.stream()
-                .map(droneMapper::toDto)
-                .toList();
+        System.out.println("Tutte le query dei repository dedicati sono state richiamate con successo!");
     }
 }
