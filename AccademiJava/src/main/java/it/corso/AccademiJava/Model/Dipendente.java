@@ -22,4 +22,12 @@ public class Dipendente {
     private Integer eta;
     private String email;
     private Integer numeroTelefono; //posso mettere String se si vuole mettere ad esempio + 39
+
+    @OneToOne
+    @JoinColumn(name = "nomeAzienda", nullable = false)
+    private Azienda nomeAzienda; // Nome dell'azienda dove lavora il dipendente
+
+    @OneToOne
+    @JoinColumn(name = "user_id", nullable = false)
+    private User user;
 }
