@@ -1,6 +1,6 @@
 package it.corso.AccademiJava.Mapper;
 
-import it.corso.AccademiJava.DTO.ProductDTO;
+import it.corso.AccademiJava.DTO.ProductDto;
 import it.corso.AccademiJava.Model.Product;
 
 import java.util.ArrayList;
@@ -8,20 +8,20 @@ import java.util.List;
 
 public class ProductMapper {
 
-    public List<ProductDTO> toDtoList(List<Product> products){
-        List<ProductDTO> productDTOs = new ArrayList<>();
-        products.forEach(product -> productDTOs.add(toDto(product)));
-        return productDTOs;
+    public List<ProductDto> toDtoList(List<Product> products){
+        List<ProductDto> productDtos = new ArrayList<>();
+        products.forEach(product -> productDtos.add(toDto(product)));
+        return productDtos;
     }
 
-    public List<Product> toEntityList(List<ProductDTO> productDTOs){
+    public List<Product> toEntityList(List<ProductDto> productDtos){
         List<Product> products = new ArrayList<>();
-        productDTOs.forEach(dto -> products.add(toEntity(dto)));
+        productDtos.forEach(dto -> products.add(toEntity(dto)));
         return products;
     }
 
-    public ProductDTO toDto(Product product) {
-        ProductDTO dto = new ProductDTO();
+    public ProductDto toDto(Product product) {
+        ProductDto dto = new ProductDto();
 
         dto.setId(product.getId());
         dto.setName(product.getName());
@@ -32,7 +32,7 @@ public class ProductMapper {
         return dto;
     }
 
-    public Product toEntity(ProductDTO dto) {
+    public Product toEntity(ProductDto dto) {
         Product product = new Product();
 
         product.setId(dto.getId());
