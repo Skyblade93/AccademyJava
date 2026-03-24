@@ -8,7 +8,7 @@ import org.modelmapper.ModelMapper;
 
 public class DroneMapper extends AbstractConverter<Drone, DroneDto> {
 
-    private ModelMapper modelMapper; // Iniettiamo la libreria
+    private ModelMapper modelMapper; // definiamo la libreria
 
     // Trasforma Entity -> DTO in modo automatico
     @Override
