@@ -16,6 +16,11 @@ public class Parcel
     private Double weight;
     private Integer height;
     private Integer width;
-    private Integer thickness;
+    private Integer length;
+    private Boolean fragile;
+
+    @OneToMany
+
+
 
 }

@@ -19,5 +19,4 @@ public class ParcelDto
     private Integer width;
     private Integer length;
     private Boolean fragile;
-
 }
