@@ -9,7 +9,7 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class DipendenteDTO {
+public class DipendenteDto {
 
     private Integer id;                 // identificativo del dipendente
     private String nomeDipendente;      // nome del dipendente

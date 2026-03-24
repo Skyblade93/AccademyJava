@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class AutoDTO {
+public class AutoDto {
 
     private Integer id;
     private String modello;
