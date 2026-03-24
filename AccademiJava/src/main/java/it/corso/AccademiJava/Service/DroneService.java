@@ -20,22 +20,21 @@ public class DroneService {
 
     // METODO PER SALVARE UN DRONE
     public DroneDto salvaDrone(DroneDto dto) {
-        // 1. Trasformo il DTO in Entity
+        // Trasformo il DTO in Entity
         Drone entity = droneMapper.toEntity(dto);
 
-        // 2. Salvo nel DB
+        // Salvo nel DB
         Drone savedEntity = droneRepository.save(entity);
 
-        // 3. Ritorno il DTO convertito
+        // Ritorno il DTO convertito
         return droneMapper.toDto(savedEntity);
-    } // <-- QUESTA GRAFFA CHIUDE IL METODO SALVA
-
+    }
     // METODO PER RECUPERARE TUTTI I DRONI
     public List<DroneDto> getAllDroni() {
-        // 1. Recupero la lista dal DB
+        // Recupero la lista dal DB
         List<Drone> entities = droneRepository.findAll();
 
-        // 2. Converto la lista in DTO e la ritorno (Senza il cast (DroneDto)!)
+        // Converto la lista in DTO e la ritorno (Senza il cast (DroneDto)!)
         return entities.stream()
                 .map(droneMapper::toDto)
                 .toList();
