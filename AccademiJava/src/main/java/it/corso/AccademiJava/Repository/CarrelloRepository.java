@@ -32,4 +32,5 @@ public interface CarrelloRepository extends JpaRepository<Carrello,Integer> {
 
     @Query(value = "SELECT * FROM Carrello t WHERE t.prezzoTotale = ?1",nativeQuery = true)
     Carrello cercaPrezzoTotaleNative(double prezzoTotale);
+
 }

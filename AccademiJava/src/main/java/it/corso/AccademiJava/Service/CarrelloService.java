@@ -26,5 +26,6 @@ public class CarrelloService extends AbstractService<Carrello, CarrelloDto> {
 
     public CarrelloDto FindByQuantita(int quantita) {
         return carrelloMapper.toDTO(carrelloRepository.findByQuantita(quantita));
+
     }
 }
