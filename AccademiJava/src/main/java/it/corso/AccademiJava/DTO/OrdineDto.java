@@ -1,6 +1,7 @@
-package it.corso.AccademiJava.Model;
+package it.corso.AccademiJava.DTO;
 
-import jakarta.persistence.*;
+import it.corso.AccademiJava.Model.Prodotto;
+import it.corso.AccademiJava.Model.User;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -12,12 +13,8 @@ import java.util.List;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@Entity
-@Table(name = "Ordine", schema = "Accademi")
-public class Ordine {
+public class OrdineDto {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
     private float costo_totale;
@@ -26,10 +23,7 @@ public class Ordine {
 
     private String indirizzo_spedizione;
 
-    @ManyToOne
-    @JoinColumn(name = "utente_id")
     private User utente;
 
-    @ManyToMany
     private List<Prodotto> prodotti;
 }
