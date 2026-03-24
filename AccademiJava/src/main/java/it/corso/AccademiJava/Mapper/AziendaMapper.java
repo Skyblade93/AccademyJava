@@ -21,4 +21,5 @@ public class AziendaMapper extends AbstractConverter<Azienda, AziendaDto> {
     @Override
     public Azienda toEntity(AziendaDto dto) { return mapper.map(dto, Azienda.class); }
 
+
 }
