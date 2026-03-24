@@ -35,7 +35,5 @@ public abstract class AbstractConverter<Entity,DTO> implements Converter<Entity,
     }
 
 
-    // Trasforma l'oggetto del Database (Entity) in oggetto per il Web (DTO)
-    public abstract DroneDto toDto(Drone entity);
 }
 
