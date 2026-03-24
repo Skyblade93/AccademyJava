@@ -32,7 +32,4 @@ public abstract class AbstractConverter<Entity,DTO> implements Converter<Entity,
         return list;
     }
 
-    public abstract UserDto toDto(User user);
-
-    public abstract User toEnity(UserDto userDto);
 }

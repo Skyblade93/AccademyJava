@@ -21,6 +21,6 @@ public class Carrello {
 
     private Double prezzoTotale;
 
-    private String quantita;
+    private Integer quantita;
 
 }
