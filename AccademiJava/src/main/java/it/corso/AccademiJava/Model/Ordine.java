@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.List;
+
 @Getter
 @Setter
 @Entity
@@ -16,7 +18,14 @@ public class Ordine {
 
     private float costo_totale;
 
-    private int numero_prodotti;
+    private Integer numero_prodotti;
 
     private String indirizzo_spedizione;
+
+    @ManyToOne
+    @JoinColumn(name = "utente_id")
+    private User utente;
+
+    @ManyToMany
+    private List<Prodotto> prodotti;
 }
