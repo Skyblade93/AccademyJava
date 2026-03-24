@@ -2,9 +2,6 @@ package it.corso.AccademiJava.Mapper;
 
 
 
-import it.corso.AccademiJava.DTO.DroneDto;
-import it.corso.AccademiJava.Model.Drone;
-
 import java.util.ArrayList;
 import java.util.List;
 
