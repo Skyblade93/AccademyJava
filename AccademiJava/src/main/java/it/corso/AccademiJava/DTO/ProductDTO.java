@@ -2,12 +2,14 @@ package it.corso.AccademiJava.DTO;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Getter
 @Setter
 @AllArgsConstructor
-public class ProductDto {
+@NoArgsConstructor
+public class ProductDTO {
 
     private Integer id; //codice prodotto
     private String name; //nome prodotto
