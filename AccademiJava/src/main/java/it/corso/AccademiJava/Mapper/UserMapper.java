@@ -6,26 +6,22 @@ import it.corso.AccademiJava.Model.User;
 import java.util.ArrayList;
 import java.util.List;
 
-public class UserMapper //extends AbstractConverter<User,UserDto>
-{
+public class UserMapper extends AbstractConverter<User, UserDto> {
 
-
-
-    public List<UserDto> toDtoList(List<User> users){
+    public List<UserDto> toDtoList(List<User> users) {
         List<UserDto> userDtos = new ArrayList<>();
-        users.forEach(user ->  userDtos.add(toDto(user)));
+        users.forEach(user -> userDtos.add(toDTO(user)));
         return userDtos;
     }
 
-    public List<User>  toEnityList(List<UserDto> userDtos){
+    public List<User> toEntityList(List<UserDto> userDtos) {
         List<User> users = new ArrayList<>();
-        userDtos.forEach(userDto ->  users.add(toEnity(userDto)));
+        userDtos.forEach(userDto -> users.add(toEntity(userDto)));
         return users;
     }
 
-
-   // @Override
-    public UserDto toDto(User user) {
+    @Override
+    public UserDto toDTO(User user) {
         UserDto userDto = new UserDto();
 
         userDto.setId(user.getId());
@@ -33,10 +29,11 @@ public class UserMapper //extends AbstractConverter<User,UserDto>
         userDto.setDescription(user.getDescription());
         userDto.getContacts().addAll(user.getContacts());
 
-        return  userDto;    }
+        return userDto;
+    }
 
-   // @Override
-    public User toEnity(UserDto userDto) {
+    @Override
+    public User toEntity(UserDto userDto) {
         User user = new User();
 
         user.setId(userDto.getId());
@@ -44,6 +41,6 @@ public class UserMapper //extends AbstractConverter<User,UserDto>
         user.setDescription(userDto.getDescription());
         user.getContacts().addAll(userDto.getContacts());
 
-        return  user;
+        return user;
     }
 }
