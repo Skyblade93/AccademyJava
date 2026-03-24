@@ -1,7 +1,6 @@
-package it.corso.AccademiJava.Model;
+package it.corso.AccademiJava.DTO;
 
-
-import jakarta.persistence.*;
+import it.corso.AccademiJava.Model.Contact;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -9,23 +8,19 @@ import lombok.Setter;
 
 import java.util.List;
 
+
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@Entity
-@Table(name = "User", schema = "Accademi")
+public class UserDto {
 
-public class User {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id; //identificativo dell user
 
     private String name; // nome dell user
 
     private String description; //descrizione dell user
 
-    @OneToMany(mappedBy = "user")
     private List<Contact> contacts;
+
 }

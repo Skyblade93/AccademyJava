@@ -6,3 +6,8 @@
 /AccademiJava/target/classes/it/corso/AccademiJava/Controller/UserController.class
 /AccademiJava/target/classes/it/corso/AccademiJava/Repository/UserRepository.class
 /AccademiJava/target/classes/it/corso/AccademiJava/Service/UserService.class
+/AccademiJava/target/classes/it/corso/AccademiJava/Model/Auto.class
+/AccademiJava/target/classes/it/corso/AccademiJava/Model/Azienda.class
+/AccademiJava/target/classes/it/corso/AccademiJava/Model/Carrello.class
+/AccademiJava/target/classes/it/corso/AccademiJava/Model/Parcel.class
+/AccademiJava/target/classes/it/corso/AccademiJava/Model/Product.class
