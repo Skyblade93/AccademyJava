@@ -13,13 +13,13 @@ public class Auto {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Integer id;  //collegato all'id di user che autoincrementato già
 
-    private String modello;
+    private String modello;  //modello dell'auto
 
-    private String marca;
+    private String marca;  //marca dell'auto
 
-    private String targa;
+    private String targa;  //targa dell'auto
 
     @ManyToOne
     @JoinColumn(name = "user_id")

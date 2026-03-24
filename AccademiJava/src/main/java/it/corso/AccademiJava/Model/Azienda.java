@@ -17,12 +17,15 @@ public class Azienda {
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Integer id; // identificatore azienda
 
-    private String Titolare;
+    @OneToOne
+    @JoinColumn(name = "user_id", nullable = false)
+    private User Titolare; // nome del titolare dell'azienda
 
-    private String NomeAzienda;
+    private String NomeAzienda; //nome dell'azienda
 
-    private String DescrizioneAzienda;
+    private String DescrizioneAzienda; // descrizione del ruolo che svolge l'azienda
+
 
 }
