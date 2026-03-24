@@ -1,6 +1,6 @@
 package it.corso.AccademiJava.Mapper;
 
-import it.corso.AccademiJava.DTO.DipendenteDTO;
+import it.corso.AccademiJava.DTO.DipendenteDto;
 import it.corso.AccademiJava.Model.Dipendente;
 
 import java.util.ArrayList;
@@ -8,20 +8,20 @@ import java.util.List;
 
 public class DipendenteMapper {
 
-    public List<DipendenteDTO> toDtoList(List<Dipendente> dipendenti){
-        List<DipendenteDTO> dipendenteDtos = new ArrayList<>();
+    public List<DipendenteDto> toDtoList(List<Dipendente> dipendenti){
+        List<DipendenteDto> dipendenteDtos = new ArrayList<>();
         dipendenti.forEach(dipendente ->  dipendenteDtos.add(toDto(dipendente)));
         return dipendenteDtos;
     }
 
-    public List<Dipendente> toEnityList(List<DipendenteDTO> dipendenteDtos){
+    public List<Dipendente> toEnityList(List<DipendenteDto> dipendenteDtos){
         List<Dipendente> dipendenti = new ArrayList<>();
         dipendenteDtos.forEach(dipendenteDto ->  dipendenti.add(toEnity(dipendenteDto)));
         return dipendenti;
     }
 
-    public DipendenteDTO toDto(Dipendente dipendente) {
-        DipendenteDTO dipendenteDto = new DipendenteDTO();
+    public DipendenteDto toDto(Dipendente dipendente) {
+        DipendenteDto dipendenteDto = new DipendenteDto();
 
         dipendenteDto.setId(dipendente.getId());
         dipendenteDto.setNomeDipendente(dipendente.getNomeDipendente());
@@ -33,7 +33,7 @@ public class DipendenteMapper {
         return dipendenteDto;
     }
 
-    public Dipendente toEnity(DipendenteDTO dipendenteDto) {
+    public Dipendente toEnity(DipendenteDto dipendenteDto) {
         Dipendente dipendente = new Dipendente();
 
         dipendente.setId(dipendenteDto.getId());
