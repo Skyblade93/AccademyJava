@@ -1,6 +1,8 @@
 package it.corso.AccademiJava.Mapper;
 
+import it.corso.AccademiJava.DTO.DroneDto;
 import it.corso.AccademiJava.DTO.UserDto;
+import it.corso.AccademiJava.Model.Drone;
 import it.corso.AccademiJava.Model.User;
 
 import java.util.ArrayList;
@@ -33,3 +35,4 @@ public abstract class AbstractConverter<Entity,DTO> implements Converter<Entity,
     }
 
 }
+
