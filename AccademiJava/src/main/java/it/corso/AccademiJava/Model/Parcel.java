@@ -1,21 +1,23 @@
 package it.corso.AccademiJava.Model;
 
-import jakarta.persistence.*;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
 @Getter
 @Setter
-@Entity
-@Table(name = "Parcel", schema = "Accademi")
+@AllArgsConstructor
+
 public class Parcel
 {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
-    private Double weight;
-    private Integer height;
-    private Integer width;
-    private Integer thickness;
+
+    private Integer Id;
+    private Double weight,height,width, length;
+    private String receiver;
+    private String sender;
 
 }
