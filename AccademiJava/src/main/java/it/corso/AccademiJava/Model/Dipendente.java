@@ -24,7 +24,7 @@ public class Dipendente {
     private Integer numeroTelefono; //posso mettere String se si vuole mettere ad esempio + 39
 
     @OneToOne
-    @JoinColumn(name = "nomeAzienda", nullable = false)
+    @JoinColumn(name = "nomeAzienda")
     private Azienda nomeAzienda; // Nome dell'azienda dove lavora il dipendente
 
     @OneToOne
