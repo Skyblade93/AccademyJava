@@ -2,48 +2,23 @@ package it.corso.AccademiJava.Mapper;
 
 import it.corso.AccademiJava.DTO.AziendaDto;
 import it.corso.AccademiJava.Model.Azienda;
+import org.modelmapper.ModelMapper;
 
-import java.util.ArrayList;
-import java.util.List;
 
+// Classe che gestisce la conversione tra l'entità Azienda e il DTO AziendaDto
 public class AziendaMapper extends AbstractConverter<Azienda, AziendaDto> {
 
-    public List<AziendaDto> toDtoList(List<Azienda> azienda) {
-        List<AziendaDto> aziendaDtos = new ArrayList<>();
-        azienda.forEach(aziendas -> aziendaDtos.add(toDTO(aziendas)));
-        return aziendaDtos;
-    }
+    // Istanza di ModelMapper utilizzata per mappare automaticamente campi con lo stesso nome
+    final private ModelMapper mapper = new ModelMapper();
 
-    public List<Azienda> toEntityList(List<AziendaDto> aziendaDto) {
-        List<Azienda> azienda = new ArrayList<>();
-        aziendaDto.forEach(aziendaDtos -> azienda.add(toEntity(aziendaDtos)));
-        return azienda;
-    }
-
+    // Converte un'entità Azienda in DTO AziendaDto
+    // ModelMapper copia automaticamente tutti i campi che hanno lo stesso nome e tipo
     @Override
-    public AziendaDto toDTO(Azienda azienda){
-        AziendaDto aziendaDto = new AziendaDto();
+    public AziendaDto toDTO(Azienda entity){ return mapper.map(entity, AziendaDto.class); }
 
-        aziendaDto.setId(azienda.getId());
-        aziendaDto.setTitolare(azienda.getTitolare());
-        aziendaDto.setNomeAzienda(azienda.getNomeAzienda());
-        aziendaDto.setDescrizioneAzienda(azienda.getDescrizioneAzienda());
-
-
-        return aziendaDto;
-    }
-
+    // Converte un DTO AziendaDto in entità Azienda
+    // Anche qui, ModelMapper gestisce automaticamente il mapping dei campi
     @Override
-    public Azienda toEntity(AziendaDto aziendaDto){
-        Azienda azienda = new Azienda();
-
-        azienda.setId(aziendaDto.getId());
-        azienda.setTitolare(aziendaDto.getTitolare());
-        azienda.setNomeAzienda(aziendaDto.getNomeAzienda());
-        azienda.setDescrizioneAzienda(aziendaDto.getDescrizioneAzienda());
-
-
-        return azienda;
-    }
+    public Azienda toEntity(AziendaDto dto) { return mapper.map(dto, Azienda.class); }
 
 }
