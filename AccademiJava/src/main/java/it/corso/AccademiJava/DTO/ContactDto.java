@@ -11,7 +11,7 @@ import lombok.Setter;
 @NoArgsConstructor
 public class ContactDto {
 
-    private Long id;
+    private Integer id;
 
     private String firstName;
 

@@ -1,26 +1,22 @@
-package it.corso.AccademiJava.Model;
+package it.corso.AccademiJava.DTO;
 
-import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Getter
 @Setter
-@Entity
-@Table(name = "Parcel", schema = "Accademi")
-public class Parcel
+@AllArgsConstructor
+@NoArgsConstructor
+
+public class ParcelDto
 {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+
     private Integer id;
     private Double weight;
     private Integer height;
     private Integer width;
     private Integer length;
     private Boolean fragile;
-
-    @OneToMany
-
-
-
 }
