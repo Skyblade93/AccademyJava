@@ -2,10 +2,7 @@ package it.corso.AccademiJava.Mapper;
 
 import it.corso.AccademiJava.DTO.AutoDto;
 import it.corso.AccademiJava.Model.Auto;
-import it.corso.AccademiJava.Model.User;
-
-import java.util.ArrayList;
-import java.util.List;
+import org.modelmapper.ModelMapper;
 
 public class AutoMapper extends AbstractConverter<Auto, AutoDto> {
 
@@ -19,4 +16,4 @@ public class AutoMapper extends AbstractConverter<Auto, AutoDto> {
 
     //converte DTO AutoDto in entità Auto
     @Override
-    public Auto toEntity(AutoDto dto) { return mapper.map(dto, Auto.class);}
+    public Auto toEntity(AutoDto dto) { return mapper.map(dto, Auto.class);} }
