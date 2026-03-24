@@ -10,24 +10,22 @@ import java.util.List;
 @Repository
 public interface DipendenteRepository extends JpaRepository<Dipendente,Integer> {
 
-    // Metodo 1
-
-    // Cerca per nome e cognome
+    // Metodo 1 Cerca per nome e cognome
     Dipendente findByNomeDipendenteAndCognomeDipendente(String nome, String cognome);
 
-    // Cerca per nome, cognome e numero di telefono
+    // Metodo 1 Cerca per nome, cognome e numero di telefono
     Dipendente findByNomeAndCognomeAndNumber(String nome, String cognome, Integer numeroTelefono);
 
-    // Cerca dipendenti con età maggiore di ...
+    // Metodo 1 Cerca dipendenti con età maggiore di ...
     List<Dipendente> findByEtaGreaterThan(Integer eta);
 
-    // Cerca per età
+    // Metodo 1 Cerca per età
     List<Dipendente> findByEta(Integer eta);
 
-    // Cerca per email
+    // Metodo 1 Cerca per email
     Dipendente findByEmail(String email);
 
-    // cerca per email ed età
+    // Metodo 1 cerca per email ed età
     Dipendente findByEmailAndEta(String email, Integer eta);
 
     // Metodo 2 cerca per nome ed età
