@@ -28,4 +28,7 @@ public class User {
 
     @OneToMany(mappedBy = "user")
     private List<Contact> contacts;
+
+    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
+    private Carrello carrello;
 }
