@@ -20,4 +20,8 @@ public class Contact {
     private String lastName;
     private String email;
     private String phoneNumber;
+
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
 }
