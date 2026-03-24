@@ -6,9 +6,7 @@ import org.modelmapper.ModelMapper;
 
 public class CarrelloMapper extends AbstractConverter<Carrello, CarrelloDto> {
 
-
     final private ModelMapper mapper = new ModelMapper();
-
 
     @Override
     public CarrelloDto toDTO(Carrello entity) {
