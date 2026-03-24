@@ -3,11 +3,25 @@ package it.corso.AccademiJava.Mapper;
 import it.corso.AccademiJava.DTO.AziendaDto;
 import it.corso.AccademiJava.Model.Azienda;
 
-public class AziendaMapper {
+import java.util.ArrayList;
+import java.util.List;
 
+public class AziendaMapper extends AbstractConverter<Azienda, AziendaDto> {
 
+    public List<AziendaDto> toDtoList(List<Azienda> azienda) {
+        List<AziendaDto> aziendaDtos = new ArrayList<>();
+        azienda.forEach(aziendas -> aziendaDtos.add(toDTO(aziendas)));
+        return aziendaDtos;
+    }
 
-    public AziendaDto toDto(Azienda azienda){
+    public List<Azienda> toEntityList(List<AziendaDto> aziendaDto) {
+        List<Azienda> azienda = new ArrayList<>();
+        aziendaDto.forEach(aziendaDtos -> azienda.add(toEntity(aziendaDtos)));
+        return azienda;
+    }
+
+    @Override
+    public AziendaDto toDTO(Azienda azienda){
         AziendaDto aziendaDto = new AziendaDto();
 
         aziendaDto.setId(azienda.getId());
@@ -19,6 +33,7 @@ public class AziendaMapper {
         return aziendaDto;
     }
 
+    @Override
     public Azienda toEntity(AziendaDto aziendaDto){
         Azienda azienda = new Azienda();
 
