@@ -1,9 +1,7 @@
 package it.corso.AccademiJava.Mapper;
 
 import it.corso.AccademiJava.DTO.DroneDto;
-import it.corso.AccademiJava.DTO.UserDto;
 import it.corso.AccademiJava.Model.Drone;
-import it.corso.AccademiJava.Model.User;
 import org.springframework.stereotype.Component;
 
 // @Component dice a Spring che questa classe è un "Bean".
@@ -60,13 +58,5 @@ public class DroneMapper extends AbstractConverter<Drone, DroneDto> {
         return null;
     }
 
-    @Override
-    public UserDto toDto(User user) {
-        return null;
-    }
 
-    @Override
-    public User toEnity(UserDto userDto) {
-        return null;
-    }
 }
