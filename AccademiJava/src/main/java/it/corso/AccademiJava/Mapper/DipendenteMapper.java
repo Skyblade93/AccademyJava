@@ -4,61 +4,19 @@ import it.corso.AccademiJava.DTO.DipendenteDto;
 import it.corso.AccademiJava.Model.Dipendente;
 import org.modelmapper.ModelMapper;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class DipendenteMapper extends AbstractConverter<Dipendente, DipendenteDto> {
 
+    // Istanza di ModelMapper utilizzata per mappare automaticamente campi con lo stesso nome
     final private ModelMapper mapper = new ModelMapper();
 
+    // Converte un'entità Dipendente in DTO DipendenteDto
+    // ModelMapper copia automaticamente tutti i campi che hanno lo stesso nome e tipo
     @Override
     public DipendenteDto toDTO(Dipendente entity) { return mapper.map(entity, DipendenteDto.class); }
 
+    // Converte un DTO DipendenteDto in entità Dipendente
+    // Anche qui ModelMapper gestisce automaticamente il mapping dei campi
     @Override
     public Dipendente toEntity(DipendenteDto dto) { return mapper.map(dto, Dipendente.class); }
 
 }
-/*
-public class DipendenteMapper {
-
-  public List<DipendenteDto> toDtoList(List<Dipendente> dipendenti){
-      List<DipendenteDto> dipendenteDtos = new ArrayList<>();
-      dipendenti.forEach(dipendente ->  dipendenteDtos.add(toDto(dipendente)));
-      return dipendenteDtos;
-  }
-
-  public List<Dipendente> toEnityList(List<DipendenteDto> dipendenteDtos){
-      List<Dipendente> dipendenti = new ArrayList<>();
-      dipendenteDtos.forEach(dipendenteDto ->  dipendenti.add(toEnity(dipendenteDto)));
-      return dipendenti;
-  }
-
-  public DipendenteDto toDto(Dipendente dipendente) {
-      DipendenteDto dipendenteDto = new DipendenteDto();
-
-      dipendenteDto.setId(dipendente.getId());
-      dipendenteDto.setNomeDipendente(dipendente.getNomeDipendente());
-      dipendenteDto.setCognomeDipendente(dipendente.getCognomeDipendente());
-      dipendenteDto.setEta(dipendente.getEta());
-      dipendenteDto.setEmail(dipendente.getEmail());
-      dipendenteDto.setNumeroTelefono(dipendente.getNumeroTelefono());
-
-      return dipendenteDto;
-  }
-
-  public Dipendente toEnity(DipendenteDto dipendenteDto) {
-      Dipendente dipendente = new Dipendente();
-
-      dipendente.setId(dipendenteDto.getId());
-      dipendente.setNomeDipendente(dipendenteDto.getNomeDipendente());
-      dipendente.setCognomeDipendente(dipendenteDto.getCognomeDipendente());
-      dipendente.setEta(dipendenteDto.getEta());
-      dipendente.setEmail(dipendenteDto.getEmail());
-      dipendente.setNumeroTelefono(dipendenteDto.getNumeroTelefono());
-
-      return dipendente;
-  }
-}
-*/
-
-

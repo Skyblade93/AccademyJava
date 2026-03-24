@@ -19,7 +19,11 @@ public class Parcel
     private Integer length;
     private Boolean fragile;
 
-    @OneToMany
+    @ManyToOne
+    @JoinColumn(name = "parcel")
+    private Parcel parcel;
+
+
 
 
 

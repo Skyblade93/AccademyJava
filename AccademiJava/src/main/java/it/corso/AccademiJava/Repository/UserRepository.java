@@ -15,4 +15,8 @@ public interface UserRepository  extends JpaRepository<User,Integer> {
 
     @Query(value = "SELECT * FROM User t WHERE t.nome = ?1",nativeQuery = true)
     User paperino(String nome);
+
+    void countRecentUsersNative();
+
+    void findByRole(String admin);
 }
