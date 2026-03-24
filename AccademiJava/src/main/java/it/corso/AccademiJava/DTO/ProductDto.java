@@ -9,7 +9,7 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class ProductDTO {
+public class ProductDto {
 
     private Integer id; //codice prodotto
     private String name; //nome prodotto
