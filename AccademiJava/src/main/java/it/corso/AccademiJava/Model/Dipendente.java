@@ -16,11 +16,11 @@ public class Dipendente {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
-    private String nomeDipendente;
-    private String cognomeDipendente;
-    private Integer eta;
-    private String email;
+    private Integer id; // identificativo del dipendente
+    private String nomeDipendente; // nome del dipendente
+    private String cognomeDipendente; // cognome del dipendente
+    private Integer eta; // età del dipendente
+    private String email; // email del dipendente
     private Integer numeroTelefono; //posso mettere String se si vuole mettere ad esempio + 39
 
     @OneToOne
@@ -29,5 +29,5 @@ public class Dipendente {
 
     @OneToOne
     @JoinColumn(name = "user_id", nullable = false)
-    private User user;
+    private User user;  // Utenza collegata al dipendente
 }
