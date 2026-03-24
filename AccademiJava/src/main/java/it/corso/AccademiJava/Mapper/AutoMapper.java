@@ -2,51 +2,18 @@ package it.corso.AccademiJava.Mapper;
 
 import it.corso.AccademiJava.DTO.AutoDto;
 import it.corso.AccademiJava.Model.Auto;
-import it.corso.AccademiJava.Model.User;
+import org.modelmapper.ModelMapper;
 
-import java.util.ArrayList;
-import java.util.List;
+public class AutoMapper extends AbstractConverter<Auto, AutoDto> {
 
-public class AutoMapper {
 
-    public List<AutoDto> toDtoList(List<Auto> autos){
-        List<AutoDto> autoDtos = new ArrayList<>();
-        autos.forEach(auto -> autoDtos.add(toDto(auto)));
-        return autoDtos;
-    }
+    //modelmapper usato per mappare automaticamente
+    final private ModelMapper mapper = new ModelMapper();
 
-    public List<Auto> toEntityList(List<AutoDto> autoDtos, List<User> users){
-        List<Auto> autos = new ArrayList<>();
-        for (int i = 0; i < autoDtos.size(); i++) {  // serve l'indice per prendere l'utente corrispondente
+    // converte entità Auto in DTO AutoDto
+    @Override
+    public AutoDto toDTO(Auto entity) { return mapper.map(entity, AutoDto.class); }
 
-            autos.add(toEntity(autoDtos.get(i), users.get(i)));
-        }
-        return autos;
-    }
-
-    public AutoDto toDto(Auto auto) {
-        AutoDto dto = new AutoDto();
-
-        dto.setId(auto.getId());
-        dto.setModello(auto.getModello());
-        dto.setMarca(auto.getMarca());
-        dto.setTarga(auto.getTarga());
-
-        // estrae solo l'id dell'userm se esiste
-        dto.setUserId(auto.getUser() != null ? auto.getUser().getId() : null);
-
-        return dto;
-    }
-
-    public Auto toEntity(AutoDto dto, User user) {
-        Auto auto = new Auto();
-
-        auto.setId(dto.getId());
-        auto.setModello(dto.getModello());
-        auto.setMarca(dto.getMarca());
-        auto.setTarga(dto.getTarga());
-        auto.setUser(user); // user già recuperato dal DB nel service
-
-        return auto;
-    }
-}
+    //converte DTO AutoDto in entità Auto
+    @Override
+    public Auto toEntity(AutoDto dto) { return mapper.map(dto, Auto.class);} }

@@ -9,9 +9,9 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class AutoDto {
 
-    private Integer id;
+    private Integer id; //id auto
     private String modello;
     private String marca;
     private String targa;
-    private Integer userId;
+    private Integer userId; //id user collegato all'auto
 }

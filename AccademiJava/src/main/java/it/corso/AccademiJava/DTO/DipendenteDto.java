@@ -1,5 +1,7 @@
 package it.corso.AccademiJava.DTO;
 
+import it.corso.AccademiJava.Model.Azienda;
+import it.corso.AccademiJava.Model.User;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -17,4 +19,6 @@ public class DipendenteDto {
     private Integer eta;                // età del dipendente
     private String email;               // email del dipendente
     private Integer numeroTelefono;     // numero di telefono del dipendente
+    private AziendaDto azienda;         // Nome dell'azienda dove lavora il dipendente
+    private UserDto user;               // Utenza collegata al dipendente
 }

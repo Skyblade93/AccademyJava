@@ -1,6 +1,7 @@
 package it.corso.AccademiJava.DTO;
 
 import it.corso.AccademiJava.Model.Contact;
+import it.corso.AccademiJava.Model.User;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -20,5 +21,7 @@ public class CarrelloDto {
     private Double prezzoTotale;
 
     private Integer quantita;
+
+    private User user; //collegamento ad user
 
 }

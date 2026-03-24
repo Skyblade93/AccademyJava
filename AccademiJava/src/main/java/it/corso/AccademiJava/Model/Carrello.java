@@ -23,4 +23,8 @@ public class Carrello {
 
     private Integer quantita;
 
+    @OneToOne //collegamento ad user one to one
+    @JoinColumn(name = "userId", referencedColumnName = "id")
+    private User user;
+
 }

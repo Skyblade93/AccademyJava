@@ -7,6 +7,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Getter
@@ -28,4 +29,13 @@ public class User {
 
     @OneToMany(mappedBy = "user")
     private List<Contact> contacts;
+
+    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
+    private Carrello carrello;
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    private List<Product> products;
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    private List<Auto> autos = new ArrayList<>();
 }
