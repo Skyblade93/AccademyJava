@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 
 
 @Service
-public class DroneService {
+public class DroneService extends AbstractService {
 
     @Autowired
     private DroneRepository droneRepository; // Variabile minuscola
