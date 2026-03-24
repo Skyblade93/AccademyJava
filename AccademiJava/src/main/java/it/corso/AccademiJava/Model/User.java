@@ -16,11 +16,11 @@ public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Integer id; //identificativo dell user
 
-    private String name;
+    private String name; // nome dell user
 
-    private String description;
+    private String description; //descrizione dell user
 
     @OneToMany(mappedBy = "user")
     private List<Contact> contacts;
