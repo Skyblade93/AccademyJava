@@ -12,11 +12,11 @@ public class DipendenteController extends AbstractController<DipendenteDto> {
 
     @Autowired
     private DipendenteService dipendenteService;
-/*
-    @GetMapping("/read")
-    public DipendenteDto read(@RequestParam("nomeDipendente") String nomeDipendete) {
-        return dipendenteService.findByNome(nomeDipendete);
+
+    @GetMapping("/findByNome")
+    public DipendenteDto findByNome(@RequestParam("nomeDipendente") String nomeDipendente) {
+        return dipendenteService.findByNome(nomeDipendente);
     }
 
- */
+
 }

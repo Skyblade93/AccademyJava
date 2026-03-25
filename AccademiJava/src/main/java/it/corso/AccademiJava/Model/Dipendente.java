@@ -17,10 +17,20 @@ public class Dipendente {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id; // identificativo del dipendente
+
+    @Column(length=30,nullable=false)
     private String nomeDipendente; // nome del dipendente
+
+    @Column(length=30,nullable=false)
     private String cognomeDipendente; // cognome del dipendente
+
+    @Column(length=3,nullable=false)
     private Integer eta; // età del dipendente
+
+    @Column(length=30,nullable=false)
     private String email; // email del dipendente
+
+    @Column(length=15,nullable=false)
     private Integer numeroTelefono; //posso mettere String se si vuole mettere ad esempio + 39
 
     @OneToOne
