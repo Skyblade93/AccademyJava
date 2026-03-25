@@ -1,17 +1,23 @@
 package it.corso.AccademiJava.DTO;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import it.corso.AccademiJava.Model.User;
+import lombok.*;
 
-@Data
+@Getter
+@Setter
 @AllArgsConstructor
 @NoArgsConstructor
 public class AutoDto {
 
-    private Integer id; //id auto
+    //id auto
+    private Integer id;
+
     private String modello;
+
     private String marca;
+
     private String targa;
-    private Integer userId; //id user collegato all'auto
+
+    //user collegato all'auto
+    private User user;
 }

@@ -25,10 +25,8 @@ public interface AutoRepository extends JpaRepository<Auto, Integer> {
     // 1
     Optional<Auto> findById(Integer id);
 
-
     // 2
     List<Auto> findByModello(String modello);
-
 
     // 3
     List<Auto> findByMarcaAndModello(String marca, String modello);
