@@ -5,6 +5,7 @@ import it.corso.AccademiJava.Mapper.Converter;
 import it.corso.AccademiJava.Mapper.DipendenteMapper;
 import it.corso.AccademiJava.Model.Dipendente;
 import it.corso.AccademiJava.Repository.DipendenteRepository;
+import it.corso.AccademiJava.Repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Service;
@@ -15,26 +16,26 @@ import java.util.stream.Collectors;
 @Service
 public class DipendenteService extends AbstractService<Dipendente, DipendenteDto> {
 
-    @Autowired
-    private final  DipendenteMapper dipendenteMapper;
+    private final DipendenteMapper dipendenteMapper;
+    private final UserRepository userRepository;
+    private final DipendenteRepository dipendenteRepository;
 
-    @Autowired
-    private final  DipendenteRepository dipendenteRepository;
-
-    protected DipendenteService(JpaRepository<Dipendente, Integer> repository, Converter<Dipendente, DipendenteDto> converter, DipendenteMapper dipendenteMapper, DipendenteRepository dipendenteRepository) {
-        super(repository, converter);
+    protected DipendenteService(DipendenteMapper dipendenteMapper,
+                                DipendenteRepository dipendenteRepository,
+                                UserRepository userRepository, UserRepository userRepository1) {
+        super(dipendenteRepository, dipendenteMapper);
         this.dipendenteMapper = dipendenteMapper;
         this.dipendenteRepository = dipendenteRepository;
+        this.userRepository = userRepository;
     }
 
-    /*
-        // 🔹 Metodo per trovare dipendente per nome, cognome e numero di telefono
-        public DipendenteDto findByNomeAndCognomeAndNumber(String nome, String cognome, Integer numeroTelefono) {
-            return dipendenteMapper.toDTO(
-                    dipendenteRepository.findByNomeAndCognomeAndNumber(nome, cognome, numeroTelefono)
-            );
-        }
-    */
+    // 🔹 Metodo per trovare dipendente per nome, cognome e numero di telefono
+    public DipendenteDto findByNomeDipendenteAndCognomeDipendenteAndNumeroTelefono(String nome, String cognome, Integer numeroTelefono) {
+        return dipendenteMapper.toDTO(
+                dipendenteRepository.findByNomeDipendenteAndCognomeDipendenteAndNumeroTelefono(nome, cognome, numeroTelefono)
+        );
+    }
+
     // 🔹 Metodo per trovare dipendente per nome e cognome
     public DipendenteDto findByNomeAndCognome(String nome, String cognome) {
         return dipendenteMapper.toDTO(
