@@ -21,7 +21,7 @@ public class OrdineService extends AbstractService<Ordine, OrdineDto> {
 
     @Autowired
     OrdineRepository ordineRepository;
-
+/*
     public OrdineDto FindById(Integer id){
         return ordineMapper.toDTO(ordineRepository.FindById(id));
     }
@@ -29,7 +29,7 @@ public class OrdineService extends AbstractService<Ordine, OrdineDto> {
     public List<OrdineDto> FindByCosto_totale(float costo){
         return ordineMapper.toDTOList(ordineRepository.FindByCosto_totale(costo));
     }
-
+*/
     public List<OrdineDto> trovaConNumeroProdottiMaggiore(Integer numero_prodotti){
         return ordineMapper.toDTOList(ordineRepository.trovaConNumeroProdottiMaggiore(numero_prodotti));
     }

@@ -15,7 +15,7 @@ public class DroneService extends AbstractService {
 
     @Autowired
     private UserRepository userRepository;
-
+/*
     public void eseguiOperazioniDedicate() {
         // 1. Esempio operazioni su UserRepository
         userRepository.findByRole("ADMIN");
@@ -32,7 +32,7 @@ public class DroneService extends AbstractService {
         System.out.println("Tutte le query dei repository dedicati (User e Drone) sono state richiamate con successo!");
         System.out.println("Droni trovati con batteria > 50%: " + droniCarichi.size());
     }
-
+*/
     // Metodo extra per testare la ricerca per modello che abbiamo scritto nella Repo
     public List<Drone> cercaDroniPerModello(String modello) {
         return droneRepository.findByModello(modello);

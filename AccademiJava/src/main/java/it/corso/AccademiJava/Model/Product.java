@@ -36,8 +36,10 @@ public class Product {
             inverseJoinColumns = @JoinColumn(name = "user_id")
     )
     private List<User> users;
-
+/*
     // Relazione ManyToMany con Ordine
-    @ManyToMany(mappedBy = "prodotti")
+    @ManyToMany(mappedBy = "ordini_product")
     private List<Ordine> ordini;
+    */
+
 }

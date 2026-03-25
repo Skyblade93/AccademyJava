@@ -9,6 +9,7 @@ import org.slf4j.spi.DefaultLoggingEventBuilder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 
 
 @Service
@@ -27,10 +28,9 @@ public UserDto FindByNome(String nome){
 }
 
 
-    public Integer CountLettere(String nome){
-        return (FindByNome(nome).getName().length());
-    }
-
+public UserDto findByDescription(String Description){
+    return userMapper.toDTO(userRepository.findByDescription(Description));
+}
 
 
 }

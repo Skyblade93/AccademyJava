@@ -14,7 +14,7 @@ public interface DipendenteRepository extends JpaRepository<Dipendente,Integer> 
     Dipendente findByNomeDipendenteAndCognomeDipendente(String nome, String cognome);
 
     // Metodo 1 Cerca per nome, cognome e numero di telefono
-    Dipendente findByNomeAndCognomeAndNumber(String nome, String cognome, Integer numeroTelefono);
+  //  Dipendente findByNomeAndCognomeAndNumber(String nome, String cognome, Integer numeroTelefono);
 
     // Metodo 1 Cerca dipendenti con età maggiore di ...
     List<Dipendente> findByEtaGreaterThan(Integer eta);

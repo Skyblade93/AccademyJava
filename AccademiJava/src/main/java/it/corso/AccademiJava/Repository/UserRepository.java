@@ -5,6 +5,8 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Repository
 public interface UserRepository  extends JpaRepository<User,Integer> {
 
@@ -16,7 +18,6 @@ public interface UserRepository  extends JpaRepository<User,Integer> {
     @Query(value = "SELECT * FROM User t WHERE t.name = ?1",nativeQuery = true)
     User paperino(String nome);
 
-  //  void countRecentUsersNative();
 
-//    void findByRole(String admin);
+    User findByDescription(String description);
 }
