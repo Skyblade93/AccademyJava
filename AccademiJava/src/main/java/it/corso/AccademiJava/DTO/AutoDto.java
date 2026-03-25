@@ -18,6 +18,8 @@ public class AutoDto {
 
     private String targa;
 
+    private String carburante;
+
     //user collegato all'auto
     private User user;
 }

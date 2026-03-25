@@ -1,6 +1,7 @@
 package it.corso.AccademiJava.Repository;
 
 import it.corso.AccademiJava.Model.Auto;
+import it.corso.AccademiJava.Model.TipoCarburante;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -39,4 +40,9 @@ public interface AutoRepository extends JpaRepository<Auto, Integer> {
 
     // 6
     List<Auto> findByMarcaEndingWith(String marca);
+
+    // metodi per carburante
+    List<Auto> findByCarburante(TipoCarburante carburante);
+
+    List<Auto> findByMarcaAndCarburante(String marca, TipoCarburante carburante);
 }

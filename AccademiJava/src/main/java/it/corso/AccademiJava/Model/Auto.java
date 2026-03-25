@@ -21,6 +21,9 @@ public class Auto {
 
     private String targa;  //targa dell'auto
 
+    @Enumerated(EnumType.STRING) // salva il nome dell'enum nel DB
+    private TipoCarburante carburante; //tipo carburante
+
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;
