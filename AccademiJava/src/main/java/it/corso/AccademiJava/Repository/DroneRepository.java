@@ -9,19 +9,24 @@ import java.util.List;
 import java.util.Optional;
 
 @Repository
-public interface DroneRepository extends JpaRepository<Drone, Long> {
+public interface DroneRepository extends JpaRepository<Drone, Integer> { // Cambiato Long in Integer
 
-    // Metodo standard corretto (Spring lo riconosce automaticamente)
-    Optional<Drone> findById(Long id);
+    // Metodo standard corretto
+    Optional<Drone> findById(Integer id); // Cambiato Long in Integer
 
-    // --- QUERY DERIVATE ---
+    // --- 5 QUERY BASIC (DERIVATE) ---
     List<Drone> findByModello(String modello);
+
     List<Drone> findByLivelloBatteriaGreaterThan(int soglia);
+
     List<Drone> findByStato(String stato);
+
     List<Drone> findBySensoreOstacoliTrue();
+
     List<Drone> findByModelloAndStato(String modello, String stato);
 
-    // --- QUERY NATIVE ---
+
+    // --- 5 QUERY NATIVE (SQL PURO) ---
     @Query(value = "SELECT * FROM droni ORDER BY livello_batteria ASC LIMIT 5", nativeQuery = true)
     List<Drone> findTop5LowBatteryNative();
 
@@ -36,4 +41,5 @@ public interface DroneRepository extends JpaRepository<Drone, Long> {
 
     @Query(value = "SELECT * FROM droni WHERE stato = 'AVAILABLE' AND livello_batteria > 20", nativeQuery = true)
     List<Drone> findDronesForMissionNative();
+
 }
