@@ -31,5 +31,10 @@ public class Ordine {
     private User utente;
 
     @ManyToMany
+    @JoinTable(
+            name = "ordini_prodotti",
+            joinColumns = @JoinColumn(name = "ordine_id"),
+            inverseJoinColumns = @JoinColumn(name = "prodotto_id")
+    )
     private List<Prodotto> prodotti;
 }

@@ -5,6 +5,9 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Getter
 @Setter
 @Entity
@@ -28,4 +31,6 @@ public class Product {
     @JoinColumn(name = "user_id")
     private User user;
 
+    @ManyToMany(mappedBy = "prodotti")
+    private List<Ordine> ordini = new ArrayList<>();
 }

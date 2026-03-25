@@ -11,13 +11,4 @@ import org.springframework.web.bind.annotation.*;
 @CrossOrigin(origins = "http://localhost:8080")
 public class OrdineController {
 
-    @Autowired
-    private OrdineService ordine;
-
-    @GetMapping("/FindByNome")
-    public UserDto FindByNome(@RequestParam("nome") String nome) {
-        return service.FindByNome(nome);
-    }
-
-
 }

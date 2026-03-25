@@ -14,35 +14,31 @@ public interface AutoRepository extends JpaRepository<Auto, Integer> {
 
     //  1. QUERY JPQL
     @Query("SELECT a FROM Auto a WHERE a.targa = :targa")
-    Auto trovaPerTargaJPQL(@Param("targa") String targa);
+    Auto findByTarga(@Param("targa") String targa);
 
     //  2. QUERY NATIVE
     @Query(value = "SELECT * FROM auto WHERE marca = :marca", nativeQuery = true)
-    List<Auto> trovaPerMarcaNative(@Param("marca") String marca);
+    List<Auto> findByMarca(@Param("marca") String marca);
 
-    //  METODI DERIVATI (8)
+    //  METODI DERIVATI
 
     // 1
     Optional<Auto> findById(Integer id);
 
-    // 2
-    Auto findByTarga(String targa);
 
-    // 3
+    // 2
     List<Auto> findByModello(String modello);
 
-    // 4
-    List<Auto> findByMarca(String marca);
 
-    // 5
+    // 3
     List<Auto> findByMarcaAndModello(String marca, String modello);
 
-    // 6
+    // 4
     List<Auto> findByModelloContaining(String modello);
 
-    // 7
+    // 5
     List<Auto> findByMarcaStartingWith(String marca);
 
-    // 8
+    // 6
     List<Auto> findByMarcaEndingWith(String marca);
 }
