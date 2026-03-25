@@ -3,7 +3,9 @@ package it.corso.AccademiJava.Mapper;
 import it.corso.AccademiJava.DTO.CarrelloDto;
 import it.corso.AccademiJava.Model.Carrello;
 import org.modelmapper.ModelMapper;
+import org.springframework.stereotype.Component;
 
+@Component
 public class CarrelloMapper extends AbstractConverter<Carrello, CarrelloDto> {
 
     final private ModelMapper mapper = new ModelMapper();

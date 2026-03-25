@@ -6,10 +6,10 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public abstract class AbstractService<ENTITY,DTO> implements ServiceDTO<DTO> {
 
-    @Autowired
+
     protected JpaRepository<ENTITY,Integer> repository;
 
-    @Autowired
+
     protected Converter<ENTITY,DTO> converter;
 
     @Override

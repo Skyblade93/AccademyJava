@@ -14,7 +14,7 @@ public class DroneService extends AbstractService {
 
     @Autowired
     private UserRepository userRepository;   // Variabile minuscola
-
+/*
     public void eseguiOperazioniDedicate() {
         // 1. Usiamo userRepository (minuscolo!) per le query User
         userRepository.findByRole("ADMIN");
@@ -26,4 +26,6 @@ public class DroneService extends AbstractService {
 
         System.out.println("Tutte le query dei repository dedicati sono state richiamate con successo!");
     }
+    */
+
 }

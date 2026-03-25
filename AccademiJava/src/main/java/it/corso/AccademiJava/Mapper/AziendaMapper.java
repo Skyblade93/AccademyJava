@@ -3,8 +3,9 @@ package it.corso.AccademiJava.Mapper;
 import it.corso.AccademiJava.DTO.AziendaDto;
 import it.corso.AccademiJava.Model.Azienda;
 import org.modelmapper.ModelMapper;
+import org.springframework.stereotype.Component;
 
-
+@Component
 // Classe che gestisce la conversione tra l'entità Azienda e il DTO AziendaDto
 public class AziendaMapper extends AbstractConverter<Azienda, AziendaDto> {
 

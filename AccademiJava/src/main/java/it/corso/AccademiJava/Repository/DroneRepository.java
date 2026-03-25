@@ -48,5 +48,5 @@ public interface DroneRepository extends JpaRepository<Drone, Long> {
     @Query(value = "SELECT * FROM droni WHERE stato = 'AVAILABLE' AND livello_batteria > 20", nativeQuery = true)
     List<Drone> findDronesForMissionNative();
 
-    void findTop5FlownDronesNative();
+   // void findTop5FlownDronesNative();
 }

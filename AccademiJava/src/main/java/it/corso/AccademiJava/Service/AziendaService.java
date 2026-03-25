@@ -5,7 +5,9 @@ import it.corso.AccademiJava.Mapper.AziendaMapper;
 import it.corso.AccademiJava.Model.Azienda;
 import it.corso.AccademiJava.Repository.AziendaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+@Service
 public class AziendaService extends AbstractService<Azienda, AziendaDto> {
 
     @Autowired
@@ -13,7 +15,7 @@ public class AziendaService extends AbstractService<Azienda, AziendaDto> {
 
     @Autowired
     AziendaRepository aziendaRepository;
-
+/*
     public AziendaDto findByNomeAzienda(String NomeAzienda){
         return aziendaMapper.toDTO(
                 aziendaRepository.findByNomeAzienda(NomeAzienda)
@@ -31,7 +33,7 @@ public class AziendaService extends AbstractService<Azienda, AziendaDto> {
                 aziendaRepository.findByTitolare(titolare)
         );
     }
-
+*/
     public AziendaDto cercaPerNome(String nome){
         return aziendaMapper.toDTO(
                 aziendaRepository.CercaPerNome(nome)

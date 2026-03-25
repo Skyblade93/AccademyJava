@@ -27,15 +27,6 @@ public class User {
 
     private String description; //descrizione dell user
 
-    @OneToMany(mappedBy = "user")
-    private List<Contact> contacts;
 
-    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
-    private Carrello carrello;
 
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
-    private List<Product> products;
-
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
-    private List<Auto> autos = new ArrayList<>();
 }

@@ -8,15 +8,15 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface UserRepository  extends JpaRepository<User,Integer> {
 
-    User findByNome(String nome);
+    User findByName(String nome);
 
-    @Query("select t from User t where t.nome = ?1")
+    @Query("select t from User t where t.name = ?1")
     User pippo(String nome);
 
-    @Query(value = "SELECT * FROM User t WHERE t.nome = ?1",nativeQuery = true)
+    @Query(value = "SELECT * FROM User t WHERE t.name = ?1",nativeQuery = true)
     User paperino(String nome);
 
-    void countRecentUsersNative();
+  //  void countRecentUsersNative();
 
-    void findByRole(String admin);
+//    void findByRole(String admin);
 }

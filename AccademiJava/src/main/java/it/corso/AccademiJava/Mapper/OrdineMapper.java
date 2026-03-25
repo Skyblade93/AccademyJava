@@ -5,10 +5,12 @@ import it.corso.AccademiJava.DTO.UserDto;
 import it.corso.AccademiJava.Model.Ordine;
 import it.corso.AccademiJava.Model.User;
 import org.modelmapper.ModelMapper;
+import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@Component
 public class OrdineMapper extends AbstractConverter<Ordine,OrdineDto> {
 
     final private ModelMapper mapper = new ModelMapper();

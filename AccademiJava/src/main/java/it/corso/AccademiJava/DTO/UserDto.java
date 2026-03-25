@@ -21,6 +21,6 @@ public class UserDto {
 
     private String description; //descrizione dell user
 
-    private List<Contact> contacts;
+    private Integer contacts;
 
 }

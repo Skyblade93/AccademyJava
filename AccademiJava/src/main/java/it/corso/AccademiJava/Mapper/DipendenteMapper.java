@@ -3,7 +3,9 @@ package it.corso.AccademiJava.Mapper;
 import it.corso.AccademiJava.DTO.DipendenteDto;
 import it.corso.AccademiJava.Model.Dipendente;
 import org.modelmapper.ModelMapper;
+import org.springframework.stereotype.Component;
 
+@Component
 public class DipendenteMapper extends AbstractConverter<Dipendente, DipendenteDto> {
 
     // Istanza di ModelMapper utilizzata per mappare automaticamente campi con lo stesso nome

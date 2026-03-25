@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ContactMapper {
-
+/*
     // LIST → DTO LIST
     public List<ContactDto> toDtoList(List<Contact> contacts) {
         List<ContactDto> dtos = new ArrayList<>();
@@ -49,4 +49,6 @@ public class ContactMapper {
 
         return contact;
     }
+
+ */
 }

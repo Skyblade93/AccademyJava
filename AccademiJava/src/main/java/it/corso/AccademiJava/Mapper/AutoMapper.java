@@ -3,7 +3,9 @@ package it.corso.AccademiJava.Mapper;
 import it.corso.AccademiJava.DTO.AutoDto;
 import it.corso.AccademiJava.Model.Auto;
 import org.modelmapper.ModelMapper;
+import org.springframework.stereotype.Component;
 
+@Component
 public class AutoMapper extends AbstractConverter<Auto, AutoDto> {
 
 

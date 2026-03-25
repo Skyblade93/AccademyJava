@@ -22,7 +22,9 @@ UserRepository userRepository;
 
 
 public UserDto FindByNome(String nome){
-    return userMapper.toDTO(userRepository.findByNome(nome));
+    UserDto userDto = userMapper.toDTO(userRepository.findByName(nome));
+    userDto.setContacts(34);
+    return userDto;
 }
 
 

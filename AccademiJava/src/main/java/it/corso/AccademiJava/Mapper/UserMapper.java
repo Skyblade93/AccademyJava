@@ -3,8 +3,9 @@ package it.corso.AccademiJava.Mapper;
 import it.corso.AccademiJava.DTO.UserDto;
 import it.corso.AccademiJava.Model.User;
 import org.modelmapper.ModelMapper;
+import org.springframework.stereotype.Component;
 
-
+@Component
 public class UserMapper extends AbstractConverter<User, UserDto> {
 
 
