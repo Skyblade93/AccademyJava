@@ -31,7 +31,7 @@ public interface AziendaRepository extends JpaRepository<Azienda, Integer> {
     List<Azienda> findAllByOrderByNomeAziendaAsc();
 
 
-/*
+
     // 7. Trova azienda per nome azienda
     @Query("select a from Azienda a where a.nomeAzienda = ?1")
     Azienda CercaPerNome(String nome);
@@ -48,5 +48,5 @@ public interface AziendaRepository extends JpaRepository<Azienda, Integer> {
     @Query(value = "SELECT * FROM azienda a WHERE a.descrizione_azienda = ?1", nativeQuery = true)
     Azienda TrovaPerDescrizioneNative(String descrizione);
 
- */
+
 }
