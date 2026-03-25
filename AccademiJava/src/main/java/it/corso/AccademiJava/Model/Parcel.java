@@ -21,7 +21,7 @@ public class Parcel
 
     @ManyToOne
     @JoinColumn(name = "parcel")
-    private Parcel parcel;
+    private User user;
 
 
 
