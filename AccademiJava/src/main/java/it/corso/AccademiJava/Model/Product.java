@@ -6,7 +6,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Getter
@@ -29,16 +28,18 @@ public class Product {
 
     private String category;
 
+    // Relazione ManyToMany con User (gestita SOLO qui)
     @ManyToMany
     @JoinTable(
             name = "user_product",
             joinColumns = @JoinColumn(name = "product_id"),
             inverseJoinColumns = @JoinColumn(name = "user_id")
     )
-    private List<Prodotto> prodotti;
-
-    //Relazione ManyToMany con l'Entity Ordine
-    @ManyToMany(mappedBy = "prodotti")
+    private List<User> users;
+/*
+    // Relazione ManyToMany con Ordine
+    @ManyToMany(mappedBy = "ordini_product")
     private List<Ordine> ordini;
+    */
 
 }

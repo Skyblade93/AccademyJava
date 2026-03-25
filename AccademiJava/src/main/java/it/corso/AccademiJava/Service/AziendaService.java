@@ -17,15 +17,15 @@ public class AziendaService extends AbstractService<Azienda, AziendaDto> {
     @Autowired
     AziendaRepository aziendaRepository;
 
-    public AziendaDto findByNomeAzienda(String NomeAzienda){
+    public AziendaDto findByNomeAzienda(String nomeAzienda){
         return aziendaMapper.toDTO(
-                aziendaRepository.findByNomeAzienda(NomeAzienda)
+                aziendaRepository.findByNomeAzienda(nomeAzienda)
         );
     }
 
-    public AziendaDto findByDescrizioneAzienda(String DescrizioneAzienda){
+    public AziendaDto findByDescrizioneAzienda(String descrizioneAzienda){
         return aziendaMapper.toDTO(
-                aziendaRepository.findByDescrizioneAzienda(DescrizioneAzienda)
+                aziendaRepository.findByDescrizioneAzienda(descrizioneAzienda)
         );
     }
 
@@ -35,9 +35,9 @@ public class AziendaService extends AbstractService<Azienda, AziendaDto> {
         );
     }
 
-    public AziendaDto cercaPerNome(String nome){
+    public AziendaDto cercaPerNome(String nomeAzienda){
         return aziendaMapper.toDTO(
-                aziendaRepository.CercaPerNome(nome)
+                aziendaRepository.CercaPerNome(nomeAzienda)
         );
     }
 

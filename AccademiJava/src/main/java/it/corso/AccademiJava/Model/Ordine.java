@@ -32,9 +32,11 @@ public class Ordine {
 
     @ManyToMany
     @JoinTable(
-            name = "ordini_prodotti",
+            name = "ordini_product",
             joinColumns = @JoinColumn(name = "ordine_id"),
-            inverseJoinColumns = @JoinColumn(name = "prodotto_id")
+            inverseJoinColumns = @JoinColumn(name = "product_id")
     )
-    private List<Product> prodotti;
+    private List<Product> products;
+
+
 }

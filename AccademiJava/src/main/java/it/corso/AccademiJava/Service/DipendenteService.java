@@ -20,9 +20,9 @@ public class DipendenteService extends AbstractService<Dipendente, DipendenteDto
     DipendenteRepository dipendenteRepository;
 
     // 🔹 Metodo per trovare dipendente per nome, cognome e numero di telefono
-    public DipendenteDto findByNomeAndCognomeAndNumber(String nome, String cognome, Integer numeroTelefono) {
+    public DipendenteDto findByNomeDipendenteAndCognomeDipendenteAndNumeroTelefono(String nome, String cognome, Integer numeroTelefono) {
         return dipendenteMapper.toDTO(
-                dipendenteRepository.findByNomeAndCognomeAndNumber(nome, cognome, numeroTelefono)
+                dipendenteRepository.findByNomeDipendenteAndCognomeDipendenteAndNumeroTelefono(nome, cognome, numeroTelefono)
         );
     }
 
