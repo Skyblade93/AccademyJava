@@ -8,9 +8,13 @@ public abstract class AbstractService<ENTITY,DTO> implements ServiceDTO<DTO> {
 
 
     protected JpaRepository<ENTITY,Integer> repository;
-
-
     protected Converter<ENTITY,DTO> converter;
+
+    protected AbstractService(JpaRepository<ENTITY, Integer> repository,
+                              Converter<ENTITY, DTO> converter) {
+        this.repository = repository;
+        this.converter = converter;
+    }
 
     @Override
     public DTO insert(DTO dto) {

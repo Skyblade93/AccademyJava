@@ -19,5 +19,10 @@ public class UserController extends AbstractController<UserDto> {
         return service.FindByNome(nome);
     }
 
+    @PostMapping("/insert")
+    public UserDto insert (@RequestBody UserDto dto) {
+        service.insert(dto);
+        return dto;
+    }
 
 }
