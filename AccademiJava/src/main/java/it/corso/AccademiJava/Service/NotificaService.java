@@ -18,13 +18,13 @@ import java.util.List;
 public class NotificaService extends AbstractService<Notifica, NotificaDto> {
 
     @Autowired
-    private final  NotificaMapper notificaMapper;
+    private final NotificaMapper notificaMapper;
 
     @Autowired
-    private final   NotificaRepository notificaRepository;
+    private final NotificaRepository notificaRepository;
 
-    protected NotificaService(JpaRepository<Notifica, Integer> repository, Converter<Notifica, NotificaDto> converter, NotificaMapper notificaMapper, NotificaRepository notificaRepository) {
-        super(repository, converter);
+    protected NotificaService(JpaRepository<Notifica, Integer> repository, NotificaMapper notificaMapper, NotificaRepository notificaRepository) {
+        super(repository, notificaMapper);
         this.notificaMapper = notificaMapper;
         this.notificaRepository = notificaRepository;
     }
