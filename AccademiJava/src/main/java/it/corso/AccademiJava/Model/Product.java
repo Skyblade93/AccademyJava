@@ -31,6 +31,7 @@ public class Product {
     @JoinColumn(name = "user_id")
     private User user;
 
+    //Relazione ManyToMany con l'Entity Ordine
     @ManyToMany(mappedBy = "prodotti")
-    private List<Ordine> ordini = new ArrayList<>();
+    private List<Ordine> ordini;
 }
