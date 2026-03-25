@@ -1,12 +1,14 @@
 package it.corso.AccademiJava.Service;
 
 import it.corso.AccademiJava.DTO.NotificaDto;
+import it.corso.AccademiJava.Mapper.Converter;
 import it.corso.AccademiJava.Mapper.NotificaMapper;
 import it.corso.AccademiJava.Model.Notifica;
 import it.corso.AccademiJava.Model.PrioritaNotifica;
 import it.corso.AccademiJava.Model.TipoNotifica;
 import it.corso.AccademiJava.Repository.NotificaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -16,10 +18,16 @@ import java.util.List;
 public class NotificaService extends AbstractService<Notifica, NotificaDto> {
 
     @Autowired
-    NotificaMapper notificaMapper;
+    private final  NotificaMapper notificaMapper;
 
     @Autowired
-    NotificaRepository notificaRepository;
+    private final   NotificaRepository notificaRepository;
+
+    protected NotificaService(JpaRepository<Notifica, Integer> repository, Converter<Notifica, NotificaDto> converter, NotificaMapper notificaMapper, NotificaRepository notificaRepository) {
+        super(repository, converter);
+        this.notificaMapper = notificaMapper;
+        this.notificaRepository = notificaRepository;
+    }
 
     public NotificaDto FindByTitolo(String titolo) {
         return notificaMapper.toDTO(notificaRepository.findByTitolo(titolo));

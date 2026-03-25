@@ -13,7 +13,7 @@ public class AziendaController {
 
     @Autowired
     private AziendaService service;
-
+/*
     @GetMapping("/CercaPerNome")
     public AziendaDto CercaPerNome(@RequestParam("nome") String nomeAzienda){
         return service.cercaPerNome(nomeAzienda);
@@ -23,4 +23,6 @@ public class AziendaController {
     public AziendaDto cercaPerDescrizione(@RequestParam("descrizione") String descrizioneAzienda) {
         return service.trovaPerDescrizioneNative(descrizioneAzienda);
     }
+    */
+
 }

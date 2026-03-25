@@ -1,8 +1,10 @@
 package it.corso.AccademiJava.Service;
 
+import it.corso.AccademiJava.Mapper.Converter;
 import it.corso.AccademiJava.Model.Elettricista;
 import it.corso.AccademiJava.Repository.ElettricistaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -11,7 +13,12 @@ import java.util.List;
 public class ElettricistaService extends AbstractService {
 
     @Autowired
-    private ElettricistaRepository elettricistaRepository;
+    private final  ElettricistaRepository elettricistaRepository;
+
+    protected ElettricistaService(JpaRepository repository, Converter converter, ElettricistaRepository elettricistaRepository) {
+        super(repository, converter);
+        this.elettricistaRepository = elettricistaRepository;
+    }
 
     // 1 JPA AUT
     public Elettricista findByNome(String nome) {

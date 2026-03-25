@@ -1,10 +1,12 @@
 package it.corso.AccademiJava.Service;
 
 import it.corso.AccademiJava.DTO.ProductDto;
+import it.corso.AccademiJava.Mapper.Converter;
 import it.corso.AccademiJava.Mapper.ProductMapper;
 import it.corso.AccademiJava.Model.Product;
 import it.corso.AccademiJava.Repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -13,11 +15,16 @@ import java.util.List;
 public class ProductService extends AbstractService<Product, ProductDto> {
 
     @Autowired
-    ProductMapper productMapper;
+    private final  ProductMapper productMapper;
 
     @Autowired
-    ProductRepository productRepository;
+    private final  ProductRepository productRepository;
 
+    protected ProductService(JpaRepository<Product, Integer> repository, Converter<Product, ProductDto> converter, ProductMapper productMapper, ProductRepository productRepository) {
+        super(repository, converter);
+        this.productMapper = productMapper;
+        this.productRepository = productRepository;
+    }
 
 
     public ProductDto findByName(String name){

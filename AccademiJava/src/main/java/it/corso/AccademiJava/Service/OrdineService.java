@@ -2,6 +2,7 @@ package it.corso.AccademiJava.Service;
 
 import it.corso.AccademiJava.DTO.OrdineDto;
 import it.corso.AccademiJava.DTO.UserDto;
+import it.corso.AccademiJava.Mapper.Converter;
 import it.corso.AccademiJava.Mapper.OrdineMapper;
 import it.corso.AccademiJava.Mapper.UserMapper;
 import it.corso.AccademiJava.Model.Ordine;
@@ -9,6 +10,7 @@ import it.corso.AccademiJava.Model.User;
 import it.corso.AccademiJava.Repository.OrdineRepository;
 import it.corso.AccademiJava.Repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -17,19 +19,26 @@ import java.util.List;
 public class OrdineService extends AbstractService<Ordine, OrdineDto> {
 
     @Autowired
-    OrdineMapper ordineMapper;
+    private final  OrdineMapper ordineMapper;
 
     @Autowired
-    OrdineRepository ordineRepository;
-/*
-    public OrdineDto FindById(Integer id){
-        return ordineMapper.toDTO(ordineRepository.FindById(id));
+    private final   OrdineRepository ordineRepository;
+
+    protected OrdineService(JpaRepository<Ordine, Integer> repository, Converter<Ordine, OrdineDto> converter, OrdineMapper ordineMapper, OrdineRepository ordineRepository) {
+        super(repository, converter);
+        this.ordineMapper = ordineMapper;
+        this.ordineRepository = ordineRepository;
     }
 
-    public List<OrdineDto> FindByCosto_totale(float costo){
-        return ordineMapper.toDTOList(ordineRepository.FindByCosto_totale(costo));
-    }
-*/
+    /*
+        public OrdineDto FindById(Integer id){
+            return ordineMapper.toDTO(ordineRepository.FindById(id));
+        }
+
+        public List<OrdineDto> FindByCosto_totale(float costo){
+            return ordineMapper.toDTOList(ordineRepository.FindByCosto_totale(costo));
+        }
+    */
     public List<OrdineDto> trovaConNumeroProdottiMaggiore(Integer numero_prodotti){
         return ordineMapper.toDTOList(ordineRepository.trovaConNumeroProdottiMaggiore(numero_prodotti));
     }
