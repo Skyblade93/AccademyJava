@@ -30,4 +30,6 @@ public class NotificaDto {
     private Boolean letta;
 
     private DroneDto drone;
+
+    private UserDto user;
 }
