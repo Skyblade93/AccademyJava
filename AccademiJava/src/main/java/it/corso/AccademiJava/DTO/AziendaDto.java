@@ -15,11 +15,11 @@ public class AziendaDto {
 
     private Integer id; // identificatore azienda
 
-    private UserDto Titolare; // nome del titolare dell'azienda
+    private UserDto titolare; // nome del titolare dell'azienda
 
-    private String NomeAzienda; //nome dell'azienda
+    private String nomeAzienda; //nome dell'azienda
 
-    private String DescrizioneAzienda; // descrizione del ruolo che svolge l'azienda
+    private String descrizioneAzienda; // descrizione del ruolo che svolge l'azienda
 
 
 }

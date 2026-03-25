@@ -15,12 +15,12 @@ public class AziendaController {
     private AziendaService service;
 
     @GetMapping("/CercaPerNome")
-    public AziendaDto CercaPerNome(@RequestParam("nome") String nome){
-        return service.cercaPerNome(nome);
+    public AziendaDto CercaPerNome(@RequestParam("nome") String nomeAzienda){
+        return service.cercaPerNome(nomeAzienda);
     }
 
     @GetMapping("/CercaPerDescrizione")
-    public AziendaDto cercaPerDescrizione(@RequestParam("descrizione") String descrizione) {
-        return service.trovaPerDescrizioneNative(descrizione);
+    public AziendaDto cercaPerDescrizione(@RequestParam("descrizione") String descrizioneAzienda) {
+        return service.trovaPerDescrizioneNative(descrizioneAzienda);
     }
 }

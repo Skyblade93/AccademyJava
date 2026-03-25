@@ -21,11 +21,11 @@ public class Azienda {
 
     @OneToOne
     @JoinColumn(name = "user_id", nullable = false)
-    private User Titolare; // nome del titolare dell'azienda
+    private User titolare; // nome del titolare dell'azienda
 
-    private String NomeAzienda; //nome dell'azienda
+    private String nomeAzienda; //nome dell'azienda
 
-    private String DescrizioneAzienda; // descrizione del ruolo che svolge l'azienda
+    private String descrizioneAzienda; // descrizione del ruolo che svolge l'azienda
 
 
 }

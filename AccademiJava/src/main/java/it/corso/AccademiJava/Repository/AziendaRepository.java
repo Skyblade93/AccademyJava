@@ -13,10 +13,10 @@ import java.util.List;
 public interface AziendaRepository extends JpaRepository<Azienda, Integer> {
 
     // 1. Trova aziende per nome azienda
-    Azienda findByNomeAzienda(String NomeAzienda);
+    Azienda findByNomeAzienda(String nomeAzienda);
 
     // 2. Trova aziende per descrizione
-    Azienda findByDescrizioneAzienda(String DescrizioneAzienda);
+    Azienda findByDescrizioneAzienda(String descrizioneAzienda);
 
     // 3. Trova aziende per titolare
     Azienda findByTitolare(User titolare);
@@ -28,16 +28,16 @@ public interface AziendaRepository extends JpaRepository<Azienda, Integer> {
     List<Azienda> findByNomeAziendaStartingWith(String prefisso);
 
     // 6. Trova aziende ordinate per nome
-    List<Azienda> findAllByOrderByNomeAziendaAsc(String ordine);
+    List<Azienda> findAllByOrderByNomeAziendaAsc();
 
 
 
     // 7. Trova azienda per nome azienda
-    @Query("select a from Azienda a where a.NomeAzienda = ?1")
+    @Query("select a from Azienda a where a.nomeAzienda = ?1")
     Azienda CercaPerNome(String nome);
 
     // 8. Trova aziende per descrizione
-    @Query("select a from Azienda a where a.DescrizioneAzienda = ?1")
+    @Query("select a from Azienda a where a.descrizioneAzienda = ?1")
     Azienda CercaPerDescrizione(String descrizione);
 
     // 9. Query native per nome azienda
