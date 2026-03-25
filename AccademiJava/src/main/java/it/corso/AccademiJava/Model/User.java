@@ -27,6 +27,7 @@ public class User {
 
     private String description; //descrizione dell user
 
-
+    @ManyToMany(mappedBy = "products")
+    private List<Product> products;
 
 }

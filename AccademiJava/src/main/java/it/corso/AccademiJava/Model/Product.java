@@ -27,11 +27,16 @@ public class Product {
 
     private String category;
 
-    @ManyToOne
-    @JoinColumn(name = "user_id")
-    private User user;
+    @ManyToMany
+    @JoinTable(
+            name = "user_product",
+            joinColumns = @JoinColumn(name = "product_id"),
+            inverseJoinColumns = @JoinColumn(name = "user_id")
+    )
+    private List<Prodotto> prodotti;
 
     //Relazione ManyToMany con l'Entity Ordine
-    @ManyToMany(mappedBy = "prodotti")
+    @ManyToMany(mappedBy = "products")
     private List<Ordine> ordini;
+
 }
