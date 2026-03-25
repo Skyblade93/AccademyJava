@@ -12,7 +12,7 @@ import java.util.Optional;
 @Repository
 public interface OrdineRepository  extends JpaRepository<Ordine, Integer> {
 
-    List<Ordine> findByIndirizzo_spedizione(String indirizzo);
+    Ordine findById(int id);
     List<Ordine> findByCosto_totale(float costo);
 
     @Query("select t from Ordine t where t.numero_prodotti > ?1")

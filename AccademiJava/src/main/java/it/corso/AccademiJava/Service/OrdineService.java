@@ -27,8 +27,8 @@ public class OrdineService extends AbstractService<Ordine, OrdineDto> {
         this.ordineRepository = ordineRepository;
     }
 
-    public List<OrdineDto> findByIndirizzo_spedizione(String indirizzo){
-            return ordineMapper.toDTOList(ordineRepository.findByIndirizzo_spedizione(indirizzo));
+    public OrdineDto findById(int id){
+            return ordineMapper.toDTO(ordineRepository.findById(id));
     }
 
     public List<OrdineDto> findByCosto_totale(float costo){
