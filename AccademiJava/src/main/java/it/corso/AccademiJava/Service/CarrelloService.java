@@ -5,6 +5,8 @@ import it.corso.AccademiJava.Mapper.CarrelloMapper;
 import it.corso.AccademiJava.Mapper.Converter;
 import it.corso.AccademiJava.Model.Carrello;
 import it.corso.AccademiJava.Repository.CarrelloRepository;
+import it.corso.AccademiJava.Repository.DroneRepository;
+import it.corso.AccademiJava.Repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Service;
@@ -12,28 +14,26 @@ import org.springframework.stereotype.Service;
 @Service
 public class CarrelloService extends AbstractService<Carrello, CarrelloDto> {
 
-    @Autowired
-    private final   CarrelloRepository carrelloRepository;
+    private final CarrelloRepository carrelloRepository;
 
-    @Autowired
-    private final   CarrelloMapper carrelloMapper;
+    private final UserRepository userRepository;
 
-    protected CarrelloService(JpaRepository<Carrello, Integer> repository, Converter<Carrello, CarrelloDto> converter, CarrelloRepository carrelloRepository, CarrelloMapper carrelloMapper) {
-        super(repository, converter);
+    public CarrelloService(CarrelloRepository carrelloRepository, UserRepository userRepository, CarrelloMapper carrelloMapper) {
+
+        super(carrelloRepository, carrelloMapper);
         this.carrelloRepository = carrelloRepository;
-        this.carrelloMapper = carrelloMapper;
+        this.userRepository = userRepository;
     }
 
-    public CarrelloDto FindById(int id) {
-        return carrelloMapper.toDTO(carrelloRepository.findById(id));
+    public Carrello findById(int id) {
+        return carrelloRepository.findById(id);
     }
 
-    public CarrelloDto FindByPrezzoTotale(double prezzoTotale) {
-        return carrelloMapper.toDTO(carrelloRepository.findByPrezzoTotale(prezzoTotale));
+    public Carrello findByQuantita(int quantita) {
+        return carrelloRepository.findByQuantita(quantita);
     }
 
-    public CarrelloDto FindByQuantita(int quantita) {
-        return carrelloMapper.toDTO(carrelloRepository.findByQuantita(quantita));
-
+    public Carrello findById(double prezzoTotale) {
+        return carrelloRepository.findByPrezzoTotale(prezzoTotale);
     }
 }

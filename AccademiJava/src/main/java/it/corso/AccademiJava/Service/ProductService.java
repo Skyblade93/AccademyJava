@@ -5,6 +5,7 @@ import it.corso.AccademiJava.Mapper.Converter;
 import it.corso.AccademiJava.Mapper.ProductMapper;
 import it.corso.AccademiJava.Model.Product;
 import it.corso.AccademiJava.Repository.ProductRepository;
+import it.corso.AccademiJava.Repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Service;
@@ -15,18 +16,18 @@ import java.util.List;
 public class ProductService extends AbstractService<Product, ProductDto> {
 
     @Autowired
-    private final  ProductMapper productMapper;
+    private final ProductRepository productRepository;
+    private final UserRepository userRepository;
 
-    @Autowired
-    private final  ProductRepository productRepository;
+    public ProductService(ProductRepository productRepository,
+                          ProductMapper productMapper,
+                          UserRepository userRepository) {
 
-    protected ProductService(JpaRepository<Product, Integer> repository, Converter<Product, ProductDto> converter, ProductMapper productMapper, ProductRepository productRepository) {
-        super(repository, converter);
-        this.productMapper = productMapper;
+        super(productRepository, productMapper);
         this.productRepository = productRepository;
+        this.userRepository = userRepository;
     }
-
-
+    /*
     public ProductDto findByName(String name){
         return productMapper.toDTO(productRepository.findByName(name));
     }
@@ -71,5 +72,7 @@ public class ProductService extends AbstractService<Product, ProductDto> {
 
     public List<ProductDto> findOutOfStock(){
         return productMapper.toDTOList(productRepository.findOutOfStock());
+
     }
+    */
 }
