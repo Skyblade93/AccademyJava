@@ -1,6 +1,6 @@
 package it.corso.AccademiJava.DTO;
 
-import it.corso.AccademiJava.Model.Prodotto;
+import it.corso.AccademiJava.Model.Product;
 import it.corso.AccademiJava.Model.User;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -25,5 +25,5 @@ public class OrdineDto {
 
     private User utente;
 
-    private List<Prodotto> prodotti;
+    private List<Product> prodotti;
 }
