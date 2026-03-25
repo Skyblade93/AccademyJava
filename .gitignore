@@ -12,3 +12,5 @@
 /AccademiJava/target/classes/it/corso/AccademiJava/Model/Parcel.class
 /AccademiJava/target/classes/it/corso/AccademiJava/Model/Product.class
 /.idea/inspectionProfiles/Project_Default.xml
+target/
+.idea/
