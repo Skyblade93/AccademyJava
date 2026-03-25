@@ -27,6 +27,6 @@ public class User {
 
     private String description; //descrizione dell user
 
-    @OneToOne(mappedBy = "user")
-    private Pagamento pagamento;
+    @OneToMany(mappedBy = "utente")
+    private List<Ordine> ordini;
 }

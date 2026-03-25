@@ -18,6 +18,8 @@ public interface UserRepository  extends JpaRepository<User,Integer> {
     @Query(value = "SELECT * FROM User t WHERE t.name = ?1",nativeQuery = true)
     User paperino(String nome);
 
+@Query("select w from User w where w.name like ?1% ")
+    List<User> trovaTramiteiniziale(Character i);
 
     User findByDescription(String description);
 }

@@ -21,7 +21,7 @@ private final UserMapper userMapper;
 
 private final UserRepository userRepository;
 
-    protected UserService(JpaRepository<User, Integer> repository, Converter<User, UserDto> converter, UserMapper userMapper, UserRepository userRepository) {
+    public UserService(JpaRepository<User, Integer> repository, Converter<User, UserDto> converter, UserMapper userMapper, UserRepository userRepository) {
         super(repository, converter);
         this.userMapper = userMapper;
         this.userRepository = userRepository;
@@ -38,5 +38,8 @@ public UserDto findByDescription(String Description){
     return userMapper.toDTO(userRepository.findByDescription(Description));
 }
 
+public List<UserDto> trovaTramiteiniziale(Character i){
+        return userMapper.toDTOList(userRepository.trovaTramiteiniziale(i));
+}
 
 }

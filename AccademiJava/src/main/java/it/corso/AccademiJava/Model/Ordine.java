@@ -30,6 +30,7 @@ public class Ordine {
     @JoinColumn(name = "utente_id")
     private User utente;
 
+
     @ManyToMany
     @JoinTable(
             name = "ordini_product",

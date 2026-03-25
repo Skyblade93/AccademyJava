@@ -1,23 +1,28 @@
 package it.corso.AccademiJava.Service;
 
-import it.corso.AccademiJava.Mapper.Converter;
+import it.corso.AccademiJava.DTO.ElettricistaDto;
+import it.corso.AccademiJava.Mapper.ElettricistaMapper;
 import it.corso.AccademiJava.Model.Elettricista;
 import it.corso.AccademiJava.Repository.ElettricistaRepository;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
-public class ElettricistaService extends AbstractService {
+public class ElettricistaService extends AbstractService<Elettricista, ElettricistaDto> {
 
-    @Autowired
+
     private final  ElettricistaRepository elettricistaRepository;
 
-    protected ElettricistaService(JpaRepository repository, Converter converter, ElettricistaRepository elettricistaRepository) {
-        super(repository, converter);
+
+    private final ElettricistaMapper elettricistaMapper;
+
+    public ElettricistaService(ElettricistaRepository elettricistaRepository,
+                               ElettricistaMapper elettricistaMapper) {
+
+        super(elettricistaRepository, elettricistaMapper); // 🔥 QUESTO RISOLVE TUTTO
         this.elettricistaRepository = elettricistaRepository;
+        this.elettricistaMapper = elettricistaMapper;
     }
 
     // 1 JPA AUT

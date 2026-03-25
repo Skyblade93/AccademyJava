@@ -23,9 +23,11 @@ public class Carrello {
 
     private Integer quantita;
 
-    @OneToOne //collegamento ad user one to one
-    @JoinColumn(name = "userId", referencedColumnName = "id")
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "user_id", referencedColumnName = "id")
     private User user;
-    @OneToOne(mappedBy = "carrello")
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "pagamento_id", referencedColumnName = "id")
     private Pagamento pagamento;
 }

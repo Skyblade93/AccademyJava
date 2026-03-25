@@ -21,12 +21,12 @@ public class OrdineService extends AbstractService<Ordine, OrdineDto> {
     private final  OrdineMapper ordineMapper;
     private final   OrdineRepository ordineRepository;
 
-    protected OrdineService(JpaRepository<Ordine, Integer> repository, Converter<Ordine, OrdineDto> converter, OrdineMapper ordineMapper, OrdineRepository ordineRepository) {
+    public OrdineService(JpaRepository<Ordine, Integer> repository, Converter<Ordine, OrdineDto> converter, OrdineMapper ordineMapper, OrdineRepository ordineRepository) {
         super(repository, converter);
         this.ordineMapper = ordineMapper;
         this.ordineRepository = ordineRepository;
     }
-
+/*
     public OrdineDto findById(int id){
             return ordineMapper.toDTO(ordineRepository.findById(id));
     }
@@ -34,7 +34,7 @@ public class OrdineService extends AbstractService<Ordine, OrdineDto> {
     public List<OrdineDto> findByCosto_totale(float costo){
             return ordineMapper.toDTOList(ordineRepository.findByCosto_totale(costo));
     }
-
+*/
     public List<OrdineDto> trovaConNumeroProdottiMaggiore(Integer numero_prodotti){
         return ordineMapper.toDTOList(ordineRepository.trovaConNumeroProdottiMaggiore(numero_prodotti));
     }

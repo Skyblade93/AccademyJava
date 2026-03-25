@@ -27,19 +27,16 @@ public class Product {
     private Integer quantity;
 
     private String category;
-
-    // Relazione ManyToMany con User (gestita SOLO qui)
-    @ManyToMany
-    @JoinTable(
-            name = "user_product",
-            joinColumns = @JoinColumn(name = "product_id"),
-            inverseJoinColumns = @JoinColumn(name = "user_id")
-    )
-    private List<User> users;
 /*
-    // Relazione ManyToMany con Ordine
-    @ManyToMany(mappedBy = "ordini_product")
-    private List<Ordine> ordini;
-    */
+    @ManyToMany(mappedBy = "user")
+    private List<User> users;
+*/
 
+    @ManyToMany(mappedBy = "products")
+    private List<Ordine> ordini;
+/*
+
+    @ManyToMany(mappedBy = "products")
+    private List<Ordine> ordini;
+*/
 }
