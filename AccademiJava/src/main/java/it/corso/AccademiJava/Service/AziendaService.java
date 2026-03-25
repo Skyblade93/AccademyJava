@@ -3,6 +3,7 @@ package it.corso.AccademiJava.Service;
 import it.corso.AccademiJava.DTO.AziendaDto;
 import it.corso.AccademiJava.Mapper.AziendaMapper;
 import it.corso.AccademiJava.Model.Azienda;
+import it.corso.AccademiJava.Model.User;
 import it.corso.AccademiJava.Repository.AziendaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,25 +16,25 @@ public class AziendaService extends AbstractService<Azienda, AziendaDto> {
 
     @Autowired
     AziendaRepository aziendaRepository;
-/*
+
     public AziendaDto findByNomeAzienda(String NomeAzienda){
         return aziendaMapper.toDTO(
                 aziendaRepository.findByNomeAzienda(NomeAzienda)
         );
     }
 
-    public AziendaDto findByDescrizioneAzienda(String descrizione){
+    public AziendaDto findByDescrizioneAzienda(String DescrizioneAzienda){
         return aziendaMapper.toDTO(
-                aziendaRepository.findByDescrizioneAzienda(descrizione)
+                aziendaRepository.findByDescrizioneAzienda(DescrizioneAzienda)
         );
     }
 
-    public AziendaDto findByTitolare(String titolare){
+    public AziendaDto findByTitolare(User titolare){
         return aziendaMapper.toDTO(
                 aziendaRepository.findByTitolare(titolare)
         );
     }
-*/
+
     public AziendaDto cercaPerNome(String nome){
         return aziendaMapper.toDTO(
                 aziendaRepository.CercaPerNome(nome)

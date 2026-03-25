@@ -2,30 +2,34 @@ package it.corso.AccademiJava.Repository;
 
 
 import it.corso.AccademiJava.Model.Azienda;
+import it.corso.AccademiJava.Model.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
+
+import java.util.List;
 
 @Repository
 public interface AziendaRepository extends JpaRepository<Azienda, Integer> {
 
     // 1. Trova aziende per nome azienda
-//    Azienda findByNomeAzienda(String nome);
+    Azienda findByNomeAzienda(String NomeAzienda);
 
     // 2. Trova aziende per descrizione
- //   Azienda findByDescrizioneAzienda(String desc);
+    Azienda findByDescrizioneAzienda(String DescrizioneAzienda);
 
     // 3. Trova aziende per titolare
-  //  Azienda findByTitolare(String titolare);
+    Azienda findByTitolare(User titolare);
 
     // 4. Trova aziende che contengono una parola nel nome
-  //  Azienda findByAziendaStartingContaining(String prefisso);
+    List<Azienda> findByNomeAziendaContaining(String parola);
 
     // 5. Trova aziende che iniziano con una parola
-  //  Azienda findByNomeAziendaStartingWith(String prefisso);
+    List<Azienda> findByNomeAziendaStartingWith(String prefisso);
 
     // 6. Trova aziende ordinate per nome
-   // Azienda findByOrderByNomeAziendaAsc();
+    List<Azienda> findAllByOrderByNomeAziendaAsc(String ordine);
+
 
 
     // 7. Trova azienda per nome azienda
