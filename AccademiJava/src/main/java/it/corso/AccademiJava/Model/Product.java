@@ -3,15 +3,16 @@ package it.corso.AccademiJava.Model;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Getter
 @Setter
 @Entity
 @AllArgsConstructor
+@NoArgsConstructor
 @Table(name = "Product", schema = "Accademi")
 public class Product {
 
@@ -27,11 +28,18 @@ public class Product {
 
     private String category;
 
-    @ManyToOne
-    @JoinColumn(name = "user_id")
-    private User user;
-
-    //Relazione ManytoMany con Entity Ordine
-    @ManyToMany(mappedBy = "prodotti")
+    // Relazione ManyToMany con User (gestita SOLO qui)
+    @ManyToMany
+    @JoinTable(
+            name = "user_product",
+            joinColumns = @JoinColumn(name = "product_id"),
+            inverseJoinColumns = @JoinColumn(name = "user_id")
+    )
+    private List<User> users;
+/*
+    // Relazione ManyToMany con Ordine
+    @ManyToMany(mappedBy = "ordini_product")
     private List<Ordine> ordini;
+    */
+
 }
