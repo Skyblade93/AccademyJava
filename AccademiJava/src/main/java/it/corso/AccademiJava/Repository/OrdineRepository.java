@@ -10,10 +10,10 @@ import java.util.List;
 import java.util.Optional;
 
 @Repository
-public interface OrdineRepository  extends JpaRepository<Ordine,Integer> {
+public interface OrdineRepository  extends JpaRepository<Ordine, Integer> {
 
-    //Ordine FindById(Integer id);
-   // List<Ordine> FindByCosto_totale(float costo);
+    List<Ordine> findByIndirizzo_spedizione(String indirizzo);
+    List<Ordine> findByCosto_totale(float costo);
 
     @Query("select t from Ordine t where t.numero_prodotti > ?1")
     List<Ordine> trovaConNumeroProdottiMaggiore(Integer numero);

@@ -18,10 +18,7 @@ import java.util.List;
 @Service
 public class OrdineService extends AbstractService<Ordine, OrdineDto> {
 
-    @Autowired
     private final  OrdineMapper ordineMapper;
-
-    @Autowired
     private final   OrdineRepository ordineRepository;
 
     protected OrdineService(JpaRepository<Ordine, Integer> repository, Converter<Ordine, OrdineDto> converter, OrdineMapper ordineMapper, OrdineRepository ordineRepository) {
@@ -30,15 +27,14 @@ public class OrdineService extends AbstractService<Ordine, OrdineDto> {
         this.ordineRepository = ordineRepository;
     }
 
-    /*
-        public OrdineDto FindById(Integer id){
-            return ordineMapper.toDTO(ordineRepository.FindById(id));
-        }
+    public List<OrdineDto> findByIndirizzo_spedizione(String indirizzo){
+            return ordineMapper.toDTOList(ordineRepository.findByIndirizzo_spedizione(indirizzo));
+    }
 
-        public List<OrdineDto> FindByCosto_totale(float costo){
-            return ordineMapper.toDTOList(ordineRepository.FindByCosto_totale(costo));
-        }
-    */
+    public List<OrdineDto> findByCosto_totale(float costo){
+            return ordineMapper.toDTOList(ordineRepository.findByCosto_totale(costo));
+    }
+
     public List<OrdineDto> trovaConNumeroProdottiMaggiore(Integer numero_prodotti){
         return ordineMapper.toDTOList(ordineRepository.trovaConNumeroProdottiMaggiore(numero_prodotti));
     }
