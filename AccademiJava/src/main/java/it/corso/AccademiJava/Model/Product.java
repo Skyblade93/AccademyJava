@@ -3,6 +3,7 @@ package it.corso.AccademiJava.Model;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.util.ArrayList;
@@ -12,6 +13,7 @@ import java.util.List;
 @Setter
 @Entity
 @AllArgsConstructor
+@NoArgsConstructor
 @Table(name = "Product", schema = "Accademi")
 public class Product {
 
@@ -36,7 +38,7 @@ public class Product {
     private List<Prodotto> prodotti;
 
     //Relazione ManyToMany con l'Entity Ordine
-    @ManyToMany(mappedBy = "products")
+    @ManyToMany(mappedBy = "prodotti")
     private List<Ordine> ordini;
 
 }
