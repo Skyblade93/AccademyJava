@@ -1,13 +1,10 @@
 package it.corso.AccademiJava.Service;
 
 import it.corso.AccademiJava.DTO.DipendenteDto;
-import it.corso.AccademiJava.Mapper.Converter;
 import it.corso.AccademiJava.Mapper.DipendenteMapper;
 import it.corso.AccademiJava.Model.Dipendente;
 import it.corso.AccademiJava.Repository.DipendenteRepository;
 import it.corso.AccademiJava.Repository.UserRepository;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -17,7 +14,7 @@ import java.util.stream.Collectors;
 public class DipendenteService extends AbstractService<Dipendente, DipendenteDto> {
 
     private final DipendenteMapper dipendenteMapper;
-    private final UserRepository userRepository;
+    //private final UserRepository userRepository;
     private final DipendenteRepository dipendenteRepository;
 
     protected DipendenteService(DipendenteMapper dipendenteMapper,
@@ -26,7 +23,7 @@ public class DipendenteService extends AbstractService<Dipendente, DipendenteDto
         super(dipendenteRepository, dipendenteMapper);
         this.dipendenteMapper = dipendenteMapper;
         this.dipendenteRepository = dipendenteRepository;
-        this.userRepository = userRepository;
+        //this.userRepository = userRepository;
     }
 
     // 🔹 Metodo per trovare dipendente per nome, cognome e numero di telefono
@@ -72,15 +69,15 @@ public class DipendenteService extends AbstractService<Dipendente, DipendenteDto
     }
 
     // 🔹 Metodo 2 (JPQL) per trovare dipendente per nome ed età
-    public DipendenteDto findByNomeAndEta(String nomeDipendente, Integer eta) {
+    public DipendenteDto findByNomeDipendenteAndEta(String nomeDipendente, Integer eta) {
         return dipendenteMapper.toDTO(
-                dipendenteRepository.findByNomeAndEta(nomeDipendente, eta)
+                dipendenteRepository.findByNomeDipendenteAndEta(nomeDipendente, eta)
         );
     }
 
     // 🔹 Metodo 2 (JPQL) per trovare dipendente per cognome
-    public DipendenteDto findByCognome(String cognome) {
-        return dipendenteMapper.toDTO(dipendenteRepository.findByCognome(cognome));
+    public DipendenteDto findByCognomeDipendente(String cognome) {
+        return dipendenteMapper.toDTO(dipendenteRepository.findByCognomeDipendente(cognome));
     }
 
     // 🔹 Metodo 3 (Native) per trovare dipendente per email e numero di telefono
@@ -91,8 +88,8 @@ public class DipendenteService extends AbstractService<Dipendente, DipendenteDto
     }
 
     // 🔹 Metodo 3 (native) per trovare dipendente per nome
-    public DipendenteDto findByNome(String nomeDipendente) {
-        return dipendenteMapper.toDTO(dipendenteRepository.findByNome(nomeDipendente));
+    public DipendenteDto findByNomeDipendente(String nomeDipendente) {
+        return dipendenteMapper.toDTO(dipendenteRepository.findByNomeDipendente(nomeDipendente));
     }
 
 }
