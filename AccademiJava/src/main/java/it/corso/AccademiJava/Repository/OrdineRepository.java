@@ -27,15 +27,15 @@ public interface OrdineRepository  extends JpaRepository<Ordine, Integer> {
     @Query("select t from Ordine t where t.costo_totale < ?1")
     List<Ordine> trovaConCostoMinore(float costo);
 
-    @Query(value = "SELECT * FROM Ordine t WHERE t.utente = ?1",nativeQuery = true)
-    List<Ordine> trovaPerUtente(User utente);
+    @Query("select o from Ordine o where o.numero_prodotti > ?1 and o.costo_totale < ?2")
+    List<Ordine> filtro(Integer numero_prodotti, float costo_totale);
 
-    @Query(value = "SELECT * FROM ordine WHERE numero_prodotti > ?1 AND costo_totale < ?2", nativeQuery = true)
-    List<Ordine> filtro(Integer numero, float costo);
+    @Query(value = "select o from Ordine o where o.utente = ?1")
+    List<Ordine> trovaPerUtente(Integer id);
 
-    @Query(value = "SELECT * FROM ordine ORDER BY costo_totale DESC", nativeQuery = true)
+    @Query(value = "SELECT * FROM accademi.ordine ORDER BY costo_totale DESC", nativeQuery = true)
     List<Ordine> ordinaPerCostoDecrescente();
 
-    @Query(value = "SELECT * FROM ordine WHERE costo_totale BETWEEN ?1 AND ?2", nativeQuery = true)
+    @Query(value = "SELECT * FROM accademi.ordine WHERE costo_totale BETWEEN ?1 AND ?2", nativeQuery = true)
     List<Ordine> trovaTraDueCosti(float min, float max);
 }

@@ -51,15 +51,15 @@ public class OrdineService extends AbstractService<Ordine, OrdineDto> {
         return ordineMapper.toDTOList(ordineRepository.trovaConCostoMinore(costo));
     }
 
-    public List<OrdineDto> trovaPerUtente( User utente){
-        return ordineMapper.toDTOList(ordineRepository.trovaPerUtente(utente));
+    public List<OrdineDto> trovaPerUtente( Integer id){
+        return ordineMapper.toDTOList(ordineRepository.trovaPerUtente(id));
     }
 
     public List<OrdineDto> filtro(Integer numero, float costo){
         return ordineMapper.toDTOList(ordineRepository.filtro(numero, costo));
     }
 
-    public List<OrdineDto> ordinaPerCostoDecrescente(String indirizzo){
+    public List<OrdineDto> ordinaPerCostoDecrescente(){
         return ordineMapper.toDTOList(ordineRepository.ordinaPerCostoDecrescente());
     }
 
