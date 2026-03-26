@@ -13,7 +13,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "Ordine", schema = "Accademi")
+@Table(name = "ordine", schema = "accademi")
 public class Ordine {
 
     @Id
@@ -29,7 +29,6 @@ public class Ordine {
     @ManyToOne
     @JoinColumn(name = "utente_id")
     private User utente;
-
 
     @ManyToMany
     @JoinTable(
