@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.List;
+
 @Getter
 @Setter
 @Entity
@@ -19,9 +21,25 @@ public class Parcel
     private Integer length;
     private Boolean fragile;
 
-    @ManyToOne
-    @JoinColumn(name = "parcel")
-    private User user;
+
+    //Per ogni ordine c'è una spedizione.
+    @OneToOne
+    @JoinColumn(name = "ordine_id")
+    private Ordine ordine;
+    // Ogni spedizione ha un pagamento.
+    @OneToOne
+    @JoinColumn(name = "pagamento_id")
+    private Pagamento pagamento;
+    //Ogni spedizione ha più notifiche.
+    @OneToMany(mappedBy = "parcel")
+    private List<Notifica> notifiche;
+
+
+
+
+
+
+
 
 
 
