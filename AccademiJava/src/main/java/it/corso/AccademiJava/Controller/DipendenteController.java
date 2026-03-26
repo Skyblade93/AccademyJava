@@ -51,7 +51,7 @@ public class DipendenteController extends AbstractController<DipendenteDto> {
         return dipendenteService.findByEmailAndEta(email, eta);
     }
 
-    @GetMapping("/findByNomeAndEta")
+    @GetMapping("/findByNomeDipendenteAndEta")
     public DipendenteDto findByNomeDipendenteAndEta(@RequestParam("nomeDipendente") String nomeDipendente,
                                                     @RequestParam("eta") Integer eta) {
         return dipendenteService.findByNomeDipendenteAndEta(nomeDipendente, eta);
