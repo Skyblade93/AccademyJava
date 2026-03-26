@@ -1,5 +1,6 @@
 package it.corso.AccademiJava.Model;
 
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -25,10 +26,4 @@ public class Pagamento {
     @JoinColumn(name="user_id")
     private User user;
 
-    @Enumerated(EnumType.STRING)
-    private StatoPagamento stato;
-
-    @OneToOne
-    @JoinColumn(name = "user_id")
-    private User user;
 }
