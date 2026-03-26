@@ -30,7 +30,7 @@ public interface OrdineRepository  extends JpaRepository<Ordine, Integer> {
     @Query("select o from Ordine o where o.numero_prodotti > ?1 and o.costo_totale < ?2")
     List<Ordine> filtro(Integer numero_prodotti, float costo_totale);
 
-    @Query(value = "select o from Ordine o where o.utente = ?1")
+    @Query(value = "select o from Ordine o where o.utente.id = ?1")
     List<Ordine> trovaPerUtente(Integer id);
 
     @Query(value = "SELECT * FROM accademi.ordine ORDER BY costo_totale DESC", nativeQuery = true)
