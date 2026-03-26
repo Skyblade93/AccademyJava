@@ -1,6 +1,8 @@
 package it.corso.AccademiJava.DTO;
 
 import it.corso.AccademiJava.Model.Contact;
+import it.corso.AccademiJava.Model.Ordine;
+import it.corso.AccademiJava.Model.Pagamento;
 import it.corso.AccademiJava.Model.User;
 import lombok.AllArgsConstructor;
 import lombok.Getter;

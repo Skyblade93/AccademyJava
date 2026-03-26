@@ -19,4 +19,5 @@ public class CarrelloMapper extends AbstractConverter<Carrello, CarrelloDto> {
     public Carrello toEntity(CarrelloDto dto) {
         return mapper.map(dto, Carrello.class);
     }
+
 }

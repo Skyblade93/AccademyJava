@@ -31,5 +31,4 @@ public interface CarrelloRepository extends JpaRepository<Carrello,Integer> {
     // 6
     List<Carrello> findByQuantitaAndPrezzoTotale(int quantita, double prezzoTotale);
 
-
 }
