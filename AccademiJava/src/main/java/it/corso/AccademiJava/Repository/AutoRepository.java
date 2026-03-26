@@ -42,7 +42,7 @@ public interface AutoRepository extends JpaRepository<Auto, Integer> {
     List<Auto> findByMarcaEndingWith(String marca);
 
     // metodi per carburante
-    List<Auto> findByCarburante(TipoCarburante carburante);
+  /*  List<Auto> findByCarburante(TipoCarburante carburante);
 
-    List<Auto> findByMarcaAndCarburante(String marca, TipoCarburante carburante);
+    List<Auto> findByMarcaAndCarburante(String marca, TipoCarburante carburante); */
 }
