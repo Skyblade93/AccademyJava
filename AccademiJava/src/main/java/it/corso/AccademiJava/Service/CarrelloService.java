@@ -14,6 +14,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Service
 public class CarrelloService extends AbstractService<Carrello, CarrelloDto> {
 
@@ -32,13 +35,33 @@ public class CarrelloService extends AbstractService<Carrello, CarrelloDto> {
         return carrelloDto;
     }
 
-    public CarrelloDto findByQuantita(int quantita) {
-        CarrelloDto carrelloDto = carrelloMapper.toDTO(carrelloRepository.findByQuantita(quantita));
+    public List<CarrelloDto> cercaPerQuantita(int quantita) {
+        return carrelloMapper.toDTOList(carrelloRepository.cercaPerQuantita(quantita));
+    }
+
+    public List<CarrelloDto> cercaPrezzoTotale(double prezzoTotale) {
+        return carrelloMapper.toDTOList(carrelloRepository.cercaPrezzoTotale(prezzoTotale));
+    }
+
+    public CarrelloDto findByIdAndPrezzoTotale(int Id, double prezzoTotale) {
+        CarrelloDto carrelloDto = carrelloMapper.toDTO(carrelloRepository.findByIdAndPrezzoTotale(Id, prezzoTotale));
         return carrelloDto;
     }
 
-    public CarrelloDto findById(double prezzoTotale) {
-        CarrelloDto carrelloDto = carrelloMapper.toDTO(carrelloRepository.findByPrezzoTotale(prezzoTotale));
+    public CarrelloDto findByIdAndQuantita(int Id, int quantita) {
+        CarrelloDto carrelloDto = carrelloMapper.toDTO(carrelloRepository.findByIdAndQuantita(Id, quantita));
         return carrelloDto;
+    }
+
+    public List<CarrelloDto> findByQuantitaAndPrezzoTotale(int quantita, double prezzoTotale) {
+         return carrelloMapper.toDTOList(carrelloRepository.findByQuantitaAndPrezzoTotale(quantita, prezzoTotale));
+    }
+
+    public List<Boolean> trovaPrezzoMaggioreDi10(double prezzoTotale) {
+        //recupero della lista di carrelli
+        List<CarrelloDto> carrelli = carrelloMapper.toDTOList(carrelloRepository.cercaPrezzoTotale(prezzoTotale));
+
+        //genero una lista di boolean che da vero o falso in base alla condizione
+        return carrelli.stream().map(dto -> dto.getPrezzoTotale() > 10).toList();
     }
 }
