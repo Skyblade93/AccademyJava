@@ -30,12 +30,12 @@ public class ProductService extends AbstractService<Product, ProductDto> {
         Product product = productRepository.findByName(name);
         return productMapper.toDTO(product);
     }
-
+/*
     public List<ProductDto> findByCategory(String category){
         List<Product> products = productRepository.findByCategory(category);
         return productMapper.toDTOList(products);
     }
-
+*/
     public List<ProductDto> findByPriceGreaterThan(Double price){
         return productMapper.toDTOList(
                 productRepository.findByPriceGreaterThan(price)
@@ -61,13 +61,13 @@ public class ProductService extends AbstractService<Product, ProductDto> {
                 productRepository.findByPriceRange(min, max)
         );
     }
-
+/*
     public List<ProductDto> searchByCategory(String keyword){
         return productMapper.toDTOList(
                 productRepository.searchByCategory(keyword)
         );
     }
-
+*/
     // ------------------ NATIVE ------------------
 
     public ProductDto nativeFindByName(String name){

@@ -22,6 +22,7 @@ public class DroneController extends AbstractController<DroneDto> {
         return (DroneDto) service.insert(dto);
     }
 
+    /*
     @GetMapping("/findByModello")
     // RIMOSSO <DroneDto> davanti al tipo di ritorno
     public DroneDto findByModello(@RequestParam("modello") String modello) {
@@ -34,4 +35,6 @@ public class DroneController extends AbstractController<DroneDto> {
         // Qui non serve il cast (DroneDto), il service restituisce già il tipo giusto
         return service.trovaTramiteIniziale(i);
     }
+
+     */
 }

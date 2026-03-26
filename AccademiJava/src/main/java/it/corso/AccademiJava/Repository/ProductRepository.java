@@ -14,7 +14,7 @@ public interface ProductRepository extends JpaRepository<Product, Integer> {
 
     Product findByName(String name);
 
-    List<Product> findByCategory(String category);
+  //  List<Product> findByCategory(String category);
 
     List<Product> findByPriceGreaterThan(Double price);
 
@@ -28,10 +28,10 @@ public interface ProductRepository extends JpaRepository<Product, Integer> {
 
     @Query("SELECT p FROM Product p WHERE p.price BETWEEN ?1 AND ?2")
     List<Product> findByPriceRange(Double min, Double max);
-
+/*
     @Query("SELECT p FROM Product p WHERE p.category LIKE %?1%")
     List<Product> searchByCategory(String keyword);
-
+*/
 
     // Native
 
