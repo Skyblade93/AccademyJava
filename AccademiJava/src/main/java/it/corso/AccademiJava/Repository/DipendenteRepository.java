@@ -28,7 +28,7 @@ public interface DipendenteRepository extends JpaRepository<Dipendente,Integer> 
     // Metodo 1 cerca per email ed età
     Dipendente findByEmailAndEta(String email, Integer eta);
 
-    // Metodo 2 cerca per nome ed età  ERRORE
+    // Metodo 2 cerca per nome ed età
     @Query("select d from Dipendente d where d.nomeDipendente = ?1 and d.eta = ?2")
     Dipendente findByNomeDipendenteAndEta(String nomeDipendente, Integer eta);
 
