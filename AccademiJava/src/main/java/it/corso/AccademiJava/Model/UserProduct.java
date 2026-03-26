@@ -20,6 +20,8 @@ public class UserProduct {
     @JoinColumn(name = "user_id")
     private User user;
 
+
+
     // Relazione con Product
     @ManyToOne
     @JoinColumn(name = "product_id")
