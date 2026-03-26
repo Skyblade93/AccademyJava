@@ -83,7 +83,7 @@ public class DipendenteService extends AbstractService<Dipendente, DipendenteDto
     // 🔹 Metodo 3 (Native) per trovare dipendente per email e numero di telefono
     public DipendenteDto findByEmailAndNumeroTelefono(String email, Integer numeroTelefono) {
         return dipendenteMapper.toDTO(
-                dipendenteRepository.findByEmailAndNumber(email, numeroTelefono)
+                dipendenteRepository.findByEmailAndNumeroTelefono(email, numeroTelefono)
         );
     }
 
