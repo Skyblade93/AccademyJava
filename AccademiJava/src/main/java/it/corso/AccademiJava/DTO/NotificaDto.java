@@ -1,5 +1,6 @@
 package it.corso.AccademiJava.DTO;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import it.corso.AccademiJava.Model.PrioritaNotifica;
 import it.corso.AccademiJava.Model.TipoNotifica;
 import lombok.AllArgsConstructor;
@@ -25,6 +26,7 @@ public class NotificaDto {
 
     private PrioritaNotifica priorita;
 
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss")
     private LocalDateTime dataCreazione;
 
     private Boolean letta;

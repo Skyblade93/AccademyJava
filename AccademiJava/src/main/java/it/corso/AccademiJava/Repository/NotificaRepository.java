@@ -24,13 +24,13 @@ public interface NotificaRepository extends JpaRepository<Notifica, Integer> {
     @Query("SELECT n FROM Notifica n WHERE n.dataCreazione > ?1")
     List<Notifica> findByDataCreazioneAfter(LocalDateTime data);
 
-    @Query(value = "SELECT * FROM Notifica WHERE messaggio LIKE %?1%", nativeQuery = true)
+    @Query(value = "SELECT * FROM accademi.notifica WHERE messaggio LIKE %?1%", nativeQuery = true)
     List<Notifica> findByMessaggioContaining(String messaggio);
 
-    @Query(value = "SELECT * FROM Notifica WHERE letta = ?1", nativeQuery = true)
+    @Query(value = "SELECT * FROM accademi.notifica WHERE letta = ?1", nativeQuery = true)
     List<Notifica> findByLettaNative(Boolean letta);
 
-    @Query(value = "SELECT * FROM Notifica WHERE data_creazione > ?1", nativeQuery = true)
+    @Query(value = "SELECT * FROM accademi.notifica WHERE data_creazione > ?1", nativeQuery = true)
     List<Notifica> findByDataCreazioneAfterNative(LocalDateTime data);
 
     List<Notifica> findByTitoloContaining(String titolo);
