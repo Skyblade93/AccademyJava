@@ -26,6 +26,8 @@ public class Product {
 
     private Integer quantity;
 
+    private String category;
+
 
     @ManyToMany(mappedBy = "products")
     private List<Ordine> ordini;
