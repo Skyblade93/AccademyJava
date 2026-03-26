@@ -17,10 +17,6 @@ public interface AutoRepository extends JpaRepository<Auto, Integer> {
     @Query("SELECT a FROM Auto a WHERE a.targa = :targa")
     Auto findByTarga(@Param("targa") String targa);
 
-    //  2. QUERY NATIVE
-  /*  @Query(value = "SELECT * FROM Auto a WHERE a.marca = :marca", nativeQuery = true)
-    List<Auto> findByMarca(@Param("marca") String marca); */
-
     //  METODI DERIVATI
     List<Auto> findByMarca(String marca);
 
@@ -45,5 +41,5 @@ public interface AutoRepository extends JpaRepository<Auto, Integer> {
     // metodi per carburante
     List<Auto> findByCarburante(TipoCarburante carburante);
 
-   // List<Auto> findByMarcaAndCarburante(String marca, TipoCarburante carburante);
+    List<Auto> findByMarcaAndCarburante(String marca, TipoCarburante carburante);
 }
