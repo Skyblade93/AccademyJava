@@ -21,5 +21,7 @@ public class AziendaDto {
 
     private String descrizioneAzienda; // descrizione del ruolo che svolge l'azienda
 
+    private AutoDto auto;
 
+    private ElettricistaDto elettricisti;
 }
