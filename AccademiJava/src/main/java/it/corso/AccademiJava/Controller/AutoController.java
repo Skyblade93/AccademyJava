@@ -1,6 +1,7 @@
 package it.corso.AccademiJava.Controller;
 
 import it.corso.AccademiJava.DTO.AutoDto;
+import it.corso.AccademiJava.Model.TipoCarburante;
 import it.corso.AccademiJava.Service.AutoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -62,5 +63,13 @@ public class AutoController extends AbstractController<AutoDto> {
     @GetMapping("/findByCarburante")
     public List<AutoDto> findByCarburante(@RequestParam("carburante") String carburante) {
         return autoService.findByCarburante(carburante);
+    }
+
+    @GetMapping("/findByMarcaAndCarburante")
+    public List<AutoDto> findByMarcaAndCarburante(
+            @RequestParam String marca,
+            @RequestParam TipoCarburante carburante) {
+
+        return autoService.findByMarcaAndCarburante(marca, carburante);
     }
 }
