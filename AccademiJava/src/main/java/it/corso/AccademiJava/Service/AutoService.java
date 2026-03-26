@@ -68,12 +68,13 @@ public class AutoService extends AbstractService<Auto, AutoDto>{
                 .map(autoMapper::toDTO)
                 .toList();
     }
-/*
-    public AutoDto findByMarcaAndCarburante(String marca, String carburante) {
-        TipoCarburante c = TipoCarburante.valueOf(carburante.toUpperCase());
-        return autoMapper.toDTO(autoRepository.findByMarcaAndCarburante(marca, c).getFirst()
-        );
+
+    public List<AutoDto> findByMarcaAndCarburante(String marca, TipoCarburante carburante) {
+        return autoRepository.findByMarcaAndCarburante(marca, carburante)
+                .stream()
+                .map(autoMapper::toDTO)
+                .toList();
     }
 
-     */
+
 }
