@@ -11,7 +11,7 @@ import lombok.Setter;
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "dipendente", schema = "Accademi")
+@Table(name = "dipendente", schema = "accademi")
 public class Dipendente {
 
     @Id
