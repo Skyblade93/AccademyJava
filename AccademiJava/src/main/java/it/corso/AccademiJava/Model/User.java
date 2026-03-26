@@ -29,4 +29,7 @@ public class User {
 
     @OneToMany(mappedBy = "utente")
     private List<Ordine> ordini;
+
+    @OneToMany(mappedBy = "user")
+    private List<UserProduct> userProducts;
 }

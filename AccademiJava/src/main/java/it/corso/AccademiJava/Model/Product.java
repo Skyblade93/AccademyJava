@@ -26,14 +26,12 @@ public class Product {
 
     private Integer quantity;
 
-    private String category;
-/*
-    @ManyToMany(mappedBy = "user")
-    private List<User> users;
-*/
 
     @ManyToMany(mappedBy = "products")
     private List<Ordine> ordini;
+
+    @OneToMany(mappedBy = "product")
+    private List<UserProduct> userProducts;
 /*
 
     @ManyToMany(mappedBy = "products")
