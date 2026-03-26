@@ -38,10 +38,10 @@ public interface DipendenteRepository extends JpaRepository<Dipendente,Integer> 
 
     // Metodo 3 creca per nome dipendente
     // 🔹 QUERY NATIVE (come metodo 3)
-    @Query(value = "SELECT * FROM accademi.dipendente d WHERE d.nome_dipendente = ?1", nativeQuery = true)
+    @Query(value = "SELECT * FROM Dipendente d WHERE d.nomeDipendente = ?1", nativeQuery = true)
     Dipendente findByNomeDipendente(String nomeDipendente);
 
     // Metodo 3 cerca per email ed numero di telefono
-    @Query(value = "SELECT * FROM accademi.dipendente d WHERE d.email = ?1 AND d.numero_telefono = ?2", nativeQuery = true)
-    Dipendente findByEmailAndNumeroTelefono(String email, Integer numeroTelefono);
+    @Query(value = "SELECT * FROM Dipendente d WHERE d.email = ?1 AND d.numeroTelefono = ?2", nativeQuery = true)
+    Dipendente findByEmailAndNumber(String email, Integer numeroTelefono);
 }
