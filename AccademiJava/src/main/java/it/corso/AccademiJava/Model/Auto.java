@@ -32,4 +32,12 @@ public class Auto {
     @ManyToOne
     @JoinColumn(name = "user_id", nullable = true)
     private User user;
+
+    @ManyToOne
+    @JoinColumn(name = "azienda_id", nullable = true)
+    private Azienda azienda;
+
+    @ManyToOne
+    @JoinColumn(name = "dipendete_id", nullable = true)
+    private Dipendente dipendente;
 }
