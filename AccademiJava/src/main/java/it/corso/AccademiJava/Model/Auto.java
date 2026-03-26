@@ -25,6 +25,6 @@ public class Auto {
     private TipoCarburante carburante; //tipo carburante
 
     @ManyToOne
-    @JoinColumn(name = "user_id")
+    @JoinColumn(name = "user_id", nullable = true)
     private User user;
 }
