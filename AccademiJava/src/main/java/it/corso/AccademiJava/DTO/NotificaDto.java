@@ -31,7 +31,7 @@ public class NotificaDto {
 
     private Boolean letta;
 
-    private DroneDto drone;
+    private ParcelDto parcel;
 
-    private UserDto user;
+
 }

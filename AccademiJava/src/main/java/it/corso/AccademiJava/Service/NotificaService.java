@@ -17,10 +17,8 @@ import java.util.List;
 @Service
 public class NotificaService extends AbstractService<Notifica, NotificaDto> {
 
-    @Autowired
     private final NotificaMapper notificaMapper;
 
-    @Autowired
     private final NotificaRepository notificaRepository;
 
     protected NotificaService(JpaRepository<Notifica, Integer> repository, NotificaMapper notificaMapper, NotificaRepository notificaRepository) {
