@@ -42,4 +42,7 @@ public interface DroneRepository extends JpaRepository<Drone, Integer> { // Camb
     @Query(value = "SELECT * FROM droni WHERE stato = 'AVAILABLE' AND livello_batteria > 20", nativeQuery = true)
     List<Drone> findDronesForMissionNative();
 
+ //   Drone findByModelloCustom(String modello);
+
+    List<Drone> findByModelloStartingWith(String s);
 }

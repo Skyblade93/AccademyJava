@@ -6,8 +6,6 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-
-import java.util.ArrayList;
 import java.util.List;
 
 @Getter
@@ -27,6 +25,12 @@ public class User {
 
     private String description; //descrizione dell user
 
-    @OneToMany(mappedBy = "utente")
-    private List<Ordine> ordini;
+    @OneToOne(mappedBy = "user")
+    private Pagamento pagamento;
+
+    @OneToMany(mappedBy= "user")
+    private List<Auto> auto;
+
+    @OneToMany(mappedBy = "user")
+    private List<UserProduct> userProducts;
 }
