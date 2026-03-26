@@ -16,4 +16,7 @@ public interface Converter<Entity, DTO> {
     public List<DTO> toDTOList(Iterable<Entity> entityList);
     public List<Entity> toEntityList(Iterable<DTO> entityList);
 
+    <DroneDto> List<DroneDto> toDtoList(List<Entity> entities);
+
+    <DroneDto> DroneDto toDto(Entity entity);
 }
