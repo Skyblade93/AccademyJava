@@ -25,7 +25,7 @@ public class DroneService<DroneDto> extends AbstractService<Drone, DroneDto> {
         this.droneRepository = droneRepository;
         this.userRepository = userRepository;
     }
-
+/*
     // Metodo che restituisce DTO (quello che serve al Controller)
     public <DroneDto> DroneDto findByModello(String modello) {
         // Cerchiamo l'entity tramite il nome del modello
@@ -33,11 +33,6 @@ public class DroneService<DroneDto> extends AbstractService<Drone, DroneDto> {
         // Usiamo il 'converter' ereditato da AbstractService per trasformarlo in DTO
         return converter.toDto(entity);
     }
+*/
 
-    public <DroneDto> List<DroneDto> trovaTramiteIniziale(Character i) {
-        // Cerchiamo la lista di entity che iniziano con la lettera i
-        List<Drone> entities = droneRepository.findByModelloStartingWith(String.valueOf(i));
-        // Trasformiamo tutta la lista in DTO
-        return converter.toDtoList(entities);
-    }
 }
