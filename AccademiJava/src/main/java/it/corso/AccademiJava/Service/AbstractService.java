@@ -1,5 +1,6 @@
 package it.corso.AccademiJava.Service;
 
+import it.corso.AccademiJava.DTO.DroneDto;
 import it.corso.AccademiJava.Mapper.Converter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -40,4 +41,7 @@ public abstract class AbstractService<ENTITY,DTO> implements ServiceDTO<DTO> {
     public void delete(Integer id) {
         repository.deleteById(id);
     }
+
+    // 3. Aggiunto: Implementazione del findById usando la classe base o il repo
+    public abstract DroneDto findById(Integer id);
 }

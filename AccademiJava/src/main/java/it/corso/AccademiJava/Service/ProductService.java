@@ -1,5 +1,6 @@
 package it.corso.AccademiJava.Service;
 
+import it.corso.AccademiJava.DTO.DroneDto;
 import it.corso.AccademiJava.DTO.ProductDto;
 import it.corso.AccademiJava.Mapper.ProductMapper;
 import it.corso.AccademiJava.Model.Product;
@@ -88,4 +89,8 @@ public class ProductService extends AbstractService<Product, ProductDto> {
         );
     }
 
+    @Override
+    public DroneDto findById(Integer id) {
+        return null;
+    }
 }

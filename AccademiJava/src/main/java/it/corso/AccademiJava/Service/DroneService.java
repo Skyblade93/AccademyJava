@@ -8,6 +8,7 @@ import it.corso.AccademiJava.Repository.UserRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class DroneService extends AbstractService<Drone, DroneDto> {
@@ -24,17 +25,26 @@ public class DroneService extends AbstractService<Drone, DroneDto> {
         this.userRepository = userRepository;
     }
 
-    // Metodo per cercare un drone per modello
+    // 1. Corretto: findByModello restituisce una lista nel repository
     public DroneDto findByModello(String modello) {
-        Drone entity = (Drone) droneRepository.findByModello(modello);
-        // Usiamo il cast (DroneMapper) per accedere al metodo toDTO che hai appena scritto
-        return ((DroneMapper) converter).toDTO(entity);
+        List<Drone> entities = droneRepository.findByModello(modello);
+        if (entities.isEmpty()) {
+            return null;
+        }
+        // Prendiamo il primo drone trovato e lo trasformiamo in DTO
+        return ((DroneMapper) converter).toDTO(entities.get(0));
     }
 
-    // Metodo per cercare i droni tramite l'iniziale
+    // 2. Corretto: Gestione della lista tramite il mapper
     public List<DroneDto> trovaTramiteIniziale(Character i) {
         List<Drone> entities = droneRepository.findByModelloStartingWith(String.valueOf(i));
-        // Usiamo il metodo toDtoList che hai nel tuo Mapper
         return ((DroneMapper) converter).toDtoList(entities);
+    }
+
+    // 3. Aggiunto: Implementazione del findById usando la classe base o il repo
+    @Override
+    public DroneDto findById(Integer id) {
+        Optional<Drone> entity = droneRepository.findById(id);
+        return entity.map(drone -> ((DroneMapper) converter).toDTO(drone)).orElse(null);
     }
 }
