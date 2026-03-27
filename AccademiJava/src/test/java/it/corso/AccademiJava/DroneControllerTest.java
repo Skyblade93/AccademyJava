@@ -9,6 +9,7 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 
+// Import statici necessari per mockMvc e gli status
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -21,7 +22,7 @@ public class DroneControllerTest {
     @MockBean
     private DroneService droneService;
 
-    // 1. Inserimento corretto
+    // 1. Test Inserimento Drone (POST)
     @Test
     public void testInsertDrone() throws Exception {
         String droneJson = "{\"codiceSeriale\":\"DRN-99\",\"modello\":\"Predator\",\"livelloBatteria\":100}";
@@ -31,7 +32,7 @@ public class DroneControllerTest {
                 .andExpect(status().isOk());
     }
 
-    // 2. Ricerca per modello corretta
+    // 2. Test Ricerca per Modello (GET con parametro)
     @Test
     public void testFindByModelloOk() throws Exception {
         this.mockMvc.perform(get("/Drone/findByModello")
@@ -39,7 +40,7 @@ public class DroneControllerTest {
                 .andExpect(status().isOk());
     }
 
-    // 3. Ricerca per iniziale corretta
+    // 3. Test Ricerca per Iniziale (GET con parametro 'find')
     @Test
     public void testTrovaTramiteInizialeOk() throws Exception {
         this.mockMvc.perform(get("/Drone/trovaTramiteIniziale")
@@ -47,39 +48,39 @@ public class DroneControllerTest {
                 .andExpect(status().isOk());
     }
 
-    // 4. Errore: manca il parametro 'modello' (Aspettiamo 400)
+    // 4. Test Errore: Parametro 'modello' mancante (400 Bad Request)
     @Test
     public void testMissingParameterModello() throws Exception {
         this.mockMvc.perform(get("/Drone/findByModello"))
                 .andExpect(status().isBadRequest());
     }
 
-    // 5. Errore: manca il parametro 'find' (Aspettiamo 400)
+    // 5. Test Errore: Parametro 'find' mancante (400 Bad Request)
     @Test
     public void testTrovaInizialeMissingParam() throws Exception {
         this.mockMvc.perform(get("/Drone/trovaTramiteIniziale"))
                 .andExpect(status().isBadRequest());
     }
 
-    // 6. Errore: tipo dato errato per Character (Aspettiamo 400)
+    // 6. Test Errore: Tipo dato errato (String invece di Character)
     @Test
     public void testTrovaInizialeWrongType() throws Exception {
         this.mockMvc.perform(get("/Drone/trovaTramiteIniziale")
-                        .param("find", "TroppoLunga"))
+                        .param("find", "StringaTroppoLunga"))
                 .andExpect(status().isBadRequest());
     }
 
-    // 7. Errore: JSON dell'insert rotto (Aspettiamo 400)
+    // 7. Test Errore: JSON malformato nella insert
     @Test
     public void testInsertDroneInvalidJson() throws Exception {
-        String badJson = "{\"codiceSeriale\":\"DRN-99\"";
+        String badJson = "{\"codiceSeriale\":\"DRN-99\""; // Manca la chiusura
         this.mockMvc.perform(post("/Drone/insert")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(badJson))
                 .andExpect(status().isBadRequest());
     }
 
-    // 8. Ricerca per modello con stringa vuota (L'URL esiste, quindi deve dare 200 o 400 a seconda del service)
+    // 8. Test Ricerca con stringa vuota (L'endpoint risponde 200)
     @Test
     public void testFindByModelloEmpty() throws Exception {
         this.mockMvc.perform(get("/Drone/findByModello")
@@ -87,7 +88,7 @@ public class DroneControllerTest {
                 .andExpect(status().isOk());
     }
 
-    // 9. Test metodo POST con Body vuoto (Aspettiamo 400)
+    // 9. Test Errore: Body della POST completamente vuoto
     @Test
     public void testInsertEmptyBody() throws Exception {
         this.mockMvc.perform(post("/Drone/insert")
@@ -96,7 +97,7 @@ public class DroneControllerTest {
                 .andExpect(status().isBadRequest());
     }
 
-    // 10. Test su un URL che non esiste per confermare il 404 (Test di sicurezza)
+    // 10. Test di sicurezza: URL inesistente (404 Not Found)
     @Test
     public void testRouteInesistente() throws Exception {
         this.mockMvc.perform(get("/Drone/metodoCheNonEsiste"))
