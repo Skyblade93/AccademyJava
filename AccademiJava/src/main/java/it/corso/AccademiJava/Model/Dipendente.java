@@ -33,11 +33,20 @@ public class Dipendente {
     @Column(length=15,nullable=false)
     private Integer numeroTelefono; //posso mettere String se si vuole mettere ad esempio + 39
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "nomeAzienda")
     private Azienda nomeAzienda; // Nome dell'azienda dove lavora il dipendente
 
     @OneToOne
     @JoinColumn(name = "user_id", nullable = false)
     private User user;  // Utenza collegata al dipendente
+
+    @OneToOne
+    @JoinColumn(name = "contact")
+    private Contact contact; // Informazioni di contatto del dipendente
+
+    @OneToOne
+    @JoinColumn(name = "drone")
+    private Drone drone; // Un dipendente ha un UNICO drone
+
 }

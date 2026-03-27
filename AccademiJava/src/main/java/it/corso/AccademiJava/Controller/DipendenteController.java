@@ -9,7 +9,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("Dipendente")
-@CrossOrigin(origins="http://localhost:8081")
+@CrossOrigin(origins="http://localhost:4200")
 public class DipendenteController extends AbstractController<DipendenteDto> {
 
     @Autowired

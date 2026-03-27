@@ -7,15 +7,20 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
-@Table(name = "elettricista", schema = "Accademi")
+@Table(name = "elettricista", schema = "accademi")
 public class Elettricista {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    private String nome; // Nome dell'elettricista
-    private String cognome; // Cognome dell'elettricista
-    private String specializzazione; // es.Impianti industriali
-    private Boolean disponibile; // True se l'elettricista e disponibile
+    private String nome;
+    private String cognome;
+    private String specializzazione;
+    private Boolean disponibile;
+
+    // Collegamento ManyToOne con Drone
+    @ManyToOne
+    @JoinColumn(name = "drone_id")
+    private Drone drone;
 }

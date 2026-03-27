@@ -27,16 +27,17 @@ public class Ordine {
     private String indirizzo_spedizione;
 
     @ManyToOne
-    @JoinColumn(name = "utente_id")
+    @JoinColumn(name = "utente_id", nullable = false)
     private User utente;
 
-    @ManyToMany
-    @JoinTable(
-            name = "ordini_product",
-            joinColumns = @JoinColumn(name = "ordine_id"),
-            inverseJoinColumns = @JoinColumn(name = "product_id")
-    )
-    private List<Product> products;
+    @OneToMany(mappedBy = "ordine")
+    private List<OrdineProduct> products;
 
+    @OneToOne
+    @JoinColumn(name = "parcel_id", referencedColumnName = "id")
+    private Parcel parcel;
 
+    @OneToOne
+    @JoinColumn(name = "pagamento_id", referencedColumnName = "id")
+    private Pagamento pagamento;
 }
