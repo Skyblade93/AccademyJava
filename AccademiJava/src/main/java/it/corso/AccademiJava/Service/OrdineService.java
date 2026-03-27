@@ -26,15 +26,15 @@ public class OrdineService extends AbstractService<Ordine, OrdineDto> {
         this.ordineMapper = ordineMapper;
         this.ordineRepository = ordineRepository;
     }
-/*
+
     public OrdineDto findById(int id){
             return ordineMapper.toDTO(ordineRepository.findById(id));
     }
 
-    public List<OrdineDto> findByCosto_totale(float costo){
-            return ordineMapper.toDTOList(ordineRepository.findByCosto_totale(costo));
+    public List<OrdineDto> trovaConCostoUguale(float costo_totale){
+            return ordineMapper.toDTOList(ordineRepository.trovaConCostoUguale(costo_totale));
     }
-*/
+
     public List<OrdineDto> trovaConNumeroProdottiMaggiore(Integer numero_prodotti){
         return ordineMapper.toDTOList(ordineRepository.trovaConNumeroProdottiMaggiore(numero_prodotti));
     }

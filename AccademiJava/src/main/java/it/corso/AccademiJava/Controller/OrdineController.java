@@ -18,6 +18,16 @@ public class OrdineController extends AbstractController<OrdineDto>{
     @Autowired
     private OrdineService service;
 
+    @GetMapping("/findById")
+    public OrdineDto findById(@RequestParam("id") int id){
+        return service.findById(id);
+    }
+
+    @GetMapping("/trovaConCostoUguale")
+    public List<OrdineDto> trovaConCostoUguale(@RequestParam("costo") float costo_totale){
+        return service.trovaConCostoUguale(costo_totale);
+    }
+
     @GetMapping("/trovaConNumeroProdottiMaggiore")
     public List<OrdineDto> trovaConNumeroProdottiMaggiore(@RequestParam("num_prodotti") Integer num){
         return service.trovaConNumeroProdottiMaggiore(num);
