@@ -6,8 +6,6 @@ import it.corso.AccademiJava.Mapper.Converter;
 import it.corso.AccademiJava.Mapper.UserMapper;
 import it.corso.AccademiJava.Model.User;
 import it.corso.AccademiJava.Repository.UserRepository;
-import org.slf4j.spi.DefaultLoggingEventBuilder;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Service;
 
@@ -28,7 +26,7 @@ private final UserRepository userRepository;
     }
 
 
-    public UserDto FindByNome(String nome){
+    public UserDto findByNome(String nome){
     UserDto userDto = userMapper.toDTO(userRepository.findByName(nome));
     return userDto;
 }

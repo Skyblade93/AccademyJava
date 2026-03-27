@@ -1,6 +1,7 @@
 package it.corso.AccademiJava.Model;
 
 
+import it.corso.AccademiJava.Controller.UserController;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -13,7 +14,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "User", schema = "Accademi")
+@Table(name = "user", schema = "Accademi")
 
 public class User {
 

@@ -16,9 +16,9 @@ public class UserController extends AbstractController<UserDto> {
     @Autowired
     private UserService service;
 
-    @GetMapping("/FindByNome")
+    @GetMapping("/findByNome")
     public UserDto FindByNome(@RequestParam("nome") String nome) {
-        return service.FindByNome(nome);
+        return service.findByNome(nome);
     }
 
     @PostMapping("/insert")
