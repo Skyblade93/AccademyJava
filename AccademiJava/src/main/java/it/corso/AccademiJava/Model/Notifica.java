@@ -31,6 +31,14 @@ public class Notifica {
     private Boolean letta;
 
     @ManyToOne
+    @JoinColumn(name = "drone_id")
+    private Drone drone;
+
+    @ManyToOne
+    @JoinColumn(name = "user")
+    private User user;
+
+    @ManyToOne
     @JoinColumn(name = "parcel_id")
     private Parcel parcel;
 }
