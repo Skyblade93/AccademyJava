@@ -35,6 +35,11 @@ public class Notifica {
     private Drone drone;
 
     @ManyToOne
-    @JoinColumn(name = "user_id")
+    @JoinColumn(name = "user")
     private User user;
+
+    @ManyToOne
+    @JoinColumn(name = "parcel_id")
+    private Parcel parcel;
 }
+
