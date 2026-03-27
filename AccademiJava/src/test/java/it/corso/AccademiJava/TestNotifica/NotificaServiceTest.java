@@ -66,6 +66,123 @@ public class NotificaServiceTest {
 		assertEquals("A", result.getFirst().getTitolo());
 	}
 
+	@Test
+	void findByPriorita_restituisceListaDto() {
+		List<Notifica> entities = List.of(buildEntity("B", "n"));
+		TestRepositoryHandler handler = new TestRepositoryHandler();
+		handler.byPriorita = entities;
+		NotificaService service = buildService(handler);
+
+		List<NotificaDto> result = service.FindByPriorita(PrioritaNotifica.ALTA);
+
+		assertEquals(1, result.size());
+		assertEquals("B", result.getFirst().getTitolo());
+	}
+
+	@Test
+	void findByLetta_restituisceListaDto() {
+		List<Notifica> entities = List.of(buildEntity("C", "o"));
+		TestRepositoryHandler handler = new TestRepositoryHandler();
+		handler.byLetta = entities;
+		NotificaService service = buildService(handler);
+
+		List<NotificaDto> result = service.FindByLetta(Boolean.TRUE);
+
+		assertEquals(1, result.size());
+		assertEquals("C", result.getFirst().getTitolo());
+	}
+
+	@Test
+	void findByTitoloAndTipo_restituisceListaDto() {
+		List<Notifica> entities = List.of(buildEntity("Sistema", "update"));
+		TestRepositoryHandler handler = new TestRepositoryHandler();
+		handler.byTitoloAndTipo = entities;
+		NotificaService service = buildService(handler);
+
+		List<NotificaDto> result = service.FindByTitoloAndTipo("Sistema", TipoNotifica.MANUTENZIONE);
+
+		assertEquals(1, result.size());
+		assertEquals("Sistema", result.getFirst().getTitolo());
+	}
+
+	@Test
+	void findByDataCreazioneAfter_restituisceListaDto() {
+		List<Notifica> entities = List.of(buildEntity("D", "p"));
+		TestRepositoryHandler handler = new TestRepositoryHandler();
+		handler.byDataCreazioneAfter = entities;
+		NotificaService service = buildService(handler);
+
+		List<NotificaDto> result = service.FindByDataCreazioneAfter(LocalDateTime.of(2026, 3, 1, 10, 0));
+
+		assertEquals(1, result.size());
+		assertEquals("D", result.getFirst().getTitolo());
+	}
+
+	@Test
+	void findByMessaggioContaining_restituisceListaDto() {
+		List<Notifica> entities = List.of(buildEntity("E", "errore"));
+		TestRepositoryHandler handler = new TestRepositoryHandler();
+		handler.byMessaggioContaining = entities;
+		NotificaService service = buildService(handler);
+
+		List<NotificaDto> result = service.FindByMessaggioContaining("err");
+
+		assertEquals(1, result.size());
+		assertEquals("E", result.getFirst().getTitolo());
+	}
+
+	@Test
+	void findByLettaNative_restituisceListaDto() {
+		List<Notifica> entities = List.of(buildEntity("F", "ok"));
+		TestRepositoryHandler handler = new TestRepositoryHandler();
+		handler.byLettaNative = entities;
+		NotificaService service = buildService(handler);
+
+		List<NotificaDto> result = service.FindByLettaNative(Boolean.FALSE);
+
+		assertEquals(1, result.size());
+		assertEquals("F", result.getFirst().getTitolo());
+	}
+
+	@Test
+	void findByDataCreazioneAfterNative_restituisceListaDto() {
+		List<Notifica> entities = List.of(buildEntity("G", "native"));
+		TestRepositoryHandler handler = new TestRepositoryHandler();
+		handler.byDataCreazioneAfterNative = entities;
+		NotificaService service = buildService(handler);
+
+		List<NotificaDto> result = service.FindByDataCreazioneAfterNative(LocalDateTime.of(2026, 3, 20, 9, 15));
+
+		assertEquals(1, result.size());
+		assertEquals("G", result.getFirst().getTitolo());
+	}
+
+	@Test
+	void findByTitoloContaining_restituisceListaDto() {
+		List<Notifica> entities = List.of(buildEntity("Titolo esteso", "txt"));
+		TestRepositoryHandler handler = new TestRepositoryHandler();
+		handler.byTitoloContaining = entities;
+		NotificaService service = buildService(handler);
+
+		List<NotificaDto> result = service.FindByTitoloContaining("Titolo");
+
+		assertEquals(1, result.size());
+		assertEquals("Titolo esteso", result.getFirst().getTitolo());
+	}
+
+	@Test
+	void findByTipoAndPriorita_restituisceListaDto() {
+		List<Notifica> entities = List.of(buildEntity("Alert", "critico"));
+		TestRepositoryHandler handler = new TestRepositoryHandler();
+		handler.byTipoAndPriorita = entities;
+		NotificaService service = buildService(handler);
+
+		List<NotificaDto> result = service.FindByTipoAndPriorita(TipoNotifica.AVVERTIMENTO, PrioritaNotifica.CRITICA);
+
+		assertEquals(1, result.size());
+		assertEquals("Alert", result.getFirst().getTitolo());
+	}
+
 	private Notifica buildEntity(String titolo, String messaggio) {
 		Notifica entity = new Notifica();
 		entity.setTitolo(titolo);
@@ -97,12 +214,30 @@ public class NotificaServiceTest {
 	private static class TestRepositoryHandler implements InvocationHandler {
 		private Notifica byTitolo;
 		private List<Notifica> byTipo = List.of();
+		private List<Notifica> byPriorita = List.of();
+		private List<Notifica> byLetta = List.of();
+		private List<Notifica> byTitoloAndTipo = List.of();
+		private List<Notifica> byDataCreazioneAfter = List.of();
+		private List<Notifica> byMessaggioContaining = List.of();
+		private List<Notifica> byLettaNative = List.of();
+		private List<Notifica> byDataCreazioneAfterNative = List.of();
+		private List<Notifica> byTitoloContaining = List.of();
+		private List<Notifica> byTipoAndPriorita = List.of();
 
 		@Override
 		public Object invoke(Object proxy, java.lang.reflect.Method method, Object[] args) {
 			return switch (method.getName()) {
 				case "findByTitolo" -> byTitolo;
 				case "findByTipo" -> byTipo;
+				case "findByPriorita" -> byPriorita;
+				case "findByLetta" -> byLetta;
+				case "findByTitoloAndTipo" -> byTitoloAndTipo;
+				case "findByDataCreazioneAfter" -> byDataCreazioneAfter;
+				case "findByMessaggioContaining" -> byMessaggioContaining;
+				case "findByLettaNative" -> byLettaNative;
+				case "findByDataCreazioneAfterNative" -> byDataCreazioneAfterNative;
+				case "findByTitoloContaining" -> byTitoloContaining;
+				case "findByTipoAndPriorita" -> byTipoAndPriorita;
 				case "toString" -> "TestRepositoryProxy";
 				case "hashCode" -> System.identityHashCode(proxy);
 				case "equals" -> proxy == args[0];
