@@ -82,4 +82,73 @@ public class CarrelloControllerTest {
         assertThat(result).isEmpty();
         verify(service).cercaPerQuantita(100);
     }
+
+    @Test
+    void testCercaPrezzoTotale() {
+        double prezzo = 100.0;
+        List<CarrelloDto> mockLista = List.of(new CarrelloDto());
+        when(service.cercaPrezzoTotale(prezzo)).thenReturn(mockLista);
+
+        List<CarrelloDto> result = carrelloController.cercaPrezzoTotale(prezzo);
+
+        assertThat(result).hasSize(1);
+        verify(service).cercaPrezzoTotale(prezzo);
+    }
+
+    @Test
+    void testFindByIdAndPrezzoTotale() {
+        int id = 1;
+        double prezzo = 50.0;
+        CarrelloDto mockDto = new CarrelloDto();
+        when(service.findByIdAndPrezzoTotale(id, prezzo)).thenReturn(mockDto);
+
+        CarrelloDto result = carrelloController.cercaPerIdAndPrezzoTotale(id, prezzo);
+
+        assertThat(result).isNotNull();
+        verify(service).findByIdAndPrezzoTotale(id, prezzo);
+    }
+
+    @Test
+    void testFindByIdAndQuantita() {
+        int id = 2;
+        int quantita = 10;
+        CarrelloDto mockDto = new CarrelloDto();
+        when(service.findByIdAndQuantita(id, quantita)).thenReturn(mockDto);
+
+        CarrelloDto result = carrelloController.cercaPerIdAndQuantita(id, quantita);
+
+        assertThat(result).isNotNull();
+        verify(service).findByIdAndQuantita(id, quantita);
+    }
+
+    @Test
+    void testFindByQuantitaAndPrezzoTotale() {
+        int q = 5;
+        double p = 20.0;
+        List<CarrelloDto> mockLista = List.of(new CarrelloDto(), new CarrelloDto());
+        when(service.findByQuantitaAndPrezzoTotale(q, p)).thenReturn(mockLista);
+
+        List<CarrelloDto> result = carrelloController.cercaPerQuantitaAndPrezzoTotale(p, q);
+
+        assertThat(result).hasSize(2);
+        verify(service).findByQuantitaAndPrezzoTotale(q, p);
+    }
+
+    @Test
+    void testTrovaPrezzoMaggioreDi10() {
+        // GIVEN
+        double prezzoInput = 15.0;
+        List<Boolean> mockBooleans = List.of(true, false, true);
+        when(service.trovaPrezzoMaggioreDi10(prezzoInput)).thenReturn(mockBooleans);
+
+        // WHEN
+        List<Boolean> result = carrelloController.trovaPrezzoMaggioreDi10(prezzoInput);
+
+        // THEN
+        assertThat(result)
+                .hasSize(3)
+                .containsExactly(true, false, true);
+
+        verify(service).trovaPrezzoMaggioreDi10(prezzoInput);
+    }
 }
