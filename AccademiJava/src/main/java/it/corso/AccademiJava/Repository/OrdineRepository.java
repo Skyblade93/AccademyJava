@@ -12,8 +12,10 @@ import java.util.Optional;
 @Repository
 public interface OrdineRepository  extends JpaRepository<Ordine, Integer> {
 
- //   Ordine findById(int id);
- //   List<Ordine> findByCosto_totale(float costo);
+    Ordine findById(int id);
+
+    @Query("select t from Ordine t where t.costo_totale = ?1")
+    List<Ordine> trovaConCostoUguale(float costo);
 
     @Query("select t from Ordine t where t.numero_prodotti > ?1")
     List<Ordine> trovaConNumeroProdottiMaggiore(Integer numero);

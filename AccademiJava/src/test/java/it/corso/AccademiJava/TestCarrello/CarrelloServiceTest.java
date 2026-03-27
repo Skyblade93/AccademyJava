@@ -1,0 +1,93 @@
+package it.corso.AccademiJava.TestCarrello;
+
+import static org.mockito.Mockito.*;
+import static org.assertj.core.api.Assertions.*;
+
+import it.corso.AccademiJava.DTO.CarrelloDto;
+import it.corso.AccademiJava.Mapper.CarrelloMapper;
+import it.corso.AccademiJava.Model.Carrello;
+import it.corso.AccademiJava.Repository.CarrelloRepository;
+import it.corso.AccademiJava.Service.CarrelloService;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.junit.jupiter.MockitoExtension;
+
+import java.util.Arrays;
+import java.util.List;
+
+@ExtendWith(MockitoExtension.class) // Abilita l'automatismo di Mockito
+public class CarrelloServiceTest {
+
+    @Mock
+    private CarrelloRepository carrelloRepository; // crea il "finto" repo
+
+    @Mock
+    private CarrelloMapper carrelloMapper; // crea il "finto" mapper
+
+    @InjectMocks
+    private CarrelloService carrelloService; // crea il service e ci inietta i mock sopra
+
+    @Test
+    void testFindById() {
+        // GIVEN
+        int id = 1;
+        Carrello entity = new Carrello();
+        CarrelloDto dto = new CarrelloDto();
+
+        when(carrelloRepository.findById(id)).thenReturn(entity);
+        when(carrelloMapper.toDTO(entity)).thenReturn(dto);
+
+        // WHEN
+        CarrelloDto result = carrelloService.findById(id);
+
+        // THEN
+        assertThat(result).isEqualTo(dto);
+    }
+
+    @Test
+    void testCercaPerQuantita() {
+        // 1. GIVEN
+        int quantitaRicercata = 5;
+
+        // creiamo una lista finta di Entity
+        Carrello c1 = new Carrello();
+        Carrello c2 = new Carrello();
+        List<Carrello> entities = Arrays.asList(c1, c2);
+
+        // creiamo una lista finta di DTO
+        CarrelloDto d1 = new CarrelloDto();
+        CarrelloDto d2 = new CarrelloDto();
+        List<CarrelloDto> dtosEsperati = Arrays.asList(d1, d2);
+
+        // definiamo i comportamenti dei mock
+        when(carrelloRepository.cercaPerQuantita(quantitaRicercata)).thenReturn(entities);
+        when(carrelloMapper.toDTOList(entities)).thenReturn(dtosEsperati);
+
+        // 2. WHEN
+        List<CarrelloDto> result = carrelloService.cercaPerQuantita(quantitaRicercata);
+
+        // 3. THEN (verifiche specifiche per le liste)
+        assertThat(result)
+                .isNotNull()
+                .hasSize(2) // verifica che ci siano 2 elementi
+                .containsExactly(d1, d2) // verifica l'ordine e il contenuto
+                .isEqualTo(dtosEsperati);
+
+        // verifica che le chiamate siano avvenute correttamente
+        verify(carrelloRepository).cercaPerQuantita(quantitaRicercata);
+        verify(carrelloMapper).toDTOList(entities);
+    }
+
+    @Test
+    void testCercaPerQuantita_Vuota() {
+        int q = 100;
+        when(carrelloRepository.cercaPerQuantita(q)).thenReturn(List.of()); // lista vuota
+        when(carrelloMapper.toDTOList(anyList())).thenReturn(List.of());
+
+        List<CarrelloDto> result = carrelloService.cercaPerQuantita(q);
+
+        assertThat(result).isEmpty(); // verifica che restituisca una lista vuota e non null
+    }
+}
