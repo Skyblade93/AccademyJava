@@ -6,71 +6,68 @@ import it.corso.AccademiJava.Model.Elettricista;
 import it.corso.AccademiJava.Repository.ElettricistaRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
 public class ElettricistaService extends AbstractService<Elettricista, ElettricistaDto> {
 
-
-    private final  ElettricistaRepository elettricistaRepository;
-
-
+    private final ElettricistaRepository elettricistaRepository;
     private final ElettricistaMapper elettricistaMapper;
 
     public ElettricistaService(ElettricistaRepository elettricistaRepository,
                                ElettricistaMapper elettricistaMapper) {
-
         super(elettricistaRepository, elettricistaMapper);
         this.elettricistaRepository = elettricistaRepository;
         this.elettricistaMapper = elettricistaMapper;
     }
 
-    // 1 JPA AUT
+
+    // 1 JPA AUTO X NOME
     public ElettricistaDto findByNome(String nome) {
         return elettricistaMapper.toDTO(elettricistaRepository.findByNome(nome));
     }
-
-    // 2 JPA AUT
+    // 2 JAP AUTO X ELETTR. DISP.
     public List<ElettricistaDto> findDisponibili() {
         return elettricistaMapper.toDTOList(elettricistaRepository.findByDisponibileTrue());
     }
-
-    // 3 JPA AUT
+    // 3 JPA AUTO X COGNOME
     public List<ElettricistaDto> findByCognome(String cognome) {
         return elettricistaMapper.toDTOList(elettricistaRepository.findByCognome(cognome));
     }
-
-    // 4 JPA AUT
+    // 4 JPA AUTO X SPECIALIZZ.
     public List<ElettricistaDto> findBySpecializzazione(String specializzazione) {
         return elettricistaMapper.toDTOList(elettricistaRepository.findBySpecializzazione(specializzazione));
     }
-
-    // 5 JPQL
+    // 5 JPQL CERCA X NOME
     public ElettricistaDto cercaPerNomeJPQL(String nome) {
         return elettricistaMapper.toDTO(elettricistaRepository.cercaPerNomeJPQL(nome));
     }
-
-    // 6 JPQL
+    // 6 JPQL LIST.DISP.
     public List<ElettricistaDto> elettricistiDisponibiliJPQL() {
         return elettricistaMapper.toDTOList(elettricistaRepository.elettricistiDisponibiliJPQL());
     }
 
-    // 7 NAT
+    // 7 NATIVA X NOME
     public ElettricistaDto findByNomeNative(String nome) {
-        return elettricistaMapper.toDTO(elettricistaRepository.findByNomeNative(nome));
+        Elettricista e = elettricistaRepository.findByNomeNative(nome);
+        if (e == null) return null;          // <-- controllo aggiunto
+        return elettricistaMapper.toDTO(e);
     }
 
-    // 8 NAT
+    // 8 NATIVA DISP.
     public List<ElettricistaDto> findDisponibiliNative() {
-        return elettricistaMapper.toDTOList(elettricistaRepository.findDisponibiliNative());
+        List<Elettricista> list = elettricistaRepository.findDisponibiliNative();
+        if (list == null || list.isEmpty()) return new ArrayList<>(); // <-- controllo aggiunto
+        return elettricistaMapper.toDTOList(list);
     }
-
-    // 9JPA AUT
+    // 9 COGNOME + NO DISP.
     public List<ElettricistaDto> findByCognomeAndDisponibileTrue(String cognome) {
         return elettricistaMapper.toDTOList(elettricistaRepository.findByCognomeAndDisponibileTrue(cognome));
     }
-
-    // 10JPA AUT
+    // 10 SPECIALIZZ. + NO DISP.
     public List<ElettricistaDto> findBySpecializzazioneAndDisponibileFalse(String specializzazione) {
         return elettricistaMapper.toDTOList(elettricistaRepository.findBySpecializzazioneAndDisponibileFalse(specializzazione));
-    }}
+    }
+
+}

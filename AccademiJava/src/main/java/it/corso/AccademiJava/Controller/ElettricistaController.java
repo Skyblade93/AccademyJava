@@ -3,6 +3,7 @@ package it.corso.AccademiJava.Controller;
 import it.corso.AccademiJava.DTO.ElettricistaDto;
 import it.corso.AccademiJava.Service.ElettricistaService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -16,8 +17,10 @@ public class ElettricistaController {
 
     // 1 Cerca elettricista per nome
     @GetMapping("/nome/{nome}")
-    public ElettricistaDto findByNome(@PathVariable String nome) {
-        return elettricistaService.findByNome(nome);
+    public ResponseEntity<ElettricistaDto> findByNome(@PathVariable String nome) {
+        ElettricistaDto dto = elettricistaService.findByNome(nome);
+        if (dto == null) return ResponseEntity.notFound().build();
+        return ResponseEntity.ok(dto);
     }
 
     // 2 prende tutti gli elettricisti disponibili
@@ -40,8 +43,10 @@ public class ElettricistaController {
 
     // 5 JPQL es.
     @GetMapping("/jpql/{nome}")
-    public ElettricistaDto cercaPerNomeJPQL(@PathVariable String nome) {
-        return elettricistaService.cercaPerNomeJPQL(nome);
+    public ResponseEntity<ElettricistaDto> cercaPerNomeJPQL(@PathVariable String nome) {
+        ElettricistaDto dto = elettricistaService.cercaPerNomeJPQL(nome);
+        if (dto == null) return ResponseEntity.notFound().build();
+        return ResponseEntity.ok(dto);
     }
 
     // 6 Lista disponibili con JPQL
@@ -50,13 +55,15 @@ public class ElettricistaController {
         return elettricistaService.elettricistiDisponibiliJPQL();
     }
 
-    // 7Native query
+    // 7 Native query
     @GetMapping("/native/{nome}")
-    public ElettricistaDto findByNomeNative(@PathVariable String nome) {
-        return elettricistaService.findByNomeNative(nome);
+    public ResponseEntity<ElettricistaDto> findByNomeNative(@PathVariable String nome) {
+        ElettricistaDto dto = elettricistaService.findByNomeNative(nome);
+        if (dto == null) return ResponseEntity.notFound().build();
+        return ResponseEntity.ok(dto);
     }
 
-    // 8 Native disponibili
+    // 8 Native disponibili (senza path variable!)
     @GetMapping("/native/disponibili")
     public List<ElettricistaDto> findDisponibiliNative() {
         return elettricistaService.findDisponibiliNative();

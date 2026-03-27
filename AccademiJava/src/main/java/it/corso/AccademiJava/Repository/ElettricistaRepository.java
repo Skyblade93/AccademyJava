@@ -31,11 +31,11 @@ public interface ElettricistaRepository extends JpaRepository<Elettricista, Inte
     List<Elettricista> elettricistiDisponibiliJPQL();
 
     // 7 NAT
-    @Query(value = "SELECT * FROM elettricista WHERE nome = ?1", nativeQuery = true)
+    @Query(value = "SELECT * FROM accademi.elettricista WHERE nome = ?1", nativeQuery = true)
     Elettricista findByNomeNative(String nome);
 
     // 8 NAT
-    @Query(value = "SELECT * FROM elettricista WHERE disponibile = true", nativeQuery = true)
+    @Query(value = "SELECT * FROM accademi.elettricista WHERE disponibile = true", nativeQuery = true)
     List<Elettricista> findDisponibiliNative();
 
     // 9 JPA AUT
