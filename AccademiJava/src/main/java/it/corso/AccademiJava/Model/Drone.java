@@ -24,4 +24,8 @@ public class Drone {
     private String stato; // Es: "IN_VOLO", "CARICA", "MANUTENZIONE"
     private Boolean sensoreOstacoli;
 
+    // --- COLLEGAMENTO 1 A 1 CON IL DIPENDENTE ---
+    @OneToOne
+    @JoinColumn(name = "id_dipendente", referencedColumnName = "id")
+    private Dipendente responsabile; // Qui usiamo il modello Dipendente
 }
