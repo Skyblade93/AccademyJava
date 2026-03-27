@@ -1,4 +1,4 @@
-package it.corso.AccademiJava.TestController;
+package it.corso.AccademiJava.CarrelloTest;
 
 import static org.mockito.Mockito.*;
 import static org.assertj.core.api.Assertions.*;

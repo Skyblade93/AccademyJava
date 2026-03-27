@@ -50,4 +50,5 @@ public class CarrelloController extends AbstractController<CarrelloDto> {
     public List<Boolean> trovaPrezzoMaggioreDi10(@RequestParam("prezzoTotale") double prezzoTotale) {
         return service.trovaPrezzoMaggioreDi10(prezzoTotale);
     }
+
 }
