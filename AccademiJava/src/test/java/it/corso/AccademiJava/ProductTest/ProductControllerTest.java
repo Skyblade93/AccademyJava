@@ -14,7 +14,6 @@ import java.util.List;
 
 import static org.mockito.Mockito.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
-
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 @WebMvcTest(ProductController.class)
@@ -29,7 +28,7 @@ class ProductControllerTest {
     @Autowired
     private ObjectMapper objectMapper;
 
-    //  TEST: findByName
+    // ---------------- TEST: findByName ----------------
     @Test
     void shouldFindProductByName() throws Exception {
         ProductDto dto = new ProductDto();
@@ -43,7 +42,7 @@ class ProductControllerTest {
                 .andExpect(jsonPath("$.name").value("Laptop"));
     }
 
-    // TEST: insert
+    // ---------------- TEST: insert ----------------
     @Test
     void shouldInsertProduct() throws Exception {
         ProductDto dto = new ProductDto();
@@ -57,12 +56,14 @@ class ProductControllerTest {
                         .contentType("application/json")
                         .content(objectMapper.writeValueAsString(dto)))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$.name").value("Mouse"));
+                .andExpect(jsonPath("$.name").value("Mouse"))
+                .andExpect(jsonPath("$.price").value(25.0))
+                .andExpect(jsonPath("$.quantity").value(10));
 
         verify(service).insert(any());
     }
 
-    // TEST: findByPriceGreaterThan
+    // ---------------- TEST: findByPriceGreaterThan ----------------
     @Test
     void shouldFindProductsByPriceGreaterThan() throws Exception {
         ProductDto dto = new ProductDto();
@@ -74,10 +75,11 @@ class ProductControllerTest {
         mockMvc.perform(get("/Product/findByPriceGreaterThan")
                         .param("price", "500"))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$[0].name").value("Smartphone"));
+                .andExpect(jsonPath("$[0].name").value("Smartphone"))
+                .andExpect(jsonPath("$[0].price").value(800.0));
     }
 
-    // TEST: findByQuantityLessThan
+    // ---------------- TEST: findByQuantityLessThan ----------------
     @Test
     void shouldFindProductsByQuantityLessThan() throws Exception {
         ProductDto dto = new ProductDto();
@@ -89,6 +91,7 @@ class ProductControllerTest {
         mockMvc.perform(get("/Product/findByQuantityLessThan")
                         .param("quantity", "5"))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$[0].name").value("Keyboard"));
+                .andExpect(jsonPath("$[0].name").value("Keyboard"))
+                .andExpect(jsonPath("$[0].quantity").value(2));
     }
 }
