@@ -15,9 +15,12 @@ import java.util.List;
 public class PagamentoController extends AbstractController<PagamentoDto> {
     @Autowired
     private PagamentoService pagamentoService; //inietto il mio servizio;
+    /*
     @GetMapping("/findByDataDiPagamento")
     public List<PagamentoDto> findByDataDiPagamento(@RequestParam("nome") LocalDateTime data){
         return pagamentoService.findByDataDiPagamento(data);
 
     }
+
+     */
 }

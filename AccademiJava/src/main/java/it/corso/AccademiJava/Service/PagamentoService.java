@@ -24,7 +24,9 @@ public class PagamentoService extends AbstractService<Pagamento, PagamentoDto> {
         this.pagamentoMapper = pagamentoMapper;
         this.pagamentoRepository = pagamentoRepository;
     }
+    /*
     public List<PagamentoDto> findByDataDiPagamento(LocalDateTime dataDiPagamento){
         return pagamentoMapper.toDTOList(pagamentoRepository.findByDataDiPagamento(dataDiPagamento));
     }
+     */
 }
