@@ -28,10 +28,8 @@ public class Product {
 
     private String category;
 
-    /*da cambiare in onetomany con un altro modello di transizione
-    @ManyToMany(mappedBy = "products")
-    private List<Ordine> ordini;
-    */
+    @OneToMany(mappedBy = "product")
+    private List<OrdineProduct> ordini;
 
     @OneToMany(mappedBy = "product")
     private List<UserProduct> userProducts;
