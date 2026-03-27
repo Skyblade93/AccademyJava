@@ -63,7 +63,7 @@ public class ElettricistaController {
         return ResponseEntity.ok(dto);
     }
 
-    // 8 Native disponibili (senza path variable!)
+    // 8 Native disponibili (senza pathvariable)
     @GetMapping("/native/disponibili")
     public List<ElettricistaDto> findDisponibiliNative() {
         return elettricistaService.findDisponibiliNative();
