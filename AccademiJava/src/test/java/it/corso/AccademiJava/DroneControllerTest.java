@@ -9,9 +9,9 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 
-// Import statici necessari per mockMvc e gli status
+// IMPORT STATICI AGGRESSIVI PER RISOLVERE IL ROSSO
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 @WebMvcTest(DroneController.class)
 public class DroneControllerTest {
@@ -73,7 +73,7 @@ public class DroneControllerTest {
     // 7. Test Errore: JSON malformato nella insert
     @Test
     public void testInsertDroneInvalidJson() throws Exception {
-        String badJson = "{\"codiceSeriale\":\"DRN-99\""; // Manca la chiusura
+        String badJson = "{\"codiceSeriale\":\"DRN-99\"";
         this.mockMvc.perform(post("/Drone/insert")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(badJson))
