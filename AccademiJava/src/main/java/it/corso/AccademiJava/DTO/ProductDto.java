@@ -10,7 +10,6 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 public class ProductDto {
-
     private Integer id; //codice prodotto
     private String name; //nome prodotto
     private Double price; //prezzo mostrato
