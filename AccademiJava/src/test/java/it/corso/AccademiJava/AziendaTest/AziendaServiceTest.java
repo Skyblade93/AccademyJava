@@ -194,8 +194,8 @@ public class AziendaServiceTest {
         List<AziendaDto> result = aziendaService.cercaPerDescrizione("descrizione");
 
         assertNotNull(result);
-        assertEquals("Descrizione 1", result.get(0).getDescrizioneAzienda());
-        assertEquals("Descrizione 2", result.get(1).getDescrizioneAzienda());
+        assertEquals("descrizione 1", result.get(0).getDescrizioneAzienda());
+        assertEquals("descrizione 2", result.get(1).getDescrizioneAzienda());
     }
 
     @Test
@@ -219,8 +219,8 @@ public class AziendaServiceTest {
         List<AziendaDto> result = aziendaService.trovaPerDescrizioneNative("descrizione");
 
         assertNotNull(result);
-        assertEquals("Descrizione 1", result.get(0).getDescrizioneAzienda());
-        assertEquals("Descrizione 2", result.get(1).getDescrizioneAzienda());
+        assertEquals("descrizione 1", result.get(0).getDescrizioneAzienda());
+        assertEquals("descrizione 2", result.get(1).getDescrizioneAzienda());
     }
 }
 
