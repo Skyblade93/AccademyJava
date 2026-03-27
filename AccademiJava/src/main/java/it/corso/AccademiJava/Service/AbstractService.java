@@ -42,6 +42,4 @@ public abstract class AbstractService<ENTITY,DTO> implements ServiceDTO<DTO> {
         repository.deleteById(id);
     }
 
-    // 3. Aggiunto: Implementazione del findById usando la classe base o il repo
-    public abstract DroneDto findById(Integer id);
 }

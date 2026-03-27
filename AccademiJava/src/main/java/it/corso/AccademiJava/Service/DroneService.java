@@ -41,10 +41,6 @@ public class DroneService extends AbstractService<Drone, DroneDto> {
         return ((DroneMapper) converter).toDtoList(entities);
     }
 
-    // 3. Aggiunto: Implementazione del findById usando la classe base o il repo
-    @Override
-    public DroneDto findById(Integer id) {
-        Optional<Drone> entity = droneRepository.findById(id);
-        return entity.map(drone -> ((DroneMapper) converter).toDTO(drone)).orElse(null);
-    }
+
+
 }

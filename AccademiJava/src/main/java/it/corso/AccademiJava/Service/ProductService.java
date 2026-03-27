@@ -89,8 +89,5 @@ public class ProductService extends AbstractService<Product, ProductDto> {
         );
     }
 
-    @Override
-    public DroneDto findById(Integer id) {
-        return null;
+
     }
-}
