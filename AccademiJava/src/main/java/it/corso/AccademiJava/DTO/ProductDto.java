@@ -15,5 +15,5 @@ public class ProductDto {
     private Double price; //prezzo mostrato
     private Integer quantity; //quantità disponibili
     private String category; //tipo di oggetto
-    private List<OrdineProduct> ordini; //collegamento con OrdineProduct
+
 }
