@@ -6,6 +6,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.List;
+
 @Getter
 @Setter
 @Entity
@@ -48,5 +50,9 @@ public class Dipendente {
     @OneToOne
     @JoinColumn(name = "drone")
     private Drone drone; // Un dipendente ha un UNICO drone
+
+    @OneToMany
+    @JoinColumn(name = "auto")
+    private List<Auto> auto;  // Un dipendente può avere più di un'auto
 
 }

@@ -1,4 +1,4 @@
-package it.corso.AccademiJava.TestNotifica;
+package it.corso.AccademiJava.NotificaTest;
 
 import it.corso.AccademiJava.DTO.NotificaDto;
 import it.corso.AccademiJava.Mapper.NotificaMapper;
