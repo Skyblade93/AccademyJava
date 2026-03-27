@@ -5,6 +5,7 @@ import it.corso.AccademiJava.Model.Product;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Component;
 
+
 @Component
 public class ProductMapper extends AbstractConverter<Product, ProductDto> {
 

@@ -28,6 +28,7 @@ public class ProductController extends AbstractController<ProductDto> {
         return dto;
     }
 
+
     // ------------------ FIND BY PRICE > ------------------
     @GetMapping("/findByPriceGreaterThan")
     public List<ProductDto> findByPriceGreaterThan(@RequestParam("price") Double price) {

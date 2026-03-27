@@ -87,4 +87,5 @@ public class ProductService extends AbstractService<Product, ProductDto> {
                 productRepository.findOutOfStock()
         );
     }
+
 }
