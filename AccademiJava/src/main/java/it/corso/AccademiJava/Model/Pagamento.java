@@ -1,6 +1,7 @@
 package it.corso.AccademiJava.Model;
 
 import jakarta.persistence.*;
+import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -25,5 +26,6 @@ public class Pagamento {
     @OneToOne
     @JoinColumn(name="user_id")
     private User user;
+
 
 }
