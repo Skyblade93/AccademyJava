@@ -21,9 +21,14 @@ public interface PagamentoRepository extends JpaRepository<Pagamento,Integer> {
 
     List<Pagamento> findByUserId(Integer userId);
     List<Pagamento> findByImporto(Double importo);
-
+    List<Pagamento>findByStatoAndMetodo(StatoPagamento stato, MetodoPagamento metodo);
 
     @Query("SELECT p FROM Pagamento p WHERE p.importo > ?1")
     List<Pagamento> findByImportoMaggioreDi(Double importo);
+    @Query("SELECT p FROM Pagamento p WHERE p.dataPagamento BETWEEN :inizio AND :fine")
+    List<Pagamento> findPagamentiInPeriodo(@Param("inizio") LocalDateTime inizio, @Param("fine") LocalDateTime fine);
+    @Query("SELECT p FROM Pagamento p WHERE p.user.id = :userId AND p.stato = :stato")
+    List<Pagamento> findByUserIdAndStato(@Param("userId") Integer userId, @Param("stato") StatoPagamento stato);
+    @Query("SELECT p FROM Pagamento p WHERE p.importo BETWEEN :min AND :max")
+    List<Pagamento> findByImportoBetween(@Param("min") Double min, @Param("max") Double max);
 }
-

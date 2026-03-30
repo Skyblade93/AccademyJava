@@ -47,4 +47,17 @@ public class PagamentoService extends AbstractService<Pagamento, PagamentoDto> {
     public List<PagamentoDto> findByImportoMaggioreDi(Double importo) {
         return pagamentoMapper.toDTOList(pagamentoRepository.findByImportoMaggioreDi(importo));
     }
+    public List<PagamentoDto>findByStatoAndMetodo(StatoPagamento stato, MetodoPagamento metodo){
+        return pagamentoMapper.toDTOList(pagamentoRepository.findByStatoAndMetodo(stato,metodo));
+    }
+    public List<PagamentoDto>findPagamentiInPeriodo(LocalDateTime inizio,LocalDateTime fine){
+        return pagamentoMapper.toDTOList(pagamentoRepository.findPagamentiInPeriodo(inizio,fine));
+
+    }
+    public List<PagamentoDto> findByUserIdAndStato(Integer userId,StatoPagamento stato){
+        return pagamentoMapper.toDTOList(pagamentoRepository.findByUserIdAndStato(userId,stato));
+    }
+    public List<PagamentoDto>findByImportoBetween(Double min,Double max){
+        return pagamentoMapper.toDTOList(pagamentoRepository.findByImportoBetween(min,max));
+    }
 }

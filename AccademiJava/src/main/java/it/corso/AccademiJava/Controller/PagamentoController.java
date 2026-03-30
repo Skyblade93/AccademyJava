@@ -48,6 +48,36 @@ public class PagamentoController extends AbstractController<PagamentoDto> {
     public List<PagamentoDto> findByImportoMaggioreDi(@RequestParam("importo") Double importo) {
         return pagamentoService.findByImportoMaggioreDi(importo);
     }
+    // 1. Ricerca per Stato e Metodo
+    @GetMapping("/findByStatoAndMetodo")
+    public List<PagamentoDto> findByStatoAndMetodo(
+            @RequestParam("stato") StatoPagamento stato,
+            @RequestParam("metodo") MetodoPagamento metodo) {
+        return pagamentoService.findByStatoAndMetodo(stato, metodo);
+    }
 
+    // 2. Ricerca in un periodo di tempo
+    @GetMapping("/findPagamentiInPeriodo")
+    public List<PagamentoDto> findPagamentiInPeriodo(
+            @RequestParam("inizio") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime inizio,
+            @RequestParam("fine") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime fine) {
+        return pagamentoService.findPagamentiInPeriodo(inizio, fine);
+    }
+
+    // 3. Ricerca per Utente e Stato
+    @GetMapping("/findByUserIdAndStato")
+    public List<PagamentoDto> findByUserIdAndStato(
+            @RequestParam("userId") Integer userId,
+            @RequestParam("stato") StatoPagamento stato) {
+        return pagamentoService.findByUserIdAndStato(userId, stato);
+    }
+
+    // 4. Ricerca per Range di Importo (quella extra che abbiamo aggiunto)
+    @GetMapping("/findByImportoBetween")
+    public List<PagamentoDto> findByImportoBetween(
+            @RequestParam("min") Double min,
+            @RequestParam("max") Double max) {
+        return pagamentoService.findByImportoBetween(min, max);
+    }
     }
 

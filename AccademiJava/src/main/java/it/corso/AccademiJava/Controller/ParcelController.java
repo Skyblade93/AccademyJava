@@ -15,10 +15,7 @@ public class ParcelController extends AbstractController<ParcelDto>
     private ParcelService parcelService;
 
     @GetMapping("/FindByWeight")
-    public ParcelDto FindByWeight(@RequestParam("weight")Double weight)
-    {
-     return parcelService.findByWeight(weight);
-    }
+    public ParcelDto FindByWeight(@RequestParam("weight")Double weight) {return parcelService.findByWeight(weight);}
 
     @GetMapping("/FindByHeight")
     public ParcelDto FindByHeight(@RequestParam("height")Integer height)
@@ -26,6 +23,43 @@ public class ParcelController extends AbstractController<ParcelDto>
         return parcelService.findByHeight(height);
     }
 
+    @GetMapping("/findByLength")
+    public ParcelDto FindByLength(@RequestParam("length")Integer length) { return parcelService.findByLength(length); }
+
+    @GetMapping("/findByWitdth")
+    public ParcelDto FindByWidth(@RequestParam("width")Integer width){return parcelService.findByWidth(width);}
+
+    @GetMapping("/weight-greater-than")
+    public ParcelDto findByWeightGreaterThan(@RequestParam Double weight) {
+        return parcelService.findByWeightGreaterThan(weight);
+    }
+
+    @GetMapping("/height-greater-than")
+    public ParcelDto findByHeightGreaterThan(@RequestParam Integer height) {
+        return parcelService.findByHeightGreaterThan(height);
+    }
+
+    @GetMapping("/length-greater-than")
+    public ParcelDto findByLengthGreaterThan(@RequestParam Integer length) {
+        return parcelService.findByLengthGreaterThan(length);
+    }
+
+    @GetMapping("/weight-and-height")
+    public ParcelDto findByWeightAndHeight(@RequestParam Double weight,
+                                           @RequestParam Integer height) {
+        return parcelService.findByWeightAndHeight(weight, height);
+    }
+
+    @GetMapping("/width-and-length")
+    public ParcelDto findByWidthAndLength(@RequestParam Double width,
+                                          @RequestParam Integer length) {
+        return parcelService.findByWidthAndLength(width, length);
+    }
+
+    @GetMapping("/width-greater-than")
+    public ParcelDto findByWidthGreaterThan(@RequestParam Integer width) {
+        return parcelService.findByWidhtGreaterThan(width);
+    }
 
 
 }
