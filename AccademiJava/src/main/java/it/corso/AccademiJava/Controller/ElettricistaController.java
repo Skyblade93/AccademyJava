@@ -80,4 +80,10 @@ public class ElettricistaController {
     public List<ElettricistaDto> findBySpecializzazioneAndDisponibileFalse(@PathVariable String spec) {
         return elettricistaService.findBySpecializzazioneAndDisponibileFalse(spec);
     }
+
+
+    @GetMapping("/urldb")
+    public String getUrlDb();
+
+}
 }
