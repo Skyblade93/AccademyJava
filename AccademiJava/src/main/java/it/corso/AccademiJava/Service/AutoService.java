@@ -10,6 +10,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class AutoService extends AbstractService<Auto, AutoDto>{
 
@@ -56,17 +58,23 @@ public class AutoService extends AbstractService<Auto, AutoDto>{
     public AutoDto findByMarcaEndingWith(String marca) {return autoMapper.toDTO(autoRepository.findByMarcaEndingWith(marca).getFirst()
         );
     }
-    /*
-    public AutoDto findByCarburante(String carburante) { TipoCarburante c = TipoCarburante.valueOf(carburante.toUpperCase());
-        return autoMapper.toDTO(autoRepository.findByCarburante(c).getFirst()
-        );
-    }
 
-    public AutoDto findByMarcaAndCarburante(String marca, String carburante) {
+
+    public List<AutoDto> findByCarburante(String carburante) {
         TipoCarburante c = TipoCarburante.valueOf(carburante.toUpperCase());
-        return autoMapper.toDTO(autoRepository.findByMarcaAndCarburante(marca, c).getFirst()
-        );
+
+        return autoRepository.findByCarburante(c)
+                .stream()
+                .map(autoMapper::toDTO)
+                .toList();
     }
 
-     */
+    public List<AutoDto> findByMarcaAndCarburante(String marca, TipoCarburante carburante) {
+        return autoRepository.findByMarcaAndCarburante(marca, carburante)
+                .stream()
+                .map(autoMapper::toDTO)
+                .toList();
+    }
+
+
 }

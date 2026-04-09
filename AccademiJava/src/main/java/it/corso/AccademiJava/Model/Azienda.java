@@ -7,6 +7,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.List;
+
 @Getter
 @Setter
 @Entity
@@ -26,6 +28,17 @@ public class Azienda {
     private String nomeAzienda; //nome dell'azienda
 
     private String descrizioneAzienda; // descrizione del ruolo che svolge l'azienda
+
+    @OneToMany(mappedBy = "azienda")
+    private List<Auto> auto;
+
+    @ManyToMany
+    @JoinTable(
+            name = "azienda_elettricista",
+            joinColumns = @JoinColumn(name = "azienda_id"),
+            inverseJoinColumns = @JoinColumn(name = "elettricista_id")
+    )
+    private List<Elettricista> elettricisti;
 
 
 }

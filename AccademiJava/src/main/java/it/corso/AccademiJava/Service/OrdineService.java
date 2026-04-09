@@ -26,15 +26,15 @@ public class OrdineService extends AbstractService<Ordine, OrdineDto> {
         this.ordineMapper = ordineMapper;
         this.ordineRepository = ordineRepository;
     }
-/*
+
     public OrdineDto findById(int id){
             return ordineMapper.toDTO(ordineRepository.findById(id));
     }
 
-    public List<OrdineDto> findByCosto_totale(float costo){
-            return ordineMapper.toDTOList(ordineRepository.findByCosto_totale(costo));
+    public List<OrdineDto> trovaConCostoUguale(float costo_totale){
+            return ordineMapper.toDTOList(ordineRepository.trovaConCostoUguale(costo_totale));
     }
-*/
+
     public List<OrdineDto> trovaConNumeroProdottiMaggiore(Integer numero_prodotti){
         return ordineMapper.toDTOList(ordineRepository.trovaConNumeroProdottiMaggiore(numero_prodotti));
     }
@@ -51,15 +51,15 @@ public class OrdineService extends AbstractService<Ordine, OrdineDto> {
         return ordineMapper.toDTOList(ordineRepository.trovaConCostoMinore(costo));
     }
 
-    public List<OrdineDto> trovaPerUtente( User utente){
-        return ordineMapper.toDTOList(ordineRepository.trovaPerUtente(utente));
+    public List<OrdineDto> trovaPerUtente( Integer id){
+        return ordineMapper.toDTOList(ordineRepository.trovaPerUtente(id));
     }
 
     public List<OrdineDto> filtro(Integer numero, float costo){
         return ordineMapper.toDTOList(ordineRepository.filtro(numero, costo));
     }
 
-    public List<OrdineDto> ordinaPerCostoDecrescente(String indirizzo){
+    public List<OrdineDto> ordinaPerCostoDecrescente(){
         return ordineMapper.toDTOList(ordineRepository.ordinaPerCostoDecrescente());
     }
 

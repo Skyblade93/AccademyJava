@@ -6,12 +6,14 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.List;
+
 @Getter
 @Setter
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "dipendente", schema = "Accademi")
+@Table(name = "dipendente", schema = "accademi")
 public class Dipendente {
 
     @Id
@@ -33,11 +35,24 @@ public class Dipendente {
     @Column(length=15,nullable=false)
     private Integer numeroTelefono; //posso mettere String se si vuole mettere ad esempio + 39
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "nomeAzienda")
     private Azienda nomeAzienda; // Nome dell'azienda dove lavora il dipendente
 
     @OneToOne
     @JoinColumn(name = "user_id", nullable = false)
     private User user;  // Utenza collegata al dipendente
+
+    @OneToOne
+    @JoinColumn(name = "contact")
+    private Contact contact; // Informazioni di contatto del dipendente
+
+    @OneToOne
+    @JoinColumn(name = "drone")
+    private Drone drone; // Un dipendente ha un UNICO drone
+
+    @OneToMany
+    @JoinColumn(name = "auto")
+    private List<Auto> auto;  // Un dipendente può avere più di un'auto
+
 }

@@ -6,31 +6,30 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Repository
 public interface CarrelloRepository extends JpaRepository<Carrello,Integer> {
 
+    // 1
     Carrello findById(int id);
 
-    @Query("select t from Carrello t where t.id = ?1")
-    Carrello cercaPerId(int id);
-
-    @Query(value = "SELECT * FROM Carrello t WHERE t.id = ?1",nativeQuery = true)
-    Carrello cercaPerIdNative(int id);
-
-    Carrello findByQuantita(Integer quantita);
-
+    // QUERY JPQL 2
     @Query("select t from Carrello t where t.quantita = ?1")
-    Carrello cercaPerQuantita(int quantita);
+    List<Carrello> cercaPerQuantita(int quantita);
 
-    @Query(value = "SELECT * FROM Carrello t WHERE t.quantita = ?1",nativeQuery = true)
-    Carrello cercaPerQuantitaNative(int quantita);
-
-    Carrello findByPrezzoTotale(double prezzoTotale);
-
-    @Query("select t from Carrello t where t.prezzoTotale = ?1")
-    Carrello cercaPerPrezzoTotale(double prezzoTotale);
-
+    //QUERY NATIVE 3
     @Query(value = "SELECT * FROM Carrello t WHERE t.prezzoTotale = ?1",nativeQuery = true)
-    Carrello cercaPrezzoTotaleNative(double prezzoTotale);
+    List<Carrello> cercaPrezzoTotale(double prezzoTotale);
+
+    // 4
+    Carrello findByIdAndQuantita(int Id, int quantita);
+
+    // 5
+    Carrello findByIdAndPrezzoTotale(int Id, double prezzoTotale);
+
+    // 6
+    List<Carrello> findByQuantitaAndPrezzoTotale(int quantita, double prezzoTotale);
+
 
 }

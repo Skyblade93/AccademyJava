@@ -21,6 +21,14 @@ public class ParcelService extends AbstractService<Parcel, ParcelDto> {
     public ParcelDto findByHeight(Integer height) {
         return parcelMapper.toDTO(parcelRepository.findByHeight(height));
     }
+    public ParcelDto findByLength(Integer length) {return parcelMapper.toDTO(parcelRepository.findByLength(length));}
+    public ParcelDto findByWidth(Integer width) {return parcelMapper.toDTO(parcelRepository.findByWidth(width));}
+    public ParcelDto findByWeightGreaterThan(Double weight) {return parcelMapper.toDTO(parcelRepository.findByWeightGreaterThan(weight));}
+    public ParcelDto findByHeightGreaterThan(Integer height) {return parcelMapper.toDTO(parcelRepository.findByHeightGreaterThan(height));}
+    public ParcelDto findByLengthGreaterThan(Integer length) {return parcelMapper.toDTO(parcelRepository.findByLengthGreaterThan(length));}
+    public ParcelDto findByWeightAndHeight(Double weight, Integer height) {return parcelMapper.toDTO(parcelRepository.findByWeightAndHeight(weight,height));}
+    public ParcelDto findByWidthAndLength(Double width, Integer length) {return parcelMapper.toDTO(parcelRepository.findByWidthAndLength(width,length));}
+    public ParcelDto findByWidhtGreaterThan(Integer width) {return parcelMapper.toDTO(parcelRepository.findByWidhtGreaterThan(width));}
 
     public ParcelService(ParcelRepository parcelRepository,
                          ParcelMapper parcelMapper) {

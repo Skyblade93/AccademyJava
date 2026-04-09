@@ -1,9 +1,12 @@
 package it.corso.AccademiJava.Controller;
 
 import it.corso.AccademiJava.DTO.AutoDto;
+import it.corso.AccademiJava.Model.TipoCarburante;
 import it.corso.AccademiJava.Service.AutoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("Auto")
@@ -28,7 +31,7 @@ public class AutoController extends AbstractController<AutoDto> {
 
     // Trova per modello
     @GetMapping("/findByModello")
-    public AutoDto findByModello(@RequestParam String modello) {
+    public AutoDto findByModello(@RequestParam("modello") String modello) {
         return autoService.findByModello(modello);
     }
 
@@ -46,7 +49,7 @@ public class AutoController extends AbstractController<AutoDto> {
     }
 
     // Trova marca che inizia con
-    @GetMapping("/findByMarcaStarting")
+    @GetMapping("/findByMarcaStartingWith")
     public AutoDto findByMarcaStartingWith(@RequestParam("marca") String marca) {
         return autoService.findByMarcaStartingWith(marca);
     }
@@ -55,5 +58,18 @@ public class AutoController extends AbstractController<AutoDto> {
     @GetMapping("/findByMarcaEndingWith")
     public AutoDto findByMarcaEndingWith(@RequestParam("marca") String marca) {
         return autoService.findByMarcaEndingWith(marca);
+    }
+
+    @GetMapping("/findByCarburante")
+    public List<AutoDto> findByCarburante(@RequestParam("carburante") String carburante) {
+        return autoService.findByCarburante(carburante);
+    }
+
+    @GetMapping("/findByMarcaAndCarburante")
+    public List<AutoDto> findByMarcaAndCarburante(
+            @RequestParam String marca,
+            @RequestParam TipoCarburante carburante) {
+
+        return autoService.findByMarcaAndCarburante(marca, carburante);
     }
 }
