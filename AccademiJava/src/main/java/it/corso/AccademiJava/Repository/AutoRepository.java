@@ -13,11 +13,11 @@ import java.util.Optional;
 @Repository
 public interface AutoRepository extends JpaRepository<Auto, Integer> {
 
-    //  1. QUERY JPQL
+    //  1. HIBERNATE QUERY
     @Query("SELECT a FROM Auto a WHERE a.targa = :targa")
     Auto findByTarga(@Param("targa") String targa);
 
-    //  METODI DERIVATI
+
     List<Auto> findByMarca(String marca);
 
     // 1

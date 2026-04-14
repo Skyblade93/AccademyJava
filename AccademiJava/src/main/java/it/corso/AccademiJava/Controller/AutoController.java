@@ -25,38 +25,38 @@ public class AutoController extends AbstractController<AutoDto> {
 
     // Trova per marca (Native)
     @GetMapping("/findByMarca")
-    public AutoDto findByMarca(@RequestParam("marca") String marca) {
+    public List<AutoDto> findByMarca(@RequestParam("marca") String marca) {
         return autoService.findByMarca(marca);
     }
 
     // Trova per modello
     @GetMapping("/findByModello")
-    public AutoDto findByModello(@RequestParam("modello") String modello) {
+    public List<AutoDto> findByModello(@RequestParam("modello") String modello) {
         return autoService.findByModello(modello);
     }
 
     // Trova per marca e modello
     @GetMapping("/findByMarcaAndModello")
-    public AutoDto findByMarcaAndModello(@RequestParam("marca") String marca,
+    public List<AutoDto> findByMarcaAndModello(@RequestParam("marca") String marca,
                                         @RequestParam("modello") String modello) {
         return autoService.findByMarcaAndModello(marca, modello);
     }
 
     // Trova modello contenente stringa
     @GetMapping("/findByModelloContaining")
-    public AutoDto findByModelloContaining(@RequestParam("modello") String modello) {
+    public List<AutoDto> findByModelloContaining(@RequestParam("modello") String modello) {
         return autoService.findByModelloContaining(modello);
     }
 
     // Trova marca che inizia con
     @GetMapping("/findByMarcaStartingWith")
-    public AutoDto findByMarcaStartingWith(@RequestParam("marca") String marca) {
+    public List<AutoDto> findByMarcaStartingWith(@RequestParam("marca") String marca) {
         return autoService.findByMarcaStartingWith(marca);
     }
 
     // Trova marca che finisce con
     @GetMapping("/findByMarcaEndingWith")
-    public AutoDto findByMarcaEndingWith(@RequestParam("marca") String marca) {
+    public List<AutoDto> findByMarcaEndingWith(@RequestParam("marca") String marca) {
         return autoService.findByMarcaEndingWith(marca);
     }
 
