@@ -10,7 +10,7 @@ import java.util.List;
 @RestController
 @RequestMapping("Azienda")
 @CrossOrigin(origins = "http://localhost:4200")
-public class AziendaController {
+public class AziendaController extends AbstractController<AziendaDto> {
 
     @Autowired
     private AziendaService service;
