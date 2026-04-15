@@ -30,7 +30,7 @@ public class ElettricistaController {
     }
 
     //prende tutti gli elettricisti
-    @GetMapping
+    @GetMapping("/all")
     public List<ElettricistaDto> findAll() {
         return elettricistaService.findAll();
     }
