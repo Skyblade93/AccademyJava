@@ -43,11 +43,12 @@ public class CarrelloController extends AbstractController<CarrelloDto> {
 
     @GetMapping("/cercaPerIdAndQuantita")
     public CarrelloDto cercaPerIdAndQuantita(@RequestParam("id") int id, @RequestParam("quantita") int quantita) {
-        return service.findByIdAndPrezzoTotale(id, quantita);
+        return service.findByIdAndQuantita(id, quantita);
     }
 
     @GetMapping("/trovaPrezzoMaggioreDi10")
     public List<Boolean> trovaPrezzoMaggioreDi10(@RequestParam("prezzoTotale") double prezzoTotale) {
         return service.trovaPrezzoMaggioreDi10(prezzoTotale);
     }
+
 }

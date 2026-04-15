@@ -1,5 +1,7 @@
 package it.corso.AccademiJava.Repository;
 
+import it.corso.AccademiJava.Model.Azienda;
+import it.corso.AccademiJava.Model.Drone;
 import it.corso.AccademiJava.Model.Elettricista;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;

@@ -32,4 +32,10 @@ public class UserController extends AbstractController<UserDto> {
         return service.trovaTramiteiniziale(i);
     }
 
+
+    @GetMapping("/urldb")
+    public String getUrlDb(){
+        return service.getDatabaseUrl();
+    }
+
 }
