@@ -12,7 +12,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("Ordine")
-@CrossOrigin(origins = "http://localhost:8080")
+@CrossOrigin(origins = "http://localhost:4200")
 public class OrdineController extends AbstractController<OrdineDto>{
 
     @Autowired
