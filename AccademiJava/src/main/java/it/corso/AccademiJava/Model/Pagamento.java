@@ -1,5 +1,6 @@
 package it.corso.AccademiJava.Model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -22,6 +23,7 @@ public class Pagamento {
     @Enumerated(EnumType.STRING)
     private MetodoPagamento metodo;
 
+    @JsonIgnore
     @OneToOne
     @JoinColumn(name="user_id")
     private User user;
