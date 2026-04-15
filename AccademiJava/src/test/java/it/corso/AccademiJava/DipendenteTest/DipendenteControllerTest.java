@@ -98,7 +98,7 @@ public class DipendenteControllerTest {
 
     // 🔹Test 4: Trova dipendenti con età maggiore di ...
     @Test
-    void testFindByEtaGreaterThan() throws Exception {
+    void testFindByNumeroTelefono() throws Exception {
 
         DipendenteDto dto = new DipendenteDto();
         dto.setId(3);
@@ -106,18 +106,18 @@ public class DipendenteControllerTest {
         dto.setCognomeDipendente("Mouse");
         dto.setEta(15);
         dto.setEmail("minni@disney.com");
-        dto.setNumeroTelefono(789);
+        dto.setNumeroTelefono(11111111);
 
-        when(dipendenteService.findByEtaGreaterThan(10)).thenReturn(List.of(dto));
+        when(dipendenteService.findByNumeroTelefono(11111111)).thenReturn(List.of(dto));
 
-        mockMvc.perform(get("/Dipendente/findByEtaGreaterThan")
-                        .param("eta", "10"))
+        mockMvc.perform(get("/Dipendente/findByNumeroTelefono")
+                        .param("numeroTelefono", "11111111"))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$[0].nomeDipendente").value("Minni"))
                 .andExpect(jsonPath("$[0].cognomeDipendente").value("Mouse"))
                 .andExpect(jsonPath("$[0].eta").value(15))
                 .andExpect(jsonPath("$[0].email").value("minni@disney.com"))
-                .andExpect(jsonPath("$[0].numeroTelefono").value(789));
+                .andExpect(jsonPath("$[0].numeroTelefono").value(11111111));
     }
 
     // 🔹Test 5: Trova dipendente per email

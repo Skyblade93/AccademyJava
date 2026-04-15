@@ -96,13 +96,13 @@ class DipendenteServiceTest {
 
     // 🔹Test 4: Trova dipendenti con età maggiore di ...
     @Test
-    void testFindByEtaGreaterThan() {
-        when(dipendenteRepository.findByEtaGreaterThan(5)).thenReturn(List.of(dipendente));
+    void testFindByNumeroTelefono() {
+        when(dipendenteRepository.findByNumeroTelefono(1111111)).thenReturn(List.of(dipendente));
         when(dipendenteMapper.toDTO(dipendente)).thenReturn(dipendenteDto);
 
-        List<DipendenteDto> result = dipendenteService.findByEtaGreaterThan(5);
+        List<DipendenteDto> result = dipendenteService.findByNumeroTelefono(11111111);
 
-        assertTrue(result.get(0).getEta() > 5);
+        assertTrue(result.get(0).getNumeroTelefono() == 11111111);
     }
 
     // 🔹Test 5: Trova dipendente per email
