@@ -15,6 +15,10 @@ public class Parcel
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+    private String senderName;
+    private String senderSurname;
+    private String receiverName;
+    private String receiverSurname;
     private Double weight;
     private Integer height;
     private Integer width;

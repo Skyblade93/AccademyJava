@@ -23,10 +23,10 @@ public class ParcelController extends AbstractController<ParcelDto>
         return parcelService.findByHeight(height);
     }
 
-    @GetMapping("/findByLength")
+    @GetMapping("/FindByLength")
     public ParcelDto FindByLength(@RequestParam("length")Integer length) { return parcelService.findByLength(length); }
 
-    @GetMapping("/findByWitdth")
+    @GetMapping("/FindByWitdth")
     public ParcelDto FindByWidth(@RequestParam("width")Integer width){return parcelService.findByWidth(width);}
 
     @GetMapping("/weight-greater-than")
@@ -60,6 +60,27 @@ public class ParcelController extends AbstractController<ParcelDto>
     public ParcelDto findByWidthGreaterThan(@RequestParam Integer width) {
         return parcelService.findByWidhtGreaterThan(width);
     }
+
+    @GetMapping("/FindByReceiverName")
+    public ParcelDto findByReceiverName(@RequestParam String receiverName) {
+        return parcelService.findByReceiverName(receiverName);
+    }
+
+    @GetMapping("/FindByReceiverSurname")
+    public ParcelDto findByReceiverSurname(@RequestParam String receiverSurname) {
+        return parcelService.findByReceiverSurname(receiverSurname);
+    }
+
+    @GetMapping("/FindBySenderName")
+    public ParcelDto findBySenderName(@RequestParam String SenderName) {
+        return parcelService.findBySenderName(SenderName);
+    }
+
+    @GetMapping("/FindBySenderSurname")
+    public ParcelDto findBySenderSurname(@RequestParam String SenderSurname) {
+        return parcelService.findBySenderSurname(SenderSurname);
+    }
+
 
 
 }
