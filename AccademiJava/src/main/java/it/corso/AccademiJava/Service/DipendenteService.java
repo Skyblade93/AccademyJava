@@ -48,9 +48,9 @@ public class DipendenteService extends AbstractService<Dipendente, DipendenteDto
                 .collect(Collectors.toList());
     }
 
-    // 🔹 Metodo per trovare dipendenti con età maggiore di ...
-    public List<DipendenteDto> findByEtaGreaterThan(Integer eta) {
-        return dipendenteRepository.findByEtaGreaterThan(eta)
+    // 🔹 Metodo per trovare dipendenti per numero di telefono
+    public List<DipendenteDto> findByNumeroTelefono(Integer numeroTelefono) {
+        return dipendenteRepository.findByNumeroTelefono(numeroTelefono)
                 .stream()
                 .map(dipendenteMapper::toDTO)
                 .collect(Collectors.toList());
