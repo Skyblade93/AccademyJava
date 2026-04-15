@@ -29,6 +29,12 @@ public class ElettricistaController {
         return elettricistaService.findDisponibili();
     }
 
+    //prende tutti gli elettricisti
+    @GetMapping
+    public List<ElettricistaDto> findAll() {
+        return elettricistaService.findAll();
+    }
+
     // 3 Cerca per cognome
     @GetMapping("/cognome/{cognome}")
     public List<ElettricistaDto> findByCognome(@PathVariable String cognome) {

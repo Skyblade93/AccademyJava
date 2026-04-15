@@ -21,7 +21,10 @@ public class ElettricistaService extends AbstractService<Elettricista, Elettrici
         this.elettricistaRepository = elettricistaRepository;
         this.elettricistaMapper = elettricistaMapper;
     }
-
+    //prende tutti gli elettricisti
+    public List<ElettricistaDto> findAll() {
+        return elettricistaMapper.toDTOList(elettricistaRepository.findAll());
+    }
 
     // 1 JPA AUTO X NOME
     public ElettricistaDto findByNome(String nome) {
