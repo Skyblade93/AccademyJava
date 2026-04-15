@@ -7,7 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-
+@CrossOrigin(origins = "http://localhost:4200")
 @RestController
 @RequestMapping("/elettricisti")
 public class ElettricistaController {
@@ -15,10 +15,20 @@ public class ElettricistaController {
     @Autowired
     private ElettricistaService elettricistaService;
 
+    // cerca x id
+    @GetMapping("/{id}")
+    public ResponseEntity<ElettricistaDto> findById(@PathVariable Integer id) {
+        ElettricistaDto dto = elettricistaService.findById(id);
+        if (dto == null) {
+            return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.ok(dto);
+    }
+
     // 1 Cerca elettricista per nome
     @GetMapping("/nome/{nome}")
-    public ResponseEntity<ElettricistaDto> findByNome(@PathVariable String nome) {
-        ElettricistaDto dto = elettricistaService.findByNome(nome);
+    public ResponseEntity<List<ElettricistaDto>> findByNome(@PathVariable String nome) {
+        List<ElettricistaDto> dto = elettricistaService.findByNome(nome);
         if (dto == null) return ResponseEntity.notFound().build();
         return ResponseEntity.ok(dto);
     }
