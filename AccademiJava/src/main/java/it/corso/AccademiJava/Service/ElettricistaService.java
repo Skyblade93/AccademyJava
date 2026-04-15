@@ -70,4 +70,6 @@ public class ElettricistaService extends AbstractService<Elettricista, Elettrici
         return elettricistaMapper.toDTOList(elettricistaRepository.findBySpecializzazioneAndDisponibileFalse(specializzazione));
     }
 
+
+
 }

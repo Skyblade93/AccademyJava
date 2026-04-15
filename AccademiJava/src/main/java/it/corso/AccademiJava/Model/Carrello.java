@@ -27,7 +27,4 @@ public class Carrello {
     @JoinColumn(name = "user_id", referencedColumnName = "id")
     private User user;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "pagamento_id", referencedColumnName = "id")
-    private Pagamento pagamento;
 }
