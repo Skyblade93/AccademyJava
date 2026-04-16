@@ -34,11 +34,25 @@ public interface ParcelRepository extends JpaRepository<Parcel,Integer>
     @Query("SELECT p FROM Parcel p WHERE p.length > :length")
     Parcel findByLengthGreaterThan(@Param("length") Integer length);
 
+    @Query("SELECT p FROM Parcel p WHERE p.senderName = :senderName")
+    Parcel findBySenderName(@Param("senderName")String senderName);
+
+    @Query("SELECT p FROM Parcel p WHERE p.receiverName = :receiverName")
+    Parcel findByReceiverName(@Param("receiverName")String senderSurname);
+
+    @Query("SELECT p FROM Parcel p WHERE p.senderSurname = :senderSurname")
+    Parcel findBySenderSurname(@Param("senderSurname")String senderSurname);
+
+    @Query("SELECT p FROM Parcel p WHERE p.receiverSurname= :receiverSurname")
+    Parcel findByReceiverSurname(@Param("receiverSurname")String senderSurname);
+
     @Query(value = "SELECT * FROM Parcel WHERE p.weight = ?1 AND p.height = ?2", nativeQuery = true)
     Parcel findByWeightAndHeight(Double weight,Integer height);
 
     @Query(value = "SELECT * FROM Parcel WHERE p.width = ?1 AND p.length = ?2", nativeQuery = true)
     Parcel findByWidthAndLength(Double width,Integer length);
+
+
 
 
 

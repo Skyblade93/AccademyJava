@@ -6,8 +6,11 @@ import it.corso.AccademiJava.Mapper.Converter;
 import it.corso.AccademiJava.Mapper.UserMapper;
 import it.corso.AccademiJava.Model.User;
 import it.corso.AccademiJava.Repository.UserRepository;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Service;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.List;
 
@@ -15,9 +18,14 @@ import java.util.List;
 @Service
 public class UserService extends AbstractService<User, UserDto> {
 
+private static final Logger log = LoggerFactory.getLogger(UserService.class);
+
 private final UserMapper userMapper;
 
 private final UserRepository userRepository;
+
+    @Value("${spring.datasource.url}")
+    private String databaseUrl;
 
     public UserService(JpaRepository<User, Integer> repository, Converter<User, UserDto> converter, UserMapper userMapper, UserRepository userRepository) {
         super(repository, converter);
@@ -40,4 +48,10 @@ public List<UserDto> trovaTramiteiniziale(Character i){
         return userMapper.toDTOList(userRepository.trovaTramiteiniziale(i));
 }
 
+public String getDatabaseUrl() {
+ log.info(databaseUrl);
+    log.warn(databaseUrl);
+    log.error(databaseUrl);
+    return databaseUrl;
+}
 }

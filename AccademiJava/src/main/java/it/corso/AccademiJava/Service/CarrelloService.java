@@ -31,8 +31,14 @@ public class CarrelloService extends AbstractService<Carrello, CarrelloDto> {
     }
 
     public CarrelloDto findById(int id) {
-        CarrelloDto carrelloDto = carrelloMapper.toDTO(carrelloRepository.findById(id));
-        return carrelloDto;
+
+        Carrello entity = carrelloRepository.findById(id);
+
+        if (entity == null) {
+            return null;
+        }
+
+        return carrelloMapper.toDTO(entity);
     }
 
     public List<CarrelloDto> cercaPerQuantita(int quantita) {
@@ -64,4 +70,5 @@ public class CarrelloService extends AbstractService<Carrello, CarrelloDto> {
         //genero una lista di boolean che da vero o falso in base alla condizione
         return carrelli.stream().map(dto -> dto.getPrezzoTotale() > 10).toList();
     }
+
 }

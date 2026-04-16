@@ -22,9 +22,12 @@ public class DipendenteDto {
     private Integer eta;                // età del dipendente
     private String email;               // email del dipendente
     private Integer numeroTelefono;     // numero di telefono del dipendente
+    /*
     private AziendaDto nomeAzienda;     // Nome dell'azienda dove lavora il dipendente
     private UserDto user;               // Utenza collegata al dipendente
     private ContactDto contact;         // Informazioni di contatto del dipendente
     private DroneDto drone;             // Un dipendente ha un UNICO drone
     private List<AutoDto> auto;         // Un dipendente può avere più di un'auto
+    */
+
 }
