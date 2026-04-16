@@ -20,6 +20,7 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.when;
 
+
 @ExtendWith(MockitoExtension.class)
 class AutoServiceTest {
 
@@ -78,7 +79,7 @@ class AutoServiceTest {
         when(autoRepository.findByMarca("Fiat")).thenReturn(List.of(auto));
         when(autoMapper.toDTO(auto)).thenReturn(dto);
 
-        AutoDto result = autoService.findByMarca("Fiat");
+        AutoDto result = (AutoDto) autoService.findByMarca("Fiat");
 
         assertEquals("Fiat", result.getMarca());
     }
@@ -91,7 +92,7 @@ class AutoServiceTest {
         when(autoRepository.findByModello("Panda")).thenReturn(List.of(auto));
         when(autoMapper.toDTO(auto)).thenReturn(dto);
 
-        AutoDto result = autoService.findByModello("Panda");
+        AutoDto result = (AutoDto) autoService.findByModello("Panda");
 
         assertEquals("Panda", result.getModello());
     }
@@ -104,7 +105,7 @@ class AutoServiceTest {
         when(autoRepository.findByMarcaAndModello("Fiat", "Panda")).thenReturn(List.of(auto));
         when(autoMapper.toDTO(auto)).thenReturn(dto);
 
-        AutoDto result = autoService.findByMarcaAndModello("Fiat", "Panda");
+        AutoDto result = (AutoDto) autoService.findByMarcaAndModello("Fiat", "Panda");
 
         assertEquals("Fiat", result.getMarca());
         assertEquals("Panda", result.getModello());
@@ -118,7 +119,7 @@ class AutoServiceTest {
         when(autoRepository.findByModelloContaining("Pan")).thenReturn(List.of(auto));
         when(autoMapper.toDTO(auto)).thenReturn(dto);
 
-        AutoDto result = autoService.findByModelloContaining("Pan");
+        AutoDto result = (AutoDto) autoService.findByModelloContaining("Pan");
 
         assertEquals("Panda", result.getModello());
     }
@@ -131,7 +132,7 @@ class AutoServiceTest {
         when(autoRepository.findByMarcaStartingWith("Fi")).thenReturn(List.of(auto));
         when(autoMapper.toDTO(auto)).thenReturn(dto);
 
-        AutoDto result = autoService.findByMarcaStartingWith("Fi");
+        AutoDto result = (AutoDto) autoService.findByMarcaStartingWith("Fi");
 
         assertEquals("Fiat", result.getMarca());
     }
@@ -144,7 +145,7 @@ class AutoServiceTest {
         when(autoRepository.findByMarcaEndingWith("at")).thenReturn(List.of(auto));
         when(autoMapper.toDTO(auto)).thenReturn(dto);
 
-        AutoDto result = autoService.findByMarcaEndingWith("at");
+        AutoDto result = (AutoDto) autoService.findByMarcaEndingWith("at");
 
         assertEquals("Fiat", result.getMarca());
     }
