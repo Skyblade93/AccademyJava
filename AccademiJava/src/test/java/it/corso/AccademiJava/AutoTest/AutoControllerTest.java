@@ -12,6 +12,7 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.web.servlet.MockMvc;
 
+import java.util.Collections;
 import java.util.List;
 
 import static org.mockito.Mockito.when;
@@ -53,7 +54,7 @@ class AutoControllerTest {
     @Test
     void testFindByMarca() throws Exception {
         AutoDto dto = createDto();
-        when(autoService.findByMarca("Fiat")).thenReturn(dto);
+        when(autoService.findByMarca("Fiat")).thenReturn(Collections.singletonList(dto));
 
         mockMvc.perform(get("/Auto/findByMarca")
                         .param("marca", "Fiat"))
@@ -64,7 +65,7 @@ class AutoControllerTest {
     @Test
     void testFindByModello() throws Exception {
         AutoDto dto = createDto();
-        when(autoService.findByModello("Panda")).thenReturn(dto);
+        when(autoService.findByModello("Panda")).thenReturn(Collections.singletonList(dto));
 
         mockMvc.perform(get("/Auto/findByModello")
                         .param("modello", "Panda"))
@@ -75,7 +76,7 @@ class AutoControllerTest {
     @Test
     void testFindByMarcaAndModello() throws Exception {
         AutoDto dto = createDto();
-        when(autoService.findByMarcaAndModello("Fiat", "Panda")).thenReturn(dto);
+        when(autoService.findByMarcaAndModello("Fiat", "Panda")).thenReturn(Collections.singletonList(dto));
 
         mockMvc.perform(get("/Auto/findByMarcaAndModello")
                         .param("marca", "Fiat")
@@ -88,7 +89,7 @@ class AutoControllerTest {
     @Test
     void testFindByModelloContaining() throws Exception {
         AutoDto dto = createDto();
-        when(autoService.findByModelloContaining("Pan")).thenReturn(dto);
+        when(autoService.findByModelloContaining("Pan")).thenReturn(Collections.singletonList(dto));
 
         mockMvc.perform(get("/Auto/findByModelloContaining")
                         .param("modello", "Pan"))
@@ -99,7 +100,7 @@ class AutoControllerTest {
     @Test
     void testFindByMarcaStartingWith() throws Exception {
         AutoDto dto = createDto();
-        when(autoService.findByMarcaStartingWith("Fi")).thenReturn(dto);
+        when(autoService.findByMarcaStartingWith("Fi")).thenReturn(Collections.singletonList(dto));
 
         mockMvc.perform(get("/Auto/findByMarcaStartingWith")
                         .param("marca", "Fi"))
@@ -110,7 +111,7 @@ class AutoControllerTest {
     @Test
     void testFindByMarcaEndingWith() throws Exception {
         AutoDto dto = createDto();
-        when(autoService.findByMarcaEndingWith("at")).thenReturn(dto);
+        when(autoService.findByMarcaEndingWith("at")).thenReturn(Collections.singletonList(dto));
 
         mockMvc.perform(get("/Auto/findByMarcaEndingWith")
                         .param("marca", "at"))

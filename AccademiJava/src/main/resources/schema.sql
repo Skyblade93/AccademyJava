@@ -33,7 +33,7 @@ CREATE TABLE accademi.contact (
                                   first_name VARCHAR(255),
                                   last_name VARCHAR(255),
                                   email VARCHAR(255),
-                                  phone_number VARCHAR(255)
+                                  phone_number INT
 );
 
 -- =========================
@@ -48,7 +48,7 @@ CREATE TABLE accademi.dipendente (
                                      cognome_dipendente VARCHAR(30),
                                      email VARCHAR(30),
                                      eta INT,
-                                     numero_telefono VARCHAR(20)
+                                     numero_telefono INT
 );
 
 -- =========================
@@ -204,15 +204,15 @@ INSERT INTO accademi.azienda VALUES
                                  (5,5,'Food SRL','Food');
 
 INSERT INTO accademi.contact VALUES
-                                 (1,2,'Luca','Bianchi','luca@email.com','123456789'),
-                                 (2,3,'Giulia','Verdi','giulia@email.com','987654321'),
-                                 (3,4,'Paolo','Neri','paolo@email.com','111222333'),
-                                 (4,5,'Anna','Blu','anna@email.com','444555666');
+                                 (1,2,'Luca','Bianchi','luca@email.com',123456789),
+                                 (2,3,'Giulia','Verdi','giulia@email.com',987654321),
+                                 (3,4,'Paolo','Neri','paolo@email.com',111222333),
+                                 (4,5,'Anna','Blu','anna@email.com',444555666);
 
 INSERT INTO accademi.dipendente VALUES
-                                    (1,2,1,1,'Luca','Bianchi','dip1@email.com',30,'111111111'),
-                                    (2,3,1,2,'Giulia','Verdi','dip2@email.com',28,'222222222'),
-                                    (3,4,2,3,'Paolo','Neri','dip3@email.com',35,'333333333');
+                                    (1,2,1,1,'Luca','Bianchi','dip1@email.com',30,111111111),
+                                    (2,3,1,2,'Giulia','Verdi','dip2@email.com',28,222222222),
+                                    (3,4,2,3,'Paolo','Neri','dip3@email.com',35,333333333);
 
 INSERT INTO accademi.droni VALUES
                                (1,'DRONE001','DJI Mini','ATTIVO',80,10.5,true,1),
