@@ -33,6 +33,6 @@ public interface NotificaRepository extends JpaRepository<Notifica, Integer> {
     @Query(value = "SELECT * FROM accademi.notifica WHERE data_creazione > ?1", nativeQuery = true)
     List<Notifica> findByDataCreazioneAfterNative(LocalDateTime data);
 
-    List<Notifica> findByTitoloContaining(String titolo);
+    List<Notifica> findByTitoloContainingIgnoreCase(String titolo);
     List<Notifica> findByTipoAndPriorita(TipoNotifica tipo, PrioritaNotifica priorita);
 }

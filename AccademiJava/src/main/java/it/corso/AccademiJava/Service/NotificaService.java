@@ -30,11 +30,7 @@ public class NotificaService extends AbstractService<Notifica, NotificaDto> {
     }
 
     public NotificaDto FindByTitolo(String titolo) {
-        List<Notifica> notifiche = notificaRepository.findByTitoloContaining(titolo);
-        if (notifiche.isEmpty()) {
-            return null;
-        }
-        return notificaMapper.toDTO(notifiche.get(0));
+        return notificaMapper.toDTO(notificaRepository.findByTitolo(titolo));
     }
 
     public Integer CountMessaggioLength(String titolo) {
@@ -79,7 +75,7 @@ public class NotificaService extends AbstractService<Notifica, NotificaDto> {
     }
 
     public List<NotificaDto> FindByTitoloContaining(String titolo) {
-        return notificaMapper.toDTOList(notificaRepository.findByTitoloContaining(titolo));
+        return notificaMapper.toDTOList(notificaRepository.findByTitoloContainingIgnoreCase(titolo));
     }
 
     public List<NotificaDto> FindByTipoAndPriorita(TipoNotifica tipo, PrioritaNotifica priorita) {
