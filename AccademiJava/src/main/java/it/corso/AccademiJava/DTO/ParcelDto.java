@@ -16,6 +16,10 @@ public class ParcelDto
 {
 
     private Integer id;
+    private String senderName;
+    private String senderSurname;
+    private String receiverName;
+    private String receiverSurname;
     private Double weight;
     private Integer height;
     private Integer width;
@@ -25,4 +29,6 @@ public class ParcelDto
     private Integer ordineId;
     private Integer pagamentoId;
     private List<Integer> notificheIds;
+
+
 }

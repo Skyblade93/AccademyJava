@@ -7,7 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-
+@CrossOrigin(origins = "http://localhost:4200")
 @RestController
 @RequestMapping("/elettricisti")
 public class ElettricistaController {
@@ -15,10 +15,20 @@ public class ElettricistaController {
     @Autowired
     private ElettricistaService elettricistaService;
 
+    // cerca x id
+    @GetMapping("/{id}")
+    public ResponseEntity<ElettricistaDto> findById(@PathVariable Integer id) {
+        ElettricistaDto dto = elettricistaService.findById(id);
+        if (dto == null) {
+            return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.ok(dto);
+    }
+
     // 1 Cerca elettricista per nome
     @GetMapping("/nome/{nome}")
-    public ResponseEntity<ElettricistaDto> findByNome(@PathVariable String nome) {
-        ElettricistaDto dto = elettricistaService.findByNome(nome);
+    public ResponseEntity<List<ElettricistaDto>> findByNome(@PathVariable String nome) {
+        List<ElettricistaDto> dto = elettricistaService.findByNome(nome);
         if (dto == null) return ResponseEntity.notFound().build();
         return ResponseEntity.ok(dto);
     }
@@ -27,6 +37,12 @@ public class ElettricistaController {
     @GetMapping("/disponibili")
     public List<ElettricistaDto> findDisponibili() {
         return elettricistaService.findDisponibili();
+    }
+
+    //prende tutti gli elettricisti
+    @GetMapping("/all")
+    public List<ElettricistaDto> findAll() {
+        return elettricistaService.findAll();
     }
 
     // 3 Cerca per cognome
@@ -63,7 +79,7 @@ public class ElettricistaController {
         return ResponseEntity.ok(dto);
     }
 
-    // 8 Native disponibili (senza path variable!)
+    // 8 Native disponibili (senza pathvariable)
     @GetMapping("/native/disponibili")
     public List<ElettricistaDto> findDisponibiliNative() {
         return elettricistaService.findDisponibiliNative();

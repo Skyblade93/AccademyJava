@@ -18,8 +18,8 @@ public interface CarrelloRepository extends JpaRepository<Carrello,Integer> {
     @Query("select t from Carrello t where t.quantita = ?1")
     List<Carrello> cercaPerQuantita(int quantita);
 
-    //QUERY NATIVE 3
-    @Query(value = "SELECT * FROM Carrello t WHERE t.prezzoTotale = ?1",nativeQuery = true)
+    //3
+    @Query(value = "SELECT * FROM accademi.carrello WHERE prezzo_totale = ?1", nativeQuery = true)
     List<Carrello> cercaPrezzoTotale(double prezzoTotale);
 
     // 4
@@ -30,6 +30,5 @@ public interface CarrelloRepository extends JpaRepository<Carrello,Integer> {
 
     // 6
     List<Carrello> findByQuantitaAndPrezzoTotale(int quantita, double prezzoTotale);
-
 
 }

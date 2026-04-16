@@ -26,6 +26,6 @@ public class Drone {
 
     // --- COLLEGAMENTO 1 A 1 CON IL DIPENDENTE ---
     @OneToOne
-    @JoinColumn(name = "id_dipendente", referencedColumnName = "id")
+    @JoinColumn(name = "dipendente_id", referencedColumnName = "id")
     private Dipendente responsabile; // Qui usiamo il modello Dipendente
 }

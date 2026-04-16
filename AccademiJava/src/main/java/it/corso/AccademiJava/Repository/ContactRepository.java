@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface ContactRepository extends JpaRepository<Contact, Long> {
+public interface ContactRepository extends JpaRepository<Contact, Integer> {
 
     // 🔹 Metodo 1 - query automatica (Spring Data)
 
