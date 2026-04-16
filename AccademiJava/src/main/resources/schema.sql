@@ -121,6 +121,7 @@ CREATE TABLE accademi.parcel (
                                  id SERIAL PRIMARY KEY,
                                  ordine_id INT REFERENCES accademi.ordine(id),
                                  pagamento_id INT REFERENCES accademi.pagamento(id),
+                                 parcel_id INT REFERENCES accademi.parcel(id),
                                  weight DOUBLE PRECISION,
                                  height INT,
                                  width INT,
