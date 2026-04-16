@@ -194,7 +194,7 @@ INSERT INTO accademi."user" (id, name, description) VALUES
                                                         (2,'Luca Bianchi','Cliente'),
                                                         (3,'Giulia Verdi','Cliente'),
                                                         (4,'Paolo Neri','Cliente'),
-                                                        (5,'Anna Blu','Cliente');
+                                                        (5,'Anna Blu','Cliente'),
                                                         (6,'Rosa Ricci','Admin');
 
 INSERT INTO accademi.azienda VALUES
