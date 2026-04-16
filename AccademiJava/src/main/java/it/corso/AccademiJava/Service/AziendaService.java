@@ -6,6 +6,9 @@ import it.corso.AccademiJava.Model.Azienda;
 import it.corso.AccademiJava.Model.User;
 import it.corso.AccademiJava.Repository.AziendaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -83,5 +86,13 @@ public class AziendaService extends AbstractService<Azienda, AziendaDto> {
         );
     }
 
+    public Page<AziendaDto> getAziendePaginati(int page, int size) {
+
+        Pageable pageable = PageRequest.of(page, size);
+
+        Page<Azienda> aziendePage = aziendaRepository.findAll(pageable);
+
+        return aziendePage.map(aziendaMapper::toDTO);
+    }
 
 }
