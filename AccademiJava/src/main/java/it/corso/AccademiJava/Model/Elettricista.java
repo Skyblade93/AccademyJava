@@ -13,11 +13,14 @@ public class Elettricista {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-
     private String nome;
     private String cognome;
     private String specializzazione;
     private Boolean disponibile;
+    private String telefono;
+    private String email;
+    private String indirizzo;
+
 
     // Collegamento ManyToOne con Drone
     @ManyToOne

@@ -24,11 +24,14 @@ public class UserDto {
     private String name; // nome dell user
 
     private String description; //descrizione dell user
+    /*
 
     private Pagamento pagamento;
 
     private List<Auto> auto;
 
     private List<UserProduct> userProducts;
+
+     */
 
 }

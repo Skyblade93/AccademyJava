@@ -19,5 +19,6 @@ public class PagamentoDto {
     private LocalDateTime dataPagamento;
     private StatoPagamento stato;
     private MetodoPagamento metodo;
+    private UserDto user;
 
 }
