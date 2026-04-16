@@ -30,7 +30,11 @@ public class NotificaService extends AbstractService<Notifica, NotificaDto> {
     }
 
     public NotificaDto FindByTitolo(String titolo) {
-        return notificaMapper.toDTO(notificaRepository.findByTitolo(titolo));
+        List<Notifica> notifiche = notificaRepository.findByTitoloContaining(titolo);
+        if (notifiche.isEmpty()) {
+            return null;
+        }
+        return notificaMapper.toDTO(notifiche.get(0));
     }
 
     public Integer CountMessaggioLength(String titolo) {
