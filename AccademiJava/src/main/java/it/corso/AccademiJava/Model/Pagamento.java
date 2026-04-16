@@ -23,7 +23,7 @@ public class Pagamento {
     @Enumerated(EnumType.STRING)
     private MetodoPagamento metodo;
 
-    @JsonIgnore
+    //@JsonIgnore
     @OneToOne
     @JoinColumn(name="user_id")
     private User user;
