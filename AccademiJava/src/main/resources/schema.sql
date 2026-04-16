@@ -48,7 +48,7 @@ CREATE TABLE accademi.dipendente (
                                      cognome_dipendente VARCHAR(30),
                                      email VARCHAR(30),
                                      eta INT,
-                                     numero_telefono VARCHAR(20)
+                                     numero_telefono INT
 );
 
 -- =========================
@@ -210,9 +210,9 @@ INSERT INTO accademi.contact VALUES
                                  (4,5,'Anna','Blu','anna@email.com','444555666');
 
 INSERT INTO accademi.dipendente VALUES
-                                    (1,2,1,1,'Luca','Bianchi','dip1@email.com',30,'111111111'),
-                                    (2,3,1,2,'Giulia','Verdi','dip2@email.com',28,'222222222'),
-                                    (3,4,2,3,'Paolo','Neri','dip3@email.com',35,'333333333');
+                                    (1,2,1,1,'Luca','Bianchi','dip1@email.com',30,111111111),
+                                    (2,3,1,2,'Giulia','Verdi','dip2@email.com',28,222222222),
+                                    (3,4,2,3,'Paolo','Neri','dip3@email.com',35,333333333);
 
 INSERT INTO accademi.droni VALUES
                                (1,'DRONE001','DJI Mini','ATTIVO',80,10.5,true,1),
