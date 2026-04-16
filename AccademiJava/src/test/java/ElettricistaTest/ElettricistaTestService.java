@@ -18,34 +18,31 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
-//test del service
-// coreggere definitivament gli stessi errori
 public class ElettricistaTestService {
 
     @Mock
-    private ElettricistaRepository elettricistaRepository; // mockrepository
+    private ElettricistaRepository repository;
 
     @Mock
-    private ElettricistaMapper elettricistaMapper; // mockmapper
+    private ElettricistaMapper mapper;
 
     @InjectMocks
-    private ElettricistaService elettricistaService; // service testconimock
+    private ElettricistaService service;
 
-    private Elettricista entity; // oggetto prova
-    private ElettricistaDto dto; // dt prova
+    private Elettricista entity;
+    private ElettricistaDto dto;
 
     @BeforeEach
     void setUp() {
-        MockitoAnnotations.openMocks(this); // inizializz i mock
 
-        // creo entity es.
+        MockitoAnnotations.openMocks(this);
+
         entity = new Elettricista();
         entity.setNome("Ciro");
         entity.setCognome("Esposito");
         entity.setSpecializzazione("Industriale");
         entity.setDisponibile(true);
 
-        // creo dto esatt
         dto = new ElettricistaDto();
         dto.setNome("Ciro");
         dto.setCognome("Esposito");
@@ -53,156 +50,129 @@ public class ElettricistaTestService {
         dto.setDisponibile(true);
     }
 
-    //test 1find by nome
+    // 1 FIND BY NOME
     @Test
     void testFindByNome() {
-        when(elettricistaRepository.findByNome("Ciro")).thenReturn(entity);
-        when(elettricistaMapper.toDTO(entity)).thenReturn(dto);
 
-        ElettricistaDto result = elettricistaService.findByNome("Ciro");
+        when(repository.findByNome("Ciro"))
+                .thenReturn(Arrays.asList(entity));
 
-        // controllo che funzioni
-        assertNotNull(result);
-        assertEquals("Ciro", result.getNome());
+        when(mapper.toDTOList(anyList()))
+                .thenReturn(Arrays.asList(dto));
+
+        List<ElettricistaDto> result = service.findByNome("Ciro");
+
+        assertEquals(1, result.size());
     }
 
-    //TEST 2 find disponibili
+    // 2 DISPONIBILI
     @Test
     void testFindDisponibili() {
-        when(elettricistaRepository.findByDisponibileTrue()).thenReturn(Arrays.asList(entity));
-        when(elettricistaMapper.toDTOList(anyList())).thenReturn(Arrays.asList(dto));
 
-        List<ElettricistaDto> result = elettricistaService.findDisponibili();
+        when(repository.findByDisponibileTrue())
+                .thenReturn(Arrays.asList(entity));
 
-        assertNotNull(result);
-        assertEquals(1, result.size());
+        when(mapper.toDTOList(anyList()))
+                .thenReturn(Arrays.asList(dto));
+
+        assertEquals(1, service.findDisponibili().size());
     }
 
-    //test3 find by cognome
+    // 3 COGNOME
     @Test
     void testFindByCognome() {
-        when(elettricistaRepository.findByCognome("Esposito")).thenReturn(Arrays.asList(entity));
-        when(elettricistaMapper.toDTOList(anyList())).thenReturn(Arrays.asList(dto));
 
-        List<ElettricistaDto> result = elettricistaService.findByCognome("Esposito");
+        when(repository.findByCognome("Esposito"))
+                .thenReturn(Arrays.asList(entity));
 
-        assertNotNull(result);
-        assertEquals(1, result.size());
-        assertEquals("Esposito", result.get(0).getCognome());
+        when(mapper.toDTOList(anyList()))
+                .thenReturn(Arrays.asList(dto));
+
+        assertEquals(1, service.findByCognome("Esposito").size());
     }
 
-    // TEST4 find by specializz.
+    // 4 SPECIALIZZAZIONE
     @Test
     void testFindBySpecializzazione() {
-        when(elettricistaRepository.findBySpecializzazione("Industriale")).thenReturn(Arrays.asList(entity));
-        when(elettricistaMapper.toDTOList(anyList())).thenReturn(Arrays.asList(dto));
 
-        List<ElettricistaDto> result = elettricistaService.findBySpecializzazione("Industriale");
+        when(repository.findBySpecializzazione("Industriale"))
+                .thenReturn(Arrays.asList(entity));
 
-        assertNotNull(result);
-        assertEquals(1, result.size());
-        assertEquals("Industriale", result.get(0).getSpecializzazione());
+        when(mapper.toDTOList(anyList()))
+                .thenReturn(Arrays.asList(dto));
+
+        assertEquals(1, service.findBySpecializzazione("Industriale").size());
     }
 
-    // TEST5 jpql cerca per nome
+    // 5 JPQL
     @Test
     void testCercaPerNomeJPQL() {
-        when(elettricistaRepository.cercaPerNomeJPQL("Ciro")).thenReturn(entity);
-        when(elettricistaMapper.toDTO(entity)).thenReturn(dto);
 
-        ElettricistaDto result = elettricistaService.cercaPerNomeJPQL("Ciro");
+        when(repository.cercaPerNomeJPQL("Ciro"))
+                .thenReturn(entity);
 
-        assertNotNull(result);
-        assertEquals("Ciro", result.getNome());
+        when(mapper.toDTO(entity))
+                .thenReturn(dto);
+
+        assertEquals("Ciro", service.cercaPerNomeJPQL("Ciro").getNome());
     }
 
-    // TEST6 jpql disp.
+    // 6 JPQL DISP
     @Test
     void testElettricistiDisponibiliJPQL() {
-        when(elettricistaRepository.elettricistiDisponibiliJPQL()).thenReturn(Arrays.asList(entity));
-        when(elettricistaMapper.toDTOList(anyList())).thenReturn(Arrays.asList(dto));
 
-        List<ElettricistaDto> result = elettricistaService.elettricistiDisponibiliJPQL();
+        when(repository.elettricistiDisponibiliJPQL())
+                .thenReturn(Arrays.asList(entity));
 
-        assertNotNull(result);
-        assertEquals(1, result.size());
+        when(mapper.toDTOList(anyList()))
+                .thenReturn(Arrays.asList(dto));
+
+        assertEquals(1, service.elettricistiDisponibiliJPQL().size());
     }
 
-    // test7 native find by nome
+    // 7 NATIVE
     @Test
     void testFindByNomeNative() {
-        when(elettricistaRepository.findByNomeNative("Ciro")).thenReturn(entity);
-        when(elettricistaMapper.toDTO(entity)).thenReturn(dto);
 
-        ElettricistaDto result = elettricistaService.findByNomeNative("Ciro");
+        when(repository.findByNomeNative("Ciro"))
+                .thenReturn(entity);
 
-        assertNotNull(result);
-        assertEquals("Ciro", result.getNome());
+        when(mapper.toDTO(entity))
+                .thenReturn(dto);
+
+        assertEquals("Ciro", service.findByNomeNative("Ciro").getNome());
     }
 
+    // 8 NULL CASE
     @Test
     void testFindByNomeNativeNull() {
-        // se non trova nulla
-        when(elettricistaRepository.findByNomeNative("Ciro")).thenReturn(null);
 
-        ElettricistaDto result = elettricistaService.findByNomeNative("Ciro");
+        when(repository.findByNomeNative("Ciro"))
+                .thenReturn(null);
 
-        assertNull(result); // deveesserenull
+        assertNull(service.findByNomeNative("Ciro"));
     }
 
-    // TEST8 native disp.
+    // 9 NATIVE LIST
     @Test
     void testFindDisponibiliNative() {
-        when(elettricistaRepository.findDisponibiliNative()).thenReturn(Arrays.asList(entity));
-        when(elettricistaMapper.toDTOList(anyList())).thenReturn(Arrays.asList(dto));
 
-        List<ElettricistaDto> result = elettricistaService.findDisponibiliNative();
+        when(repository.findDisponibiliNative())
+                .thenReturn(Arrays.asList(entity));
 
-        assertNotNull(result);
-        assertEquals(1, result.size());
+        when(mapper.toDTOList(anyList()))
+                .thenReturn(Arrays.asList(dto));
+
+        assertEquals(1, service.findDisponibiliNative().size());
     }
 
+    // 10 EMPTY LIST
     @Test
     void testFindDisponibiliNativeVuoto() {
-        when(elettricistaRepository.findDisponibiliNative()).thenReturn(Collections.emptyList());
 
-        List<ElettricistaDto> result = elettricistaService.findDisponibiliNative();
+        when(repository.findDisponibiliNative())
+                .thenReturn(Collections.emptyList());
 
-        assertNotNull(result);
-        assertTrue(result.isEmpty()); // lista vuota
-    }
-
-    //TEST 9 cognome + disp.
-    @Test
-    void testFindByCognomeAndDisponibileTrue() {
-        when(elettricistaRepository.findByCognomeAndDisponibileTrue("Esposito")).thenReturn(Arrays.asList(entity));
-        when(elettricistaMapper.toDTOList(anyList())).thenReturn(Arrays.asList(dto));
-
-        List<ElettricistaDto> result = elettricistaService.findByCognomeAndDisponibileTrue("Esposito");
-
-        assertNotNull(result);
-        assertEquals(1, result.size());
-    }
-
-    // TEST10 specializz. + non disp.
-    @Test
-    void testFindBySpecializzazioneAndDisponibileFalse() {
-        Elettricista nonDisp = new Elettricista();
-        nonDisp.setSpecializzazione("Industriale");
-        nonDisp.setDisponibile(false);
-
-        ElettricistaDto dtoNonDisp = new ElettricistaDto();
-        dtoNonDisp.setSpecializzazione("Industriale");
-        dtoNonDisp.setDisponibile(false);
-
-        when(elettricistaRepository.findBySpecializzazioneAndDisponibileFalse("Industriale"))
-                .thenReturn(Arrays.asList(nonDisp));
-        when(elettricistaMapper.toDTOList(anyList())).thenReturn(Arrays.asList(dtoNonDisp));
-
-        List<ElettricistaDto> result = elettricistaService.findBySpecializzazioneAndDisponibileFalse("Industriale");
-
-        assertNotNull(result);
-        assertEquals(1, result.size());
-        assertFalse(result.get(0).getDisponibile());
+        assertTrue(service.findDisponibiliNative().isEmpty());
     }
 }

@@ -38,13 +38,15 @@ public class ElettricistaTestController {
         dto.setNome("Ciro");
         dto.setCognome("Esposito");
 
-        when(elettricistaService.findByNome("Ciro")).thenReturn(dto);
+        // 🔧 FIX: il service ritorna LISTA, non singolo oggetto
+        when(elettricistaService.findByNome("Ciro")).thenReturn(Arrays.asList(dto));
 
-        ResponseEntity<ElettricistaDto> response = elettricistaController.findByNome("Ciro");
+        // 🔧 FIX: il controller ritorna ResponseEntity<List<>>
+        ResponseEntity<List<ElettricistaDto>> response = elettricistaController.findByNome("Ciro");
 
         assertNotNull(response);
-        assertEquals(200, response.getStatusCodeValue()); // status ok
-        assertEquals("Ciro", response.getBody().getNome()); // controllo nome
+        assertEquals(200, response.getStatusCode().value()); // 🔧 FIX deprecato
+        assertEquals("Ciro", response.getBody().get(0).getNome()); // 🔧 FIX lista
     }
 
     //EST2 find disp.
@@ -55,9 +57,11 @@ public class ElettricistaTestController {
         ElettricistaDto dto2 = new ElettricistaDto();
         dto2.setNome("Mario");
 
-        when(elettricistaService.findDisponibili()).thenReturn(Arrays.asList(dto1, dto2));
+        when(elettricistaService.findDisponibili()).
+                thenReturn(Arrays.asList(dto1, dto2));
 
-        List<ElettricistaDto> result = elettricistaController.findDisponibili();
+        List<ElettricistaDto> result = elettricistaController.
+                findDisponibili();
 
         assertNotNull(result);
         assertEquals(2, result.size());
@@ -69,7 +73,8 @@ public class ElettricistaTestController {
         ElettricistaDto dto = new ElettricistaDto();
         dto.setCognome("Esposito");
 
-        when(elettricistaService.findByCognome("Esposito")).thenReturn(Arrays.asList(dto));
+        when(elettricistaService.findByCognome("Esposito")).
+                thenReturn(Arrays.asList(dto));
 
         List<ElettricistaDto> result = elettricistaController.findByCognome("Esposito");
 
@@ -84,13 +89,16 @@ public class ElettricistaTestController {
         ElettricistaDto dto = new ElettricistaDto();
         dto.setSpecializzazione("Industriale");
 
-        when(elettricistaService.findBySpecializzazione("Industriale")).thenReturn(Arrays.asList(dto));
+        when(elettricistaService.findBySpecializzazione("Industriale")).
+                thenReturn(Arrays.asList(dto));
 
-        List<ElettricistaDto> result = elettricistaController.findBySpecializzazione("Industriale");
+        List<ElettricistaDto> result = elettricistaController.
+                findBySpecializzazione("Industriale");
 
         assertNotNull(result);
         assertEquals(1, result.size());
-        assertEquals("Industriale", result.get(0).getSpecializzazione());
+        assertEquals("Industriale", result.get(0)
+                .getSpecializzazione());
     }
 
     //TEST 5 jpql cerca per nome
@@ -101,10 +109,11 @@ public class ElettricistaTestController {
 
         when(elettricistaService.cercaPerNomeJPQL("Ciro")).thenReturn(dto);
 
-        ResponseEntity<ElettricistaDto> response = elettricistaController.cercaPerNomeJPQL("Ciro");
+        ResponseEntity<ElettricistaDto> response = elettricistaController.
+                cercaPerNomeJPQL("Ciro");
 
         assertNotNull(response);
-        assertEquals(200, response.getStatusCodeValue());
+        assertEquals(200, response.getStatusCode().value()); // 🔧 FIX
         assertEquals("Ciro", response.getBody().getNome());
     }
 
@@ -114,9 +123,11 @@ public class ElettricistaTestController {
         ElettricistaDto dto = new ElettricistaDto();
         dto.setNome("Ciro");
 
-        when(elettricistaService.elettricistiDisponibiliJPQL()).thenReturn(Arrays.asList(dto));
+        when(elettricistaService.elettricistiDisponibiliJPQL()).
+                thenReturn(Arrays.asList(dto));
 
-        List<ElettricistaDto> result = elettricistaController.elettricistiDisponibiliJPQL();
+        List<ElettricistaDto> result = elettricistaController.
+                elettricistiDisponibiliJPQL();
 
         assertNotNull(result);
         assertEquals(1, result.size());
@@ -128,12 +139,14 @@ public class ElettricistaTestController {
         ElettricistaDto dto = new ElettricistaDto();
         dto.setNome("Ciro");
 
-        when(elettricistaService.findByNomeNative("Ciro")).thenReturn(dto);
+        when(elettricistaService.findByNomeNative("Ciro")).
+                thenReturn(dto);
 
-        ResponseEntity<ElettricistaDto> response = elettricistaController.findByNomeNative("Ciro");
+        ResponseEntity<ElettricistaDto> response = elettricistaController.
+                findByNomeNative("Ciro");
 
         assertNotNull(response);
-        assertEquals(200, response.getStatusCodeValue());
+        assertEquals(200, response.getStatusCode().value()); // 🔧 FIX
         assertEquals("Ciro", response.getBody().getNome());
     }
 
@@ -143,9 +156,11 @@ public class ElettricistaTestController {
         ElettricistaDto dto = new ElettricistaDto();
         dto.setNome("Ciro");
 
-        when(elettricistaService.findDisponibiliNative()).thenReturn(Arrays.asList(dto));
+        when(elettricistaService.findDisponibiliNative()).
+                thenReturn(Arrays.asList(dto));
 
-        List<ElettricistaDto> result = elettricistaController.findDisponibiliNative();
+        List<ElettricistaDto> result = elettricistaController.
+                findDisponibiliNative();
 
         assertNotNull(result);
         assertEquals(1, result.size());
@@ -157,9 +172,11 @@ public class ElettricistaTestController {
         ElettricistaDto dto = new ElettricistaDto();
         dto.setCognome("Esposito");
 
-        when(elettricistaService.findByCognomeAndDisponibileTrue("Esposito")).thenReturn(Arrays.asList(dto));
+        when(elettricistaService.findByCognomeAndDisponibileTrue("Esposito")).
+                thenReturn(Arrays.asList(dto));
 
-        List<ElettricistaDto> result = elettricistaController.findByCognomeAndDisponibileTrue("Esposito");
+        List<ElettricistaDto> result = elettricistaController.
+                findByCognomeAndDisponibileTrue("Esposito");
 
         assertNotNull(result);
         assertEquals(1, result.size());
@@ -172,10 +189,12 @@ public class ElettricistaTestController {
         ElettricistaDto dto = new ElettricistaDto();
         dto.setSpecializzazione("Industriale");
 
-        when(elettricistaService.findBySpecializzazioneAndDisponibileFalse("Industriale"))
+        when(elettricistaService.
+                findBySpecializzazioneAndDisponibileFalse("Industriale"))
                 .thenReturn(Arrays.asList(dto));
 
-        List<ElettricistaDto> result = elettricistaController.findBySpecializzazioneAndDisponibileFalse("Industriale");
+        List<ElettricistaDto> result = elettricistaController.
+                findBySpecializzazioneAndDisponibileFalse("Industriale");
 
         assertNotNull(result);
         assertEquals(1, result.size());
