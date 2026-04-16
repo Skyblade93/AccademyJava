@@ -12,4 +12,7 @@ public class ElettricistaDto {
     private String cognome; // cognome elettricista
     private String specializzazione; // specializzazione elettricista
     private Boolean disponibile; // disponibilità elettricista
+    private String telefono;
+    private String email;
+    private String indirizzo;
 }

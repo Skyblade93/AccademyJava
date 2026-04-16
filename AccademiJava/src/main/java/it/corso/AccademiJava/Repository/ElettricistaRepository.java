@@ -1,7 +1,5 @@
 package it.corso.AccademiJava.Repository;
 
-import it.corso.AccademiJava.Model.Azienda;
-import it.corso.AccademiJava.Model.Drone;
 import it.corso.AccademiJava.Model.Elettricista;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -13,7 +11,7 @@ import java.util.List;
 public interface ElettricistaRepository extends JpaRepository<Elettricista, Integer> {
 
     // 1 JPA AUT
-    Elettricista findByNome(String nome);
+    List<Elettricista> findByNome(String nome);
 
     // 2 JPA AUT
     List<Elettricista> findByDisponibileTrue();

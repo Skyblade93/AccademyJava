@@ -21,11 +21,20 @@ public class ElettricistaService extends AbstractService<Elettricista, Elettrici
         this.elettricistaRepository = elettricistaRepository;
         this.elettricistaMapper = elettricistaMapper;
     }
-
-
+    //11 prende tutti gli elettricisti
+    public List<ElettricistaDto> findAll() {
+        return elettricistaMapper.toDTOList(elettricistaRepository.findAll());
+    }
+    //12 ricerca per id
+    public ElettricistaDto findById(Integer id) {
+        return elettricistaRepository.findById(id)
+                .map(e -> elettricistaMapper.toDTO(e))
+                .orElse(null);
+    }
     // 1 JPA AUTO X NOME
-    public ElettricistaDto findByNome(String nome) {
-        return elettricistaMapper.toDTO(elettricistaRepository.findByNome(nome));
+    public List<ElettricistaDto> findByNome(String nome) {
+        return elettricistaMapper.toDTOList(
+                elettricistaRepository.findByNome(nome));
     }
     // 2 JAP AUTO X ELETTR. DISP.
     public List<ElettricistaDto> findDisponibili() {
@@ -69,7 +78,5 @@ public class ElettricistaService extends AbstractService<Elettricista, Elettrici
     public List<ElettricistaDto> findBySpecializzazioneAndDisponibileFalse(String specializzazione) {
         return elettricistaMapper.toDTOList(elettricistaRepository.findBySpecializzazioneAndDisponibileFalse(specializzazione));
     }
-
-
 
 }
