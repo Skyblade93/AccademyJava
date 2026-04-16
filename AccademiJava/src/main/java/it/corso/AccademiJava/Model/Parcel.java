@@ -34,10 +34,11 @@ public class Parcel
     @OneToOne
     @JoinColumn(name = "pagamento_id")
     private Pagamento pagamento;
-
     //Ogni spedizione ha più notifiche.
     @OneToMany(mappedBy = "parcel")
     private List<Notifica> notifiche;
+
+
 
 
 

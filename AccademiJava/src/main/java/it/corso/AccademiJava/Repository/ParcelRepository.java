@@ -1,10 +1,15 @@
 package it.corso.AccademiJava.Repository;
 
+import it.corso.AccademiJava.DTO.ParcelDto;
 import it.corso.AccademiJava.Model.Parcel;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import java.util.List;
 
 
 @Repository // Entrata DB
@@ -43,8 +48,7 @@ public interface ParcelRepository extends JpaRepository<Parcel,Integer>
     @Query("SELECT p FROM Parcel p WHERE p.senderSurname = :senderSurname")
     Parcel findBySenderSurname(@Param("senderSurname")String senderSurname);
 
-    @Query("SELECT p FROM Parcel p WHERE p.receiverSurname= :receiverSurname")
-    Parcel findByReceiverSurname(@Param("receiverSurname")String senderSurname);
+    List<Parcel> findByReceiverSurname(String receiverSurname);
 
     @Query(value = "SELECT * FROM Parcel WHERE p.weight = ?1 AND p.height = ?2", nativeQuery = true)
     Parcel findByWeightAndHeight(Double weight,Integer height);
@@ -53,11 +57,5 @@ public interface ParcelRepository extends JpaRepository<Parcel,Integer>
     Parcel findByWidthAndLength(Double width,Integer length);
 
 
-
-
-
-
-
-
-
+    String receiverSurname(String receiverSurname);
 }

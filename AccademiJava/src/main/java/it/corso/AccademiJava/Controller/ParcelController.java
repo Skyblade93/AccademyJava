@@ -6,6 +6,8 @@ import it.corso.AccademiJava.Service.ParcelService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("Parcel")
 @CrossOrigin(origins = "http://localhost:4200")
@@ -67,7 +69,7 @@ public class ParcelController extends AbstractController<ParcelDto>
     }
 
     @GetMapping("/FindByReceiverSurname")
-    public ParcelDto findByReceiverSurname(@RequestParam String receiverSurname) {
+    public List<ParcelDto> findByReceiverSurname(@RequestParam String receiverSurname) {
         return parcelService.findByReceiverSurname(receiverSurname);
     }
 
