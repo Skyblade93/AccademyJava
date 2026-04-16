@@ -7,6 +7,8 @@ import it.corso.AccademiJava.Repository.ParcelRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class ParcelService extends AbstractService<Parcel, ParcelDto> {
 
@@ -30,7 +32,7 @@ public class ParcelService extends AbstractService<Parcel, ParcelDto> {
     public ParcelDto findByWidthAndLength(Double width, Integer length) {return parcelMapper.toDTO(parcelRepository.findByWidthAndLength(width,length));}
     public ParcelDto findByWidhtGreaterThan(Integer width) {return parcelMapper.toDTO(parcelRepository.findByWidhtGreaterThan(width));}
     public ParcelDto findByReceiverName(String receiverName){return parcelMapper.toDTO(parcelRepository.findByReceiverName(receiverName));}
-    public ParcelDto findByReceiverSurname(String receiverSurname){return parcelMapper.toDTO(parcelRepository.findByReceiverSurname(receiverSurname));}
+    public List<ParcelDto> findByReceiverSurname(String receiverSurname){return parcelMapper.toDTOList(parcelRepository.findByReceiverSurname(receiverSurname));}
     public ParcelDto findBySenderName(String senderName){return parcelMapper.toDTO(parcelRepository.findBySenderName(senderName));}
     public ParcelDto findBySenderSurname(String senderSurname){return parcelMapper.toDTO(parcelRepository.findBySenderSurname(senderSurname));}
 
