@@ -35,9 +35,9 @@ public class DipendenteController extends AbstractController<DipendenteDto> {
         return dipendenteService.findByEta(eta);
     }
 
-    @GetMapping("/findByEtaGreaterThan")
-    public List<DipendenteDto> findByEtaGreaterThan(@RequestParam("eta") Integer eta) {
-        return dipendenteService.findByEtaGreaterThan(eta);
+    @GetMapping("/findByNumeroTelefono")
+    public List<DipendenteDto> findByNumeroTelefono(@RequestParam("numeroTelefono") Integer numeroTelefono) {
+        return dipendenteService.findByNumeroTelefono(numeroTelefono);
     }
 
     @GetMapping("/findByEmail")
