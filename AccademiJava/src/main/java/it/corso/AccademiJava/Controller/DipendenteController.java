@@ -15,6 +15,7 @@ public class DipendenteController extends AbstractController<DipendenteDto> {
     @Autowired
     private DipendenteService dipendenteService;
 
+    // Chiamate per Angular
     @GetMapping("/findByNomeDipendenteAndCognomeDipendenteAndNumeroTelefono")
     public DipendenteDto findByNomeDipendenteAndCognomeDipendenteAndNumeroTelefono(
             @RequestParam("nomeDipendente") String nomeDipendente,
