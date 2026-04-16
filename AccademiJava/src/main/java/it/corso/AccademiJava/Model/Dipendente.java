@@ -40,15 +40,14 @@ public class Dipendente {
     private Azienda nomeAzienda; // Nome dell'azienda dove lavora il dipendente
 
     @OneToOne
-    @JoinColumn(name = "user_id", nullable = false)
+    @JoinColumn(name = "user_id")
     private User user;  // Utenza collegata al dipendente
 
     @OneToOne
     @JoinColumn(name = "contact_id")
     private Contact contact; // Informazioni di contatto del dipendente
 
-    @OneToMany
-    @JoinColumn(name = "auto_id")
+    @OneToMany(mappedBy = "dipendente")
     private List<Auto> auto;  // Un dipendente può avere più di un'auto
 
 }

@@ -3,6 +3,7 @@ package it.corso.AccademiJava.Controller;
 import it.corso.AccademiJava.DTO.AziendaDto;
 import it.corso.AccademiJava.Service.AziendaService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -66,5 +67,13 @@ public class AziendaController extends AbstractController<AziendaDto> {
     @GetMapping("/trovaPerDescrizioneNative")
     public List<AziendaDto> trovaPerDescrizioneNative(@RequestParam("descirizone") String descirizoneAzienda) {
         return service.trovaPerDescrizioneNative(descirizoneAzienda);
+    }
+
+    @GetMapping("/page")
+    public Page<AziendaDto> getPage(
+            @RequestParam int page,
+            @RequestParam int size
+    ) {
+        return service.getAziendePaginati(page, size);
     }
 }
