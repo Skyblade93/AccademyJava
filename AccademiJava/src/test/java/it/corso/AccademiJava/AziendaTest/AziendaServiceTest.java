@@ -12,6 +12,9 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Collections;
@@ -221,6 +224,37 @@ public class AziendaServiceTest {
         assertNotNull(result);
         assertEquals("descrizione 1", result.get(0).getDescrizioneAzienda());
         assertEquals("descrizione 2", result.get(1).getDescrizioneAzienda());
+    }
+
+    @Test
+    void getAziendePaginati() {
+
+        Azienda azienda = new Azienda();
+        azienda.setNomeAzienda("Tech");
+
+        List<Azienda> lista = List.of(azienda);
+
+        Page<Azienda> page = new PageImpl<>(
+                lista,
+                PageRequest.of(0, 10),
+                lista.size()
+        );
+
+        AziendaDto dto = new AziendaDto();
+        dto.setNomeAzienda("Tech");
+
+        when(aziendaRepository.findAll(PageRequest.of(0, 10)))
+                .thenReturn(page);
+
+        when(aziendaMapper.toDTO(azienda))
+                .thenReturn(dto);
+
+        Page<AziendaDto> result =
+                aziendaService.getAziendePaginati(0, 10);
+
+        assertNotNull(result);
+        assertEquals(1, result.getContent().size());
+        assertEquals("Tech", result.getContent().get(0).getNomeAzienda());
     }
 }
 
