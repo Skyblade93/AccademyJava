@@ -3,7 +3,7 @@ package it.corso.AccademiJava.Model;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
-
+//FIXXXXXXXXXXXX
 @Getter
 @Setter
 @Entity
@@ -16,10 +16,9 @@ public class Elettricista {
     private String nome;
     private String cognome;
     private String specializzazione;
-    private Boolean disponibile;
+    private boolean disponibile;
     private String telefono;
-    private String email;
-    private String indirizzo;
+
 
 
     // Collegamento ManyToOne con Drone

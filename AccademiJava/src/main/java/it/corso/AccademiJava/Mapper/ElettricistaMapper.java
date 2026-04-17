@@ -5,7 +5,7 @@ import it.corso.AccademiJava.DTO.ElettricistaDto;
 import it.corso.AccademiJava.Model.Elettricista;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Component;
-
+//FIXXXXXXXXXXXXX
 // Mapper basic
 @Component
 public class ElettricistaMapper extends AbstractConverter<Elettricista, ElettricistaDto> {
@@ -31,5 +31,4 @@ public class ElettricistaMapper extends AbstractConverter<Elettricista, Elettric
         return lista.stream()
                 .map(this::toDTO)
                 .collect(Collectors.toList());
-    }
-}
+    }}

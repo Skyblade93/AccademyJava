@@ -39,6 +39,6 @@ public class Auto {
     private Azienda azienda;
 
     @ManyToOne
-    @JoinColumn(name = "dipendete_id", nullable = true)
+    @JoinColumn(name = "dipendente_id", nullable = true)
     private Dipendente dipendente;
 }
