@@ -9,6 +9,6 @@ import java.util.ArrayList;
 
 @Repository
 public interface PagamentoRepository extends JpaRepository<Pagamento,Integer> {
-    public ArrayList<Pagamento> findByDataDiPagamento(LocalDateTime dataDiPagamento);
+    public ArrayList<Pagamento> findByDataPagamento(LocalDateTime dataDiPagamento);
 
 }
