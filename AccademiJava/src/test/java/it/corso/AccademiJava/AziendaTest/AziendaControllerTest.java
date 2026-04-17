@@ -8,6 +8,8 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
 
 import java.util.List;
 
@@ -161,5 +163,25 @@ public class AziendaControllerTest {
         assertEquals("descrizione 1", result.get(0).getDescrizioneAzienda());
         assertEquals("descrizione 2", result.get(1).getDescrizioneAzienda());
         verify(service).trovaPerDescrizioneNative("descrizione");
+    }
+
+    @Test
+    void getAziendePaginati() {
+
+        AziendaDto dto = new AziendaDto();
+        dto.setId(1);
+        dto.setNomeAzienda("Tech");
+
+        Page<AziendaDto> page = new PageImpl<>(List.of(dto));
+
+        when(service.getAziendePaginati(0, 10)).thenReturn(page);
+
+        Page<AziendaDto> result = controller.getPage(0, 10);
+
+        assertNotNull(result);
+        assertEquals(1, result.getContent().size());
+        assertEquals(1, result.getContent().get(0).getId());
+
+        verify(service).getAziendePaginati(0, 10);
     }
 }

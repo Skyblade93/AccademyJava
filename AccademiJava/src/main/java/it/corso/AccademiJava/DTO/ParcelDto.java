@@ -29,4 +29,6 @@ public class ParcelDto
     private Integer ordineId;
     private Integer pagamentoId;
     private List<Integer> notificheIds;
+
+
 }

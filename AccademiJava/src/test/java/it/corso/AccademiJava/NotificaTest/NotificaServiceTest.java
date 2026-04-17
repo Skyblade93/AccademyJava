@@ -23,7 +23,7 @@ public class NotificaServiceTest {
 	void findByTitolo_restituisceDtoMappato() {
 		Notifica entity = buildEntity("Titolo A", "Messaggio A");
 		TestRepositoryHandler handler = new TestRepositoryHandler();
-		handler.byTitolo = entity;
+		handler.byTitoloContaining = List.of(entity);
 		NotificaService service = buildService(handler);
 
 		NotificaDto result = service.FindByTitolo("Titolo A");
@@ -36,7 +36,7 @@ public class NotificaServiceTest {
 	void countMessaggioLength_restituisceLunghezzaQuandoEsisteNotifica() {
 		Notifica entity = buildEntity("Titolo B", "123456");
 		TestRepositoryHandler handler = new TestRepositoryHandler();
-		handler.byTitolo = entity;
+		handler.byTitoloContaining = List.of(entity);
 		NotificaService service = buildService(handler);
 
 		Integer result = service.CountMessaggioLength("Titolo B");
@@ -95,13 +95,13 @@ public class NotificaServiceTest {
 	}
 
 	private static class TestRepositoryHandler implements InvocationHandler {
-		private Notifica byTitolo;
+		private List<Notifica> byTitoloContaining = List.of();
 		private List<Notifica> byTipo = List.of();
 
 		@Override
 		public Object invoke(Object proxy, java.lang.reflect.Method method, Object[] args) {
 			return switch (method.getName()) {
-				case "findByTitolo" -> byTitolo;
+				case "findByTitoloContaining" -> byTitoloContaining;
 				case "findByTipo" -> byTipo;
 				case "toString" -> "TestRepositoryProxy";
 				case "hashCode" -> System.identityHashCode(proxy);

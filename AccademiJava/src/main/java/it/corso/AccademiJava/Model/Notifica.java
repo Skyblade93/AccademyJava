@@ -38,6 +38,7 @@ public class Notifica {
     @JoinColumn(name = "user_id")
     private User user;
 
+
     @ManyToOne
     @JoinColumn(name = "parcel_id")
     private Parcel parcel;

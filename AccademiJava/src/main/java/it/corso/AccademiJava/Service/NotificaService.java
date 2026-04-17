@@ -75,7 +75,7 @@ public class NotificaService extends AbstractService<Notifica, NotificaDto> {
     }
 
     public List<NotificaDto> FindByTitoloContaining(String titolo) {
-        return notificaMapper.toDTOList(notificaRepository.findByTitoloContaining(titolo));
+        return notificaMapper.toDTOList(notificaRepository.findByTitoloContainingIgnoreCase(titolo));
     }
 
     public List<NotificaDto> FindByTipoAndPriorita(TipoNotifica tipo, PrioritaNotifica priorita) {

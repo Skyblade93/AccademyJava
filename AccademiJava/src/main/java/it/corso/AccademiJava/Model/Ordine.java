@@ -1,5 +1,6 @@
 package it.corso.AccademiJava.Model;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -30,8 +31,7 @@ public class Ordine {
     @JoinColumn(name = "utente_id", nullable = false)
     private User utente;
 
-    @OneToMany(mappedBy = "ordine")
-    private List<OrdineProduct> products;
+
 
     @OneToOne
     @JoinColumn(name = "parcel_id", referencedColumnName = "id")

@@ -33,30 +33,49 @@ public class AutoService extends AbstractService<Auto, AutoDto>{
     }
 
     //  NATIVE
-    public AutoDto findByMarca(String marca) {return autoMapper.toDTO(autoRepository.findByMarca(marca).getFirst()
-        );
+    public List<AutoDto> findByMarca(String marca) {
+        return autoRepository.findByMarca(marca)
+                .stream()
+                .map(autoMapper::toDTO)
+                .toList();
     }
+
 
     //  DERIVATI
 
-    public AutoDto findByModello(String modello) {return autoMapper.toDTO(autoRepository.findByModello(modello).getFirst()
-        );
+    public List<AutoDto> findByModello(String modello) {
+        return autoRepository.findByModello(modello)
+                .stream()
+                .map(autoMapper::toDTO)
+                .toList();
     }
 
-    public AutoDto findByMarcaAndModello(String marca, String modello) {return autoMapper.toDTO(autoRepository.findByMarcaAndModello(marca, modello).getFirst()
-        );
+
+    public List<AutoDto> findByMarcaAndModello(String marca, String modello) {
+        return autoRepository.findByMarcaAndModello(marca, modello)
+                .stream()
+                .map(autoMapper::toDTO)
+                .toList();
+    }
+    public List<AutoDto> findByModelloContaining(String modello) {
+        return autoRepository.findByModelloContaining(modello)
+                .stream()
+                .map(autoMapper::toDTO)
+                .toList();
     }
 
-    public AutoDto findByModelloContaining(String modello) {return autoMapper.toDTO(autoRepository.findByModelloContaining(modello).getFirst()
-        );
+    public List<AutoDto> findByMarcaStartingWith(String marca) {
+        return autoRepository.findByMarcaStartingWith(marca)
+                .stream()
+                .map(autoMapper::toDTO)
+                .toList();
     }
 
-    public AutoDto findByMarcaStartingWith(String marca) {return autoMapper.toDTO(autoRepository.findByMarcaStartingWith(marca).getFirst()
-        );
-    }
-
-    public AutoDto findByMarcaEndingWith(String marca) {return autoMapper.toDTO(autoRepository.findByMarcaEndingWith(marca).getFirst()
-        );
+    public List<AutoDto> findByMarcaEndingWith(String marca) {
+        return autoRepository.findByMarcaEndingWith(marca)
+                .stream()
+                .map(autoMapper::toDTO)
+                .toList();
     }
 
 

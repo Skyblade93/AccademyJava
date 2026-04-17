@@ -2,6 +2,8 @@ package it.corso.AccademiJava.Repository;
 
 
 import it.corso.AccademiJava.Model.Azienda;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
@@ -50,5 +52,5 @@ public interface AziendaRepository extends JpaRepository<Azienda, Integer> {
     @Query(value = "SELECT * FROM azienda a WHERE a.descrizione_azienda = ?1", nativeQuery = true)
     List<Azienda> TrovaPerDescrizioneNative(String descrizione);
 
-
+    Page<Azienda> findAll(Pageable pageable);
 }
