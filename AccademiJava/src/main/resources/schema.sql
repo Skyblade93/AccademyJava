@@ -270,3 +270,7 @@ INSERT INTO accademi.notifica VALUES
                                   (1,2,1,1,'Batteria bassa','Drone sotto 20%','AVVERTIMENTO','ALTA',false,now()),
                                   (2,3,2,2,'OK','Consegna completata','INFORMAZIONE','BASSA',true,now()),
                                   (3,4,3,3,'Errore','Guasto motore','ERRORE','CRITICA',false,now());
+
+
+SELECT MAX(id) FROM accademi.azienda;
+SELECT setval('accademi.azienda_id_seq', (SELECT MAX(id) FROM accademi.azienda));
