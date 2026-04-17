@@ -166,9 +166,9 @@ CREATE TABLE accademi.elettricista (
                                        nome VARCHAR(255),
                                        cognome VARCHAR(255),
                                        specializzazione VARCHAR(255),
-                                       disponibile BOOLEAN
+                                       disponibile BOOLEAN,
+                                       telefono VARCHAR(50)
 );
-
 -- =========================
 -- NOTIFICA
 -- =========================
@@ -263,9 +263,29 @@ INSERT INTO accademi.user_product VALUES
                                       (1,2,1),(2,3,2),(3,4,3),(4,5,4);
 
 INSERT INTO accademi.elettricista VALUES
-                                      (1,1,'Mario','Rossi','Riparazione',true),
-                                      (2,2,'Paolo','Neri','Manutenzione',false),
-                                      (3,3,'Gianni','Verdi','Diagnostica',true);
+                                      (1,1,'Mario','Rossi','industriale',true,'2567873384'),
+                                      (2,2,'Paolo','Neri','residenziale',false, '25678409434'),
+                                      (3,3,'Gianni','Verdi','industriale',true, '1796959393'),
+                                      (4,1,'Ciro','Esposito','industriale',true,'3331111111'),
+                                      (5,2,'Guido','Lavespa','residenziale',true,'3332222222'),
+                                      (6,3,'Ada','Wong','industriale',false,'3333333333'),
+                                      (7,1,'Leon','Kennedy','residenziale',true,'3334444444'),
+                                      (8,2,'Casemiro','Grumaioli','industriale',false,'3335555555'),
+                                      (9,3,'Mariarca','Russo','residenziale',true,'3336666666'),
+                                      (10,1,'Cin','Ciampai','industriale',false,'3337777777'),
+                                      (11,2,'Otto','Panzer','residenziale',false,'3338888888'),
+                                      (12,3,'Mira','Colo','industriale',true,'3339999999'),
+                                      (13,1,'Chris','Redfield','residenziale',true,'3330000000'),
+                                      (14,2,'Marco','Marchi','industriale',true,'8991000001'),
+                                      (15,3,'Gennaro','Savastano','residenziale',true,'8991000002'),
+                                      (16,1,'Ciro','Di Marzio','industriale',false,'8991000003'),
+                                      (17,2,'Vincenzo','De Luca','residenziale',true,'8991000004'),
+                                      (18,3,'Lara','Croft','industriale',true,'7771000005'),
+                                      (19,1,'Ezio','Auditore','residenziale',true,'3657000006'),
+                                      (20,2,'Altaïr','Ibn La Ahad','industriale',true,'8001000007'),
+                                      (21,3,'Jill','Valentine','residenziale',false,'4891000008'),
+                                      (22,1,'Albert','Wesker','industriale',true,'3451000009'),
+                                      (23,2,'Ethan','Winters','residenziale',true,'5761000010');
 
 INSERT INTO accademi.notifica VALUES
                                   (1,2,1,1,'Batteria bassa','Drone sotto 20%','AVVERTIMENTO','ALTA',false,now()),
