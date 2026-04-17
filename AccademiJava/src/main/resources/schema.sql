@@ -119,6 +119,10 @@ CREATE TABLE accademi.ordine (
 -- =========================
 CREATE TABLE accademi.parcel (
                                  id SERIAL PRIMARY KEY,
+                                 senderName VARCHAR(255),
+                                 senderSurname VARCHAR(255),
+                                 receiverName VARCHAR(255),
+                                 receiverSurname VARCHAR(255),
                                  ordine_id INT REFERENCES accademi.ordine(id),
                                  pagamento_id INT REFERENCES accademi.pagamento(id),
                                  weight DOUBLE PRECISION,
@@ -245,10 +249,10 @@ INSERT INTO accademi.ordine VALUES
                                 (4,5,4,75,1,'Via Torino');
 
 INSERT INTO accademi.parcel VALUES
-                                (1,1,1,2.5,10,15,20,true),
-                                (2,2,2,5,20,25,30,false),
-                                (3,3,3,1.5,8,8,8,true),
-                                (4,4,4,2,10,10,10,false);
+                                (1, 'Luca', 'Rossi', 'Marco', 'Bianchi', 1, 1, 2.5, 10, 15, 20, true),
+                                (2, 'Giulia', 'Esposito', 'Francesco', 'Romano', 2, 2, 5, 20, 25, 30, false),
+                                (3, 'Andrea', 'Ferrari', 'Chiara', 'Colombo', 3, 3, 1.5, 8, 8, 8, true),
+                                (4, 'Sara', 'Conti', 'Matteo', 'Ricci', 4, 4, 2, 10, 10, 10, false);
 
 INSERT INTO accademi.carrello VALUES
                                   (1,2,1,100.5,2),
